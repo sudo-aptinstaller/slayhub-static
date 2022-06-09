@@ -2284,24 +2284,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 var client = ZAFClient.init();
 var clientContext;
+var activeRole;
+var url;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['user', 'domain', 'repodata', 'currentrepo', 'workitemstolink'],
+  props: ['user', 'domain', 'repodata'],
   data: function data() {
     return {
       userObject: this.user,
       domainObject: this.domain,
       orgAndProjectDataObject: this.repodata,
-      currentRepoObject: this.currentrepo,
-      workItemsToLinkObject: this.workitemstolink,
       associatedTicketId: '',
-      username: '',
-      activeRepository: '',
-      relationRepoId: ''
+      username: ''
     };
   },
   created: function created() {
     var _this = this;
 
+    console.log(this.orgAndProjectDataObject);
     client.invoke('resize', {
       width: '100%',
       height: '600px'
@@ -2335,23 +2334,10 @@ var clientContext;
       activeRole = data.user.role;
       _this.username = data.user.name;
       _this.associatedTicketId = clientContext.context.ticketId;
-
-      if (_this.currentRepoObject === "") {
-        Event.$emit('dClientContextUpdated', {
-          username: _this.username,
-          associatedTicket: _this.associatedTicketId,
-          activeRepository: ''
-        });
-        console.log('its null');
-      } else {
-        Event.$emit('dClientContextUpdated', {
-          username: _this.username,
-          associatedTicket: _this.associatedTicketId,
-          activeRepository: JSON.parse(_this.currentRepoObject).repo_id,
-          relationRepoId: JSON.parse(_this.currentRepoObject).id
-        });
-      } // this.dataBinding();
-
+      Event.$emit('clientContextUpdated', {
+        username: _this.username,
+        associatedTicket: _this.associatedTicketId
+      }); // this.dataBinding();
     });
   }
 });
@@ -2369,55 +2355,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2427,371 +2364,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['repodata', 'domain', 'user', 'currentrepo'],
+  props: ['repodata', 'domain'],
   data: function data() {
     return {
       orgAndProjectDataObject: JSON.parse(this.repodata),
-      domainObject: this.domain,
-      userObject: JSON.parse(this.user),
-      repoDetailObject: JSON.parse(this.currentrepo),
-      zenTicketObject: '',
-      value: '',
-      repo: '',
-      projectValues: '',
-      projectName: '',
-      repoList: '',
-      workItemsToLink: '',
-      repoKey: '',
-      formData: {
-        origin: '',
-        repolist: ''
-      },
-      orgName: '',
-      activeRepository: ''
+      domainObject: this.domain
     };
   },
-  methods: {
-    swapRepoValueTo: function swapRepoValueTo(repo_data) {
-      var _this = this;
-
-      this.formData.repolist = repo_data;
-      axios.post("/api/devops/repolistsave?domain=".concat(this.domainObject), this.formData).then(function (res) {
-        _this.activeRepository = res.data.repo_id;
-        _this.associatedTicketId = res.data.associated_ticket_id;
-        _this.orgName = res.data.project_name;
-        _this.projName = res.data.repo_name;
-        _this.relationRepoId = res.data.relation_repo_id;
-        _this.workItemsToLink = res.data.workItemsToLink;
-        Event.$emit('dRepoDataWithTicketsUpdated', {
-          relationRepoId: _this.relationRepoId,
-          orgName: _this.orgName,
-          workItemsToLink: _this.workItemsToLink,
-          projName: _this.projName,
-          repoId: _this.activeRepository,
-          associatedTicketId: _this.associatedTicketId
-        });
-
-        _this.processArrayRepo(_this.orgName);
-      });
-    },
-    processArrayRepo: function processArrayRepo(passVal) {
-      var _this2 = this;
-
-      var orgProjTemp;
-
-      if (passVal !== null) {
-        this.orgAndProjectDataObject = this.orgAndProjectDataObject.filter(function (orgAndProj) {
-          if (typeof orgAndProj[passVal] == 'undefined') {
-            return orgAndProj;
-          } else {
-            orgProjTemp = orgAndProj;
-          }
-        });
-        this.orgAndProjectDataObject = [].concat(_toConsumableArray(this.orgAndProjectDataObject), [orgProjTemp]);
-      } else {
-        this.orgName = this.repoDetailObject.organization_name;
-        this.orgAndProjectDataObject = this.orgAndProjectDataObject.filter(function (orgAndProj) {
-          if (typeof orgAndProj[_this2.repoDetailObject.organization_name] == 'undefined') {
-            return orgAndProj;
-          } else {
-            orgProjTemp = orgAndProj;
-          }
-        });
-        this.orgAndProjectDataObject = [].concat(_toConsumableArray(this.orgAndProjectDataObject), [orgProjTemp]);
-      }
-    }
-  },
   created: function created() {
-    var _this3 = this;
-
-    Event.$on('dClientContextUpdated', function (data) {
-      _this3.zenTicketObject = data.associatedTicket;
-      _this3.activeUsername = data.username;
-      _this3.activeRepository = data.activeRepository;
-
-      _this3.processArrayRepo(null);
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Dsettings.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Dsettings.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var attachmentList = [];
-var payload;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['user', 'domain', 'currentrepo'],
-  data: function data() {
-    return {
-      userObject: JSON.parse(this.user),
-      domainObject: this.domain,
-      activeUsername: '',
-      activeRepository: '',
-      projName: JSON.parse(this.currentrepo).project_name,
-      orgName: JSON.parse(this.currentrepo).organization_name,
-      relationRepoId: JSON.parse(this.currentrepo).id,
-      reOauthForm: {
-        domain: this.domain
-      }
-    };
-  },
-  methods: {
-    reOauth: function reOauth() {
-      axios.post("/api/devops/reOauth", this.reOauthForm).then(function (response) {
-        if (response.data.status != 1) {
-          var myWindowDevops = window.open("", "response", "resizable=yes");
-          myWindowDevops.document.write(response.data);
-        } else {
-          $("#reOauthButton").html('Oauth already exists!');
-          setTimeout(function () {
-            $("#reOauthButton").html('Add Oauth');
-          }, 3500);
-        } // this.tickets=[...this.tickets,response.data];
-        // this.submitInProgress = 'success';
-        // setTimeout(()=>{
-        //     this.submitInProgress = false;
-        // },1500);
-
-      });
-    },
-    subscribeToSocketChannels: function subscribeToSocketChannels() {
-      var _this = this;
-
-      /**
-       * Application Prop passing and websockets
-       */
-      Echo.channel('devops-client-app-notification').listen('WebHookAzureUpdate', function (e) {
-        payload = JSON.parse(e.payload);
-
-        if (payload.domain_name == _this.domainObject) {
-          var updatedTicket = _this.tickets.filter(function (ticket) {
-            return ticket.id == payload.comment.tfs_id;
-          })[0];
-
-          updatedTicket.azurecomments = [].concat(_toConsumableArray(updatedTicket.azurecomments), [payload.comment]);
-          _this.tickets = _this.tickets.filter(function (ticket) {
-            return ticket.id !== payload.comment.tfs_id;
-          });
-          _this.tickets = [].concat(_toConsumableArray(_this.tickets), [updatedTicket]);
-          _this.ticketActive = updatedTicket;
-          Event.$emit("commentUpdated", {
-            updatedTicket: _this.ticketActive
-          });
-        }
-      }); // props passing and websockets end
-    }
-  },
-  created: function created() {
-    var _this2 = this;
-
-    Event.$on('dClientContextUpdated', function (data) {
-      _this2.zenTicketObject = data.associatedTicket;
-      _this2.activeUsername = data.username;
-      _this2.activeRepository = data.activeRepository;
-    });
-    Event.$on('dRepoDataWithTicketsUpdated', function (data) {
-      _this2.orgName = data.orgName;
-      _this2.projName = data.projName;
-      _this2.activeRepository = data.repoId;
-      _this2.relationRepoId = data.relationRepoId;
-      _this2.zenTicketObject = data.associatedTicketId;
-      _this2.workItemsToLink = data.workItemsToLink.original;
-    });
-    this.subscribeToSocketChannels();
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Ticket.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Ticket.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['ticket', 'domain'],
-  data: function data() {
-    return {
-      ticketObject: this.ticket,
-      submitInProgress: false,
-      activeUsername: '',
-      domainObject: this.domain,
-      comments: this.ticket.azurecomments,
-      createCommentForm: {
-        comment: ''
-      },
-      ticketId: this.ticket.tfs_id,
-      orgName: this.ticket.project_name,
-      projName: this.ticket.organization_name
-    };
-  },
-  methods: {
-    createComment: function createComment() {
-      var _this = this;
-
-      axios.post("/api/devops/createComment?domain=".concat(this.domainObject, "&id=").concat(this.ticketId, "&vorgName=").concat(this.orgName, "&vprojName=").concat(this.projName), this.createCommentForm).then(function (response) {
-        _this.comments = [].concat(_toConsumableArray(_this.comments), [response.data]);
-        _this.submitInProgress = 'success';
-        setTimeout(function () {
-          _this.submitInProgress = false;
-        }, 1500);
-      });
-    }
-  },
-  created: function created() {
-    var _this2 = this;
-
-    Vue.filter('formatDate', function (value) {
-      if (value) {
-        return moment(String(value)).format('hh:mm A');
-      }
-    });
-    Event.$on("commentUpdated", function (payload) {
-      _this2.comments = payload.updatedTicket.azurecomments; // this.ticketObject = payload.updatedTicket;
-    });
+    console.log(this.orgAndProjectDataObject, this.domainObject);
   }
 });
 
@@ -2808,7 +2389,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Ticket_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Ticket.vue */ "./resources/js/components/devopsComponents/navigation/Ticket.vue");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2821,8 +2401,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2913,281 +2491,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var attachmentList = [];
-var client = ZAFClient.init();
-var payload;
-var ticketDescription;
-var latestMessage;
-var fullConversation;
-var ticketSubject;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Ticket: _Ticket_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  props: ['user', 'domain', 'workitemstolink', 'currentrepo'],
+  props: ['user', 'domain'],
   data: function data() {
-    var _ref;
-
-    return _ref = {
-      searchTerm: '',
-      whetherTicketsActive: false,
-      submitInProgress: false,
-      activeAttachmentsList: [],
-      ticketActive: '',
+    return {
       createTicketForm: {
         title: '',
         description: '',
-        type: '',
-        attachments: []
-      },
-      linkTicketForm: {
-        id: ''
+        type: ''
       },
       userObject: JSON.parse(this.user),
       domainObject: this.domain,
       zenTicketObject: '',
       activeUsername: '',
-      activeRepository: '',
-      projName: JSON.parse(this.currentrepo).project_name,
-      orgName: JSON.parse(this.currentrepo).organization_name,
-      relationRepoId: JSON.parse(this.currentrepo).id,
-      workItemsToLink: JSON.parse(this.workitemstolink).original,
-      workItemsToLinkObject: JSON.parse(this.workitemstolink),
-      tickets: JSON.parse(this.user).azuretickets,
-      comments: '',
-      searchItemCollection: this.workItemsToLink
-    }, _defineProperty(_ref, "searchTerm", ''), _defineProperty(_ref, "searchItemCollection", []), _ref;
+      tickets: JSON.parse(this.user).azuretickets
+    };
   },
   methods: {
     createTicket: function createTicket() {
       var _this = this;
 
-      axios.post("/api/devops/tickets/create-ticket/".concat(this.domainObject, "?projname=").concat(this.projName, "&orgname=").concat(this.orgName, "&repoid=").concat(this.relationRepoId), this.createTicketForm).then(function (response) {
+      axios.post("/api/devops/tickets/create-ticket/".concat(this.domainObject), this.createTicketForm).then(function (response) {
         _this.tickets = [].concat(_toConsumableArray(_this.tickets), [response.data]);
-        _this.submitInProgress = 'success';
-        setTimeout(function () {
-          _this.submitInProgress = false;
-        }, 1500);
       });
-    },
-    linkTicket: function linkTicket() {
-      var _this2 = this;
-
-      axios.post("/api/devops/linkTicket?domain=".concat(this.domainObject, "&projname=").concat(this.projName, "&orgname=").concat(this.orgName, "&repoid=").concat(this.relationRepoId), this.linkTicketForm).then(function (response) {
-        _this2.tickets = [].concat(_toConsumableArray(_this2.tickets), [response.data]);
-        $("#linkTicketButton").html('Ticket Linked!');
-        setTimeout(function () {
-          $("#linkTicketButton").html('Link Issue');
-        }, 3500);
-      });
-    },
-    updateLinkerList: function updateLinkerList() {
-      var _this3 = this;
-
-      this.searchItemCollection = this.workItemsToLink.filter(function (workItem) {
-        var itemName = workItem.fields['System.Title'];
-
-        if (_this3.searchTerm !== '' || _this3.searchTerm !== null || _this3.searchTerm !== ' ') {
-          if (itemName.includes(_this3.searchTerm) || workItem.id == '' + _this3.searchTerm) {
-            return workItem;
-          }
-        } else {
-          return workItem;
-        }
-      });
-    },
-    viewTicketInDepth: function viewTicketInDepth(ticket) {
-      if (ticket) {
-        this.ticketActive = ticket;
-        this.whetherTicketsActive = true;
-      } else {
-        this.whetherTicketsActive = false;
-      }
-    },
-    submitComment: function submitComment() {
-      var _this4 = this;
-
-      axios.post("/api/devops/createComment/?domain=".concat(this.domainObject, "&id=").concat(this.id, "&vorgName=").concat(this.orgName, "&vprojName=").concat(this.projName), this.submitCommentForm).then(function (response) {
-        _this4.comments = [].concat(_toConsumableArray(_this4.comments), [response.data]);
-      });
-    },
-    addAttachmentToList: function addAttachmentToList(contentUrl, filename) {
-      this.createTicketForm.attachments = [].concat(_toConsumableArray(this.createTicketForm.attachments), [{
-        name: filename,
-        url: contentUrl
-      }]);
-    },
-    removeFromAttachmentsArray: function removeFromAttachmentsArray(contentUrl) {
-      this.createTicketForm.attachments = this.createTicketForm.attachments.filter(function (e) {
-        return e.url !== contentUrl;
-      });
-    },
-    getTicketDescription: function getTicketDescription() {
-      $("#description").val(ticketDescription);
-      $("#description").text(ticketDescription);
-      this.createTicketForm.description = ticketDescription;
-    },
-    getLatestMessage: function getLatestMessage() {
-      $("#description").val(latestMessage);
-      $("#description").text(latestMessage);
-      this.createTicketForm.description = latestMessage;
-    },
-    getFullConversation: function getFullConversation() {
-      $("#description").val(fullConversation);
-      $("#description").text(fullConversation);
-      this.createTicketForm.description = fullConversation;
-    },
-    getTicketSubject: function getTicketSubject() {
-      $("#title").val(ticketSubject);
-      $("#title").text(ticketSubject);
-      this.createTicketForm.title = ticketSubject;
-    },
-    filterMyDropList: function filterMyDropList() {
-      var _this5 = this;
-
-      this.searchItemCollection = this.workItemsToLink.filter(function (workItem) {
-        var title = workItem.fields['System.Title'];
-
-        var searchTerm = _this5.searchTerm.toLowerCase();
-
-        if (_this5.searchTerm !== '' || _this5.searchTerm !== null || _this5.searchTerm !== ' ') {
-          if (title.includes(searchTerm) || workItem.id == '' + _this5.searchTerm) {
-            return workItem;
-          }
-        } else {
-          return workItem;
-        }
-      });
-      $('#issue_linker').attr('size', 2);
-    },
-    subscribeToSocketChannels: function subscribeToSocketChannels() {
-      var _this6 = this;
-
-      /**
-       * Application Prop passing and websockets
-       */
-      Echo.channel('devops-client-app-notification').listen('WebHookAzureUpdate', function (e) {
-        payload = JSON.parse(e.payload);
-
-        if (payload.domain_name == _this6.domainObject) {
-          var updatedTicket = _this6.tickets.filter(function (ticket) {
-            return ticket.id == payload.comment.tfs_id;
-          })[0];
-
-          updatedTicket.azurecomments = [].concat(_toConsumableArray(updatedTicket.azurecomments), [payload.comment]);
-          _this6.tickets = _this6.tickets.filter(function (ticket) {
-            return ticket.id !== payload.comment.tfs_id;
-          });
-          _this6.tickets = [].concat(_toConsumableArray(_this6.tickets), [updatedTicket]);
-          _this6.ticketActive = updatedTicket;
-          Event.$emit("commentUpdated", {
-            updatedTicket: _this6.ticketActive
-          });
-        }
-      }); // props passing and websockets end
     }
   },
   created: function created() {
-    var _this7 = this;
+    var _this2 = this;
 
-    this.updateLinkerList();
-    Event.$on('dClientContextUpdated', function (data) {
-      _this7.zenTicketObject = data.associatedTicket;
-      _this7.activeUsername = data.username;
-      _this7.activeRepository = data.activeRepository;
-    });
-    Event.$on('dRepoDataWithTicketsUpdated', function (data) {
-      _this7.orgName = data.orgName;
-      _this7.projName = data.projName;
-      _this7.activeRepository = data.repoId;
-      _this7.relationRepoId = data.relationRepoId;
-      _this7.zenTicketObject = data.associatedTicketId;
-      _this7.workItemsToLink = data.workItemsToLink.original;
-    });
-    this.subscribeToSocketChannels();
-    console.log(client.get("ticket"));
-    client.get("ticket").then(function (data) {
-      ticketSubject = data.ticket.subject;
-      ticketDescription = data.ticket.description.replace(/<\/?[^>]+(>|$)/g, "");
-      latestMessage = data.ticket.comments[0].author.name + '<hr>' + data.ticket.comments[0].value;
-      data.ticket.comments.forEach(function (comment) {
-        fullConversation += comment.author.name + '<hr>' + comment.value;
-      });
+    Event.$on('clientContextUpdated', function (data) {
+      _this2.zenTicketObject = data.associatedTicket;
+      _this2.activeUsername = data.username;
+      console.log(_this2.userObject, _this2.domainObject, _this2.zenTicketObject);
     });
   }
 });
@@ -3205,8 +2540,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3218,12 +2551,6 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 //
 //
@@ -3304,7 +2631,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['activeIssue', 'domain', 'token', 'username', 'permissionLevel'],
+  props: ['activeIssue', 'domain', 'token', 'username'],
   data: function data() {
     return {
       issue: this.activeIssue,
@@ -3316,8 +2643,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       activeToken: this.token,
       submitInProgress: false,
       activeSubdomain: this.domain.domain_name,
-      activeUsername: this.username,
-      activeUserPermissionLevel: this.permissionLevel
+      activeUsername: this.username
     };
   },
   created: function created() {
@@ -3327,8 +2653,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     });
     this.processAttachments();
-  },
-  mounted: function mounted() {
     this.processSubmittedBy();
   },
   methods: {
@@ -3342,39 +2666,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     processSubmittedBy: function processSubmittedBy() {
-      var _this = this;
+      this.comments.map(function (comment) {
+        var tempCommentBody = comment.comment_body;
+        var checkCommentForFormatting = tempCommentBody.search(/<p>Submitted by : .*<\/p>/g);
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _this.comments.map(function (comment) {
-                  var tempCommentBody = comment.comment_body;
-                  var checkCommentForFormatting = tempCommentBody.search(/<p>Submitted by : .*<\/p>/g);
-
-                  if (checkCommentForFormatting !== -1) {
-                    var userNameFetch = tempCommentBody.match(/(?<=:\s)[A-z,\s]*/g)[0];
-                    var finalBody = tempCommentBody.replace(/<p>Submitted by : .*<\/p>/g, '');
-                    var tempJsonUser = JSON.parse(comment.comment_user);
-                    tempJsonUser.login = userNameFetch;
-                    tempJsonUser.type = 'Agent';
-                    comment.comment_user = JSON.stringify(tempJsonUser);
-                    comment.comment_body = finalBody;
-                  }
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+        if (checkCommentForFormatting !== -1) {
+          var userNameFetch = tempCommentBody.match(/(?<=:\s)[A-z,\s]*/g)[0];
+          var finalBody = tempCommentBody.replace(/<p>Submitted by : .*<\/p>/g, '');
+          var tempJsonUser = JSON.parse(comment.comment_user);
+          tempJsonUser.login = userNameFetch;
+          tempJsonUser.type = 'Agent';
+          comment.comment_user = JSON.stringify(tempJsonUser);
+          comment.comment_body = finalBody;
+        }
+      });
     },
     submitComment: function submitComment() {
-      var _this2 = this;
+      var _this = this;
 
       this.submitInProgress = true;
       this.submitCommentFormData.comment_body = this.submitCommentFormData.comment_body + '<p>Submitted by : ' + this.activeUsername + '</p>';
@@ -3383,18 +2691,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           "Authorization": "Bearer ".concat(this.activeToken)
         }
       }).then(function (returnPayload) {
-        _this2.comments = [].concat(_toConsumableArray(_this2.comments), [returnPayload.data.comment]);
-        _this2.submitCommentFormData.comment_body = '';
-        _this2.submitInProgress = 'success';
-        Event.$emit('updatedCommentInActiveIssue', {
-          modifiedIssueNumber: _this2.issue.issue_number,
-          comments: _this2.comments
-        });
+        _this.comments = [].concat(_toConsumableArray(_this.comments), [returnPayload.data.comment]);
+        _this.submitCommentFormData.comment_body = '';
+        _this.submitInProgress = 'success';
         setTimeout(function () {
-          _this2.submitInProgress = false;
+          _this.submitInProgress = false;
 
-          _this2.processSubmittedBy();
+          _this.processSubmittedBy();
         }, 1500);
+      });
+      Event.$emit('updatedCommentInActiveIssue', {
+        modifiedIssueNumber: this.issue.issue_number,
+        comments: this.comments
       });
     }
   }
@@ -3426,12 +2734,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3684,19 +2986,13 @@ var ticketAttachmentsArray = [];
       applicationPayload: {
         domain: '',
         uuid: ''
-      },
-      // this is the filter system of the linker
-      searchTerm: '',
-      filteredIssueArray: [],
-      // end
-      afterLoadingUpdates: false
+      }
     };
   },
   created: function created() {
     var _this = this;
 
     Event.$on('repoDataWithIssuesUpdated', function (data) {
-      _this.afterLoadingUpdates = false;
       _this.activeTicket = data.associatedTicket;
 
       if (data.userSettings && data.userLevel) {
@@ -3715,13 +3011,11 @@ var ticketAttachmentsArray = [];
         //dynamic data that handles the issue display
         _this.activeToken = data.tokenBroadcast;
         _this.activeRepoData = data.repoData;
-        _this.afterLoadingUpdates = true;
         _this.activeRepository = data.repoData.repo_name;
         _this.activeSubdomain = data.repoData.user;
         _this.activeLabelList = JSON.parse(_this.activeRepoData.label_list);
         _this.activeCollaboratorList = JSON.parse(_this.activeRepoData.collaborators_list);
-        _this.activeRepoIssueCollection = data.repoIssues;
-        _this.filteredIssueArray = data.repoIssues; //  this is the static data that goes with the application form 
+        _this.activeRepoIssueCollection = data.repoIssues; //  this is the static data that goes with the application form 
 
         _this.submitIssueFormData.repo_name = data.repoData.repo_name;
         _this.submitIssueFormData.repo_link = "https://github.com/".concat(JSON.parse(data.repoData.user.client_vc_data)[String(_this.activeRepository)].user_login, "/").concat(data.repoData.repo_name, "/issues/").concat(data.repoData.repo_issue_count + 1);
@@ -3737,9 +3031,7 @@ var ticketAttachmentsArray = [];
     Event.$on('updatedCommentInActiveIssue', function (issuePayload) {
       _this.activeRepoData.issues.map(function (issue) {
         if (issue.issue_number == issuePayload.modifiedIssueNumber) {
-          console.log(issuePayload);
-          console.log(issue); // code to fix the updation on click to load prop
-
+          // code to fix the updation on click to load prop
           issue.comments = issuePayload.comments;
         }
       });
@@ -3848,7 +3140,6 @@ var ticketAttachmentsArray = [];
         });
       });
       this.activeAttachmentsList = attachmentList;
-      this.afterLoadingUpdates = true;
     },
     viewIssueInDepth: function viewIssueInDepth(issue_id) {
       if (issue_id) {
@@ -3894,7 +3185,7 @@ var ticketAttachmentsArray = [];
         setTimeout(function () {
           _this3.submitInProgress = false;
         }, 1500);
-      }); // this.activeRepoIssueCollection = this.activeRepoData.issues;
+      });
     },
     submitALinkRequest: function submitALinkRequest() {
       var _this4 = this;
@@ -3992,24 +3283,6 @@ var ticketAttachmentsArray = [];
       $("#title").val(ticketSubject);
       $("#title").text(ticketSubject);
       this.submitIssueFormData.title = ticketSubject;
-    },
-    filterMyDropList: function filterMyDropList() {
-      var _this5 = this;
-
-      this.filteredIssueArray = this.activeRepoIssueCollection.filter(function (issue) {
-        var title = issue.title.toLowerCase();
-
-        var searchTerm = _this5.searchTerm.toLowerCase();
-
-        if (_this5.searchTerm !== '' || _this5.searchTerm !== null || _this5.searchTerm !== ' ') {
-          if (title.includes(searchTerm) || issue.number == '' + searchTerm) {
-            return issue;
-          }
-        } else {
-          return issue;
-        }
-      });
-      $('#issue_linker').attr('size', 2);
     }
   }
 });
@@ -4027,18 +3300,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 //
 //
 //
@@ -4070,7 +3331,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return {
       userSettings: '',
       activeUsername: '',
-      userPermissionLevel: '',
+      activeUserPermissionLevel: '',
       repositoryIssueListing: '',
       repositories: '',
       formData: {
@@ -4092,15 +3353,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           "Authorization": "Bearer ".concat(this.token)
         }
       }).then(function (res) {
-        var tempRepoObject;
-        _this.repositories = _this.repositories.filter(function (repo) {
-          if (repo.id !== res.data.repository.repo_id) {
-            return repo;
-          } else {
-            tempRepoObject = repo;
-          }
-        });
-        _this.repositories = [].concat(_toConsumableArray(_this.repositories), [tempRepoObject]);
         _this.activeRepository = res.data.repository;
         _this.repositoryIssueListing = res.data.issuesListing;
         Event.$emit('repoDataWithIssuesUpdated', {
@@ -4137,20 +3389,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       _this2.ticket = data.associatedTicket;
 
       if (data.repoData.associated_ticket.includes(String(_this2.ticket)) == true) {
-        var tempRepoObject;
-
-        if (data.repoData !== null) {
-          _this2.repositories = _this2.repositories.filter(function (repo) {
-            if (repo.id !== data.repoData.repo_id) {
-              return repo;
-            } else {
-              tempRepoObject = repo;
-            }
-          });
-          _this2.activeRepository = data.repoData;
-          _this2.repositories = [].concat(_toConsumableArray(_this2.repositories), [tempRepoObject]);
-          _this2.repositories = _this2.repositories.slice().reverse();
-        }
+        _this2.activeRepository = data.repoData;
       }
     });
     Event.$on('settingsUpdatedEvent', function (settings) {
@@ -4458,8 +3697,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: 'myAppKey',
-  cluster: 'mt1',
+  key: "myAppKey",
+  cluster: "mt1",
   encrypted: true,
   wsHost: window.location.hostname,
   wssPort: 6001,
@@ -8832,106 +8071,6 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
 }));
 //# sourceMappingURL=bootstrap.js.map
 
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.accordion .card {\n    background: #f9f9f9 !important ;\n    box-shadow: 0 0 1px rgba(0,0,0,0.1);\n}\n\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/runtime/api.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
-  \*****************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-// eslint-disable-next-line func-names
-module.exports = function (cssWithMappingToString) {
-  var list = []; // return the list of modules as css string
-
-  list.toString = function toString() {
-    return this.map(function (item) {
-      var content = cssWithMappingToString(item);
-
-      if (item[2]) {
-        return "@media ".concat(item[2], " {").concat(content, "}");
-      }
-
-      return content;
-    }).join("");
-  }; // import a list of modules into the list
-  // eslint-disable-next-line func-names
-
-
-  list.i = function (modules, mediaQuery, dedupe) {
-    if (typeof modules === "string") {
-      // eslint-disable-next-line no-param-reassign
-      modules = [[null, modules, ""]];
-    }
-
-    var alreadyImportedModules = {};
-
-    if (dedupe) {
-      for (var i = 0; i < this.length; i++) {
-        // eslint-disable-next-line prefer-destructuring
-        var id = this[i][0];
-
-        if (id != null) {
-          alreadyImportedModules[id] = true;
-        }
-      }
-    }
-
-    for (var _i = 0; _i < modules.length; _i++) {
-      var item = [].concat(modules[_i]);
-
-      if (dedupe && alreadyImportedModules[item[0]]) {
-        // eslint-disable-next-line no-continue
-        continue;
-      }
-
-      if (mediaQuery) {
-        if (!item[2]) {
-          item[2] = mediaQuery;
-        } else {
-          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
-        }
-      }
-
-      list.push(item);
-    }
-  };
-
-  return list;
-};
 
 /***/ }),
 
@@ -68229,315 +67368,6 @@ try {
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Drepository_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Drepository.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Drepository_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Drepository_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
-  \****************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var isOldIE = function isOldIE() {
-  var memo;
-  return function memorize() {
-    if (typeof memo === 'undefined') {
-      // Test for IE <= 9 as proposed by Browserhacks
-      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-      // Tests for existence of standard globals is to allow style-loader
-      // to operate correctly into non-standard environments
-      // @see https://github.com/webpack-contrib/style-loader/issues/177
-      memo = Boolean(window && document && document.all && !window.atob);
-    }
-
-    return memo;
-  };
-}();
-
-var getTarget = function getTarget() {
-  var memo = {};
-  return function memorize(target) {
-    if (typeof memo[target] === 'undefined') {
-      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
-
-      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
-        try {
-          // This will throw an exception if access to iframe is blocked
-          // due to cross-origin restrictions
-          styleTarget = styleTarget.contentDocument.head;
-        } catch (e) {
-          // istanbul ignore next
-          styleTarget = null;
-        }
-      }
-
-      memo[target] = styleTarget;
-    }
-
-    return memo[target];
-  };
-}();
-
-var stylesInDom = [];
-
-function getIndexByIdentifier(identifier) {
-  var result = -1;
-
-  for (var i = 0; i < stylesInDom.length; i++) {
-    if (stylesInDom[i].identifier === identifier) {
-      result = i;
-      break;
-    }
-  }
-
-  return result;
-}
-
-function modulesToDom(list, options) {
-  var idCountMap = {};
-  var identifiers = [];
-
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i];
-    var id = options.base ? item[0] + options.base : item[0];
-    var count = idCountMap[id] || 0;
-    var identifier = "".concat(id, " ").concat(count);
-    idCountMap[id] = count + 1;
-    var index = getIndexByIdentifier(identifier);
-    var obj = {
-      css: item[1],
-      media: item[2],
-      sourceMap: item[3]
-    };
-
-    if (index !== -1) {
-      stylesInDom[index].references++;
-      stylesInDom[index].updater(obj);
-    } else {
-      stylesInDom.push({
-        identifier: identifier,
-        updater: addStyle(obj, options),
-        references: 1
-      });
-    }
-
-    identifiers.push(identifier);
-  }
-
-  return identifiers;
-}
-
-function insertStyleElement(options) {
-  var style = document.createElement('style');
-  var attributes = options.attributes || {};
-
-  if (typeof attributes.nonce === 'undefined') {
-    var nonce =  true ? __webpack_require__.nc : 0;
-
-    if (nonce) {
-      attributes.nonce = nonce;
-    }
-  }
-
-  Object.keys(attributes).forEach(function (key) {
-    style.setAttribute(key, attributes[key]);
-  });
-
-  if (typeof options.insert === 'function') {
-    options.insert(style);
-  } else {
-    var target = getTarget(options.insert || 'head');
-
-    if (!target) {
-      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
-    }
-
-    target.appendChild(style);
-  }
-
-  return style;
-}
-
-function removeStyleElement(style) {
-  // istanbul ignore if
-  if (style.parentNode === null) {
-    return false;
-  }
-
-  style.parentNode.removeChild(style);
-}
-/* istanbul ignore next  */
-
-
-var replaceText = function replaceText() {
-  var textStore = [];
-  return function replace(index, replacement) {
-    textStore[index] = replacement;
-    return textStore.filter(Boolean).join('\n');
-  };
-}();
-
-function applyToSingletonTag(style, index, remove, obj) {
-  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
-
-  /* istanbul ignore if  */
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = replaceText(index, css);
-  } else {
-    var cssNode = document.createTextNode(css);
-    var childNodes = style.childNodes;
-
-    if (childNodes[index]) {
-      style.removeChild(childNodes[index]);
-    }
-
-    if (childNodes.length) {
-      style.insertBefore(cssNode, childNodes[index]);
-    } else {
-      style.appendChild(cssNode);
-    }
-  }
-}
-
-function applyToTag(style, options, obj) {
-  var css = obj.css;
-  var media = obj.media;
-  var sourceMap = obj.sourceMap;
-
-  if (media) {
-    style.setAttribute('media', media);
-  } else {
-    style.removeAttribute('media');
-  }
-
-  if (sourceMap && typeof btoa !== 'undefined') {
-    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
-  } // For old IE
-
-  /* istanbul ignore if  */
-
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    while (style.firstChild) {
-      style.removeChild(style.firstChild);
-    }
-
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var singleton = null;
-var singletonCounter = 0;
-
-function addStyle(obj, options) {
-  var style;
-  var update;
-  var remove;
-
-  if (options.singleton) {
-    var styleIndex = singletonCounter++;
-    style = singleton || (singleton = insertStyleElement(options));
-    update = applyToSingletonTag.bind(null, style, styleIndex, false);
-    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-  } else {
-    style = insertStyleElement(options);
-    update = applyToTag.bind(null, style, options);
-
-    remove = function remove() {
-      removeStyleElement(style);
-    };
-  }
-
-  update(obj);
-  return function updateStyle(newObj) {
-    if (newObj) {
-      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
-        return;
-      }
-
-      update(obj = newObj);
-    } else {
-      remove();
-    }
-  };
-}
-
-module.exports = function (list, options) {
-  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-  // tags it will allow on a page
-
-  if (!options.singleton && typeof options.singleton !== 'boolean') {
-    options.singleton = isOldIE();
-  }
-
-  list = list || [];
-  var lastIdentifiers = modulesToDom(list, options);
-  return function update(newList) {
-    newList = newList || [];
-
-    if (Object.prototype.toString.call(newList) !== '[object Array]') {
-      return;
-    }
-
-    for (var i = 0; i < lastIdentifiers.length; i++) {
-      var identifier = lastIdentifiers[i];
-      var index = getIndexByIdentifier(identifier);
-      stylesInDom[index].references--;
-    }
-
-    var newLastIdentifiers = modulesToDom(newList, options);
-
-    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
-      var _identifier = lastIdentifiers[_i];
-
-      var _index = getIndexByIdentifier(_identifier);
-
-      if (stylesInDom[_index].references === 0) {
-        stylesInDom[_index].updater();
-
-        stylesInDom.splice(_index, 1);
-      }
-    }
-
-    lastIdentifiers = newLastIdentifiers;
-  };
-};
-
-/***/ }),
-
 /***/ "./resources/js/components/Context.vue":
 /*!*********************************************!*\
   !*** ./resources/js/components/Context.vue ***!
@@ -68703,17 +67533,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Drepository_vue_vue_type_template_id_b5461d98___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Drepository.vue?vue&type=template&id=b5461d98& */ "./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=template&id=b5461d98&");
 /* harmony import */ var _Drepository_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Drepository.vue?vue&type=script&lang=js& */ "./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=script&lang=js&");
-/* harmony import */ var _Drepository_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Drepository.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Drepository_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Drepository_vue_vue_type_template_id_b5461d98___WEBPACK_IMPORTED_MODULE_0__.render,
   _Drepository_vue_vue_type_template_id_b5461d98___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -68743,17 +67571,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Dsettings_vue_vue_type_template_id_4188aa0d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dsettings.vue?vue&type=template&id=4188aa0d& */ "./resources/js/components/devopsComponents/navigation/Dsettings.vue?vue&type=template&id=4188aa0d&");
-/* harmony import */ var _Dsettings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dsettings.vue?vue&type=script&lang=js& */ "./resources/js/components/devopsComponents/navigation/Dsettings.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-
-
+var script = {}
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Dsettings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
   _Dsettings_vue_vue_type_template_id_4188aa0d___WEBPACK_IMPORTED_MODULE_0__.render,
   _Dsettings_vue_vue_type_template_id_4188aa0d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -68782,17 +67608,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Ticket_vue_vue_type_template_id_349b03f6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Ticket.vue?vue&type=template&id=349b03f6& */ "./resources/js/components/devopsComponents/navigation/Ticket.vue?vue&type=template&id=349b03f6&");
-/* harmony import */ var _Ticket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Ticket.vue?vue&type=script&lang=js& */ "./resources/js/components/devopsComponents/navigation/Ticket.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-
-
+var script = {}
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Ticket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
   _Ticket_vue_vue_type_template_id_349b03f6___WEBPACK_IMPORTED_MODULE_0__.render,
   _Ticket_vue_vue_type_template_id_349b03f6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -69052,38 +67876,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/devopsComponents/navigation/Dsettings.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/components/devopsComponents/navigation/Dsettings.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dsettings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dsettings.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Dsettings.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dsettings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/devopsComponents/navigation/Ticket.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/devopsComponents/navigation/Ticket.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ticket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Ticket.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Ticket.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ticket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
 /***/ "./resources/js/components/devopsComponents/navigation/Tickets.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************!*\
   !*** ./resources/js/components/devopsComponents/navigation/Tickets.vue?vue&type=script&lang=js& ***!
@@ -69161,19 +67953,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Settings.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/Settings.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css& ***!
-  \**************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Drepository_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Drepository.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/devopsComponents/navigation/Drepository.vue?vue&type=style&index=0&lang=css&");
-
 
 /***/ }),
 
@@ -69419,7 +68198,7 @@ var render = function () {
               staticClass: "rounded-circle mx-2 bg-white",
               attrs: {
                 src:
-                  "https://avatars.dicebear.com/api/adventurer-neutral/" +
+                  "https://avatars.dicebear.com/api/micah/" +
                   _vm.username +
                   ".svg",
                 height: "55px",
@@ -69684,7 +68463,6 @@ var render = function () {
       _c(
         "div",
         {
-          staticClass: "h-50",
           staticStyle: {
             background: "#D3E0FF",
             "box-shadow": "0px 8px 16px -2px rgba(0, 0, 0, 0.12)",
@@ -69692,15 +68470,15 @@ var render = function () {
           },
         },
         [
-          _c("div", { staticClass: "media py-2 px-2" }, [
+          _c("div", { staticClass: "media py-3 px-2" }, [
             _c("img", {
               staticClass: "rounded-circle mx-2 bg-white",
               attrs: {
                 src:
-                  "https://avatars.dicebear.com/api/adventurer-neutral/" +
+                  "https://avatars.dicebear.com/api/micah/" +
                   _vm.username +
                   ".svg",
-                height: "45px",
+                height: "55px",
               },
             }),
             _vm._v(" "),
@@ -69721,7 +68499,7 @@ var render = function () {
           _c(
             "div",
             {
-              staticClass: "tab-content mb-2 pb-2",
+              staticClass: "tab-content mb-5 pb-5",
               attrs: { id: "nav-tabContent" },
             },
             [
@@ -69737,12 +68515,7 @@ var render = function () {
                 },
                 [
                   _c("tickets", {
-                    attrs: {
-                      user: _vm.userObject,
-                      domain: _vm.domainObject,
-                      workitemstolink: _vm.workItemsToLinkObject,
-                      currentrepo: _vm.currentRepoObject,
-                    },
+                    attrs: { user: _vm.userObject, domain: _vm.domainObject },
                   }),
                 ],
                 1
@@ -69761,10 +68534,8 @@ var render = function () {
                 [
                   _c("drepository", {
                     attrs: {
-                      user: _vm.userObject,
                       domain: _vm.domainObject,
                       repodata: _vm.orgAndProjectDataObject,
-                      currentrepo: _vm.currentRepoObject,
                     },
                   }),
                 ],
@@ -69781,15 +68552,7 @@ var render = function () {
                     "aria-labelledby": "nav-contact-tab",
                   },
                 },
-                [
-                  _c("dsettings", {
-                    attrs: {
-                      user: _vm.userObject,
-                      domain: _vm.domainObject,
-                      currentrepo: _vm.currentRepoObject,
-                    },
-                  }),
-                ],
+                [_c("dsettings")],
                 1
               ),
             ]
@@ -69968,176 +68731,15 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "row-fluid mt-4 mb-6",
-      staticStyle: { "overflow-x": "hidden" },
-    },
+    { staticClass: "row-fluid mt-4", staticStyle: { "overflow-x": "hidden" } },
     [
-      _c(
-        "div",
-        { staticClass: "accordion", attrs: { id: "accordionRepo" } },
-        _vm._l(
-          _vm.orgAndProjectDataObject.slice().reverse(),
-          function (value, repo) {
-            return _c(
-              "div",
-              { key: repo, staticClass: "card m-2" },
-              _vm._l(value, function (projectValues, projectName) {
-                return _c("div", { key: projectName }, [
-                  _c(
-                    "div",
-                    { staticClass: "card-header", attrs: { id: projectName } },
-                    [
-                      _c("h2", { staticClass: "mb-0" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-block text-center",
-                            attrs: {
-                              id: "collapseButton" + projectName,
-                              type: "button",
-                              "data-toggle": "collapse",
-                              "data-target": "#col" + projectName,
-                              "aria-expanded":
-                                projectName == _vm.orgName ? true : false,
-                              "aria-controls": "col" + projectName,
-                            },
-                          },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(projectName) +
-                                "\n                        "
-                            ),
-                          ]
-                        ),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class:
-                        projectName == _vm.orgName
-                          ? ["collapse show"]
-                          : ["collapse"],
-                      attrs: {
-                        id: "col" + projectName,
-                        "aria-labelledby": "col" + projectName,
-                        "data-parent": "#accordionRepo",
-                      },
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "card-body" },
-                        _vm._l(projectValues, function (repoList, repoKey) {
-                          return _c(
-                            "div",
-                            {
-                              key: repoKey,
-                              staticClass:
-                                "col-11 card border-0 my-2 mx-auto py-3 px-3",
-                              staticStyle: {
-                                "box-shadow":
-                                  "0px 8px 16px rgba(0, 0, 0, 0.12)",
-                                "border-radius": "0.85rem",
-                              },
-                            },
-                            [
-                              _c("div", { staticClass: "row" }, [
-                                _vm._m(0, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-8 my-auto" }, [
-                                  _c("div", { staticClass: "text-center" }, [
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass: "m-0",
-                                        staticStyle: { "font-size": "16px" },
-                                      },
-                                      [_vm._v(_vm._s(repoList.name))]
-                                    ),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-2 pt-2" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "custom-control custom-switch",
-                                    },
-                                    [
-                                      _c("input", {
-                                        staticClass: "custom-control-input",
-                                        attrs: {
-                                          id: repoList.id,
-                                          name: "repolist",
-                                          type: "checkbox",
-                                        },
-                                        domProps: {
-                                          checked:
-                                            _vm.activeRepository == repoList.id
-                                              ? 1
-                                              : 0,
-                                        },
-                                        on: {
-                                          click: function ($event) {
-                                            $event.preventDefault()
-                                            _vm.swapRepoValueTo(
-                                              JSON.stringify({
-                                                project_name: projectName,
-                                                repo_name: repoList.name,
-                                                project_id: repoList.id,
-                                                associated_ticket_id:
-                                                  _vm.zenTicketObject,
-                                              })
-                                            )
-                                          },
-                                        },
-                                      }),
-                                      _vm._v(" "),
-                                      _c("label", {
-                                        staticClass: "custom-control-label btn",
-                                        attrs: { for: repoList.id },
-                                      }),
-                                    ]
-                                  ),
-                                ]),
-                              ]),
-                            ]
-                          )
-                        }),
-                        0
-                      ),
-                    ]
-                  ),
-                ])
-              }),
-              0
-            )
-          }
-        ),
-        0
-      ),
+      _c("p", [_vm._v("hiii " + _vm._s(_vm.domainObject))]),
+      _vm._v(" "),
+      _c("div"),
     ]
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 my-auto mb-3" }, [
-      _c("embed", {
-        staticStyle: { height: "45px" },
-        attrs: { src: "/assets/images/Repository.svg", alt: "repository" },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -70160,71 +68762,16 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "m-5", attrs: { id: "oauth" } }, [
-      _c(
-        "form",
-        {
-          attrs: { method: "POST" },
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.reOauth.apply(null, arguments)
-            },
-          },
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success w-100",
-              staticStyle: {
-                background: "#7ADD95",
-                margin: "0 auto",
-                display: "block",
-                padding: "8px, 12px, 8px, 12px",
-              },
-              attrs: { id: "reOauthButton", type: "submit" },
-            },
-            [_vm._v("Add Oauth")]
-          ),
-        ]
-      ),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "m-5", attrs: { id: "webhooks" } }, [
-      _c(
-        "form",
-        {
-          attrs: { method: "POST" },
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.createTicket.apply(null, arguments)
-            },
-          },
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success w-100",
-              staticStyle: {
-                background: "#7ADD95",
-                margin: "0 auto",
-                display: "block",
-                padding: "8px, 12px, 8px, 12px",
-              },
-              attrs: { type: "submit" },
-            },
-            [_vm._v("Add webhook")]
-          ),
-        ]
-      ),
-    ]),
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("p", [_vm._v("all settings go here")])])
+  },
+]
 render._withStripped = true
 
 
@@ -70247,360 +68794,14 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "ml-3" }, [
-      _c("div", { staticClass: "row mb-3" }, [
-        _c(
-          "h6",
-          {
-            staticClass: "text-left px-3 rounded py-1",
-            staticStyle: { border: "2px solid #F6A374", color: "#F6A374" },
-          },
-          [_vm._v(_vm._s(_vm.ticketObject.type))]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row-fluid mb-3" }, [
-        _c("h6", { staticClass: "font-weight-bold  mb-3" }, [
-          _vm._v("Subject"),
-        ]),
-        _vm._v(" "),
-        _c("h6", [_vm._v(_vm._s(_vm.ticketObject.title))]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row-fluid mb-3" }, [
-        _c("h6", { staticClass: "font-weight-bold  mb-3" }, [
-          _vm._v("Description"),
-        ]),
-        _vm._v(" "),
-        _c("h6", [_vm._v(_vm._s(_vm.ticketObject.description))]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row-fluid mb-3" }, [
-        _c("div", { staticClass: "row-fluid mb-3" }, [
-          _c("h6", { staticClass: "font-weight-bold mb-3 d-inline" }, [
-            _vm._v("Comments"),
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "modal fade bg-white",
-              attrs: {
-                id: "addCommentModal",
-                tabindex: "-1",
-                "aria-labelledby": "addCommentModal",
-                "aria-hidden": "true",
-              },
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "modal-dialog modal-dialog-scrollable" },
-                [
-                  _c("div", { staticClass: "modal-content border-0" }, [
-                    _c(
-                      "div",
-                      {
-                        staticStyle: {
-                          background: "#D3E0FF",
-                          "box-shadow": "0px 8px 16px -2px rgba(0, 0, 0, 0.12)",
-                          "border-radius": "0px 0px 20px 20px",
-                        },
-                      },
-                      [
-                        _c("div", { staticClass: "media py-3 px-2" }, [
-                          _c("img", {
-                            staticClass: "rounded-circle mx-2 bg-white",
-                            attrs: {
-                              src:
-                                "https://avatars.dicebear.com/api/adventurer-neutral/" +
-                                _vm.activeUsername +
-                                ".svg",
-                              height: "55px",
-                            },
-                          }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "media-body" }, [
-                            _c("h4", { staticClass: "font-weight-bold" }, [
-                              _vm._v("Hi, " + _vm._s(_vm.activeUsername) + " "),
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Welcome back!")]),
-                          ]),
-                        ]),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-body" }, [
-                      _c(
-                        "form",
-                        {
-                          attrs: { method: "POST" },
-                          on: {
-                            submit: function ($event) {
-                              $event.preventDefault()
-                              return _vm.createComment.apply(null, arguments)
-                            },
-                          },
-                        },
-                        [
-                          _c("div", { staticClass: "form-group" }, [
-                            _vm._m(2),
-                            _vm._v(" "),
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.createCommentForm.comment,
-                                  expression: "createCommentForm.comment",
-                                },
-                              ],
-                              staticClass: "form-control h-100",
-                              attrs: {
-                                name: "comment",
-                                id: "comment",
-                                rows: "10",
-                                placeholder: "Enter your comment here",
-                                required: "",
-                              },
-                              domProps: {
-                                value: _vm.createCommentForm.comment,
-                              },
-                              on: {
-                                input: function ($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.createCommentForm,
-                                    "comment",
-                                    $event.target.value
-                                  )
-                                },
-                              },
-                            }),
-                          ]),
-                          _vm._v(" "),
-                          _vm.submitInProgress === false
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success w-100",
-                                  staticStyle: {
-                                    padding: "8px, 12px, 8px, 12px",
-                                  },
-                                  attrs: { type: "submit" },
-                                },
-                                [_vm._v("Submit Comment")]
-                              )
-                            : _vm.submitInProgress === "success"
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success w-100",
-                                  attrs: { disabled: "" },
-                                },
-                                [_vm._v("✔")]
-                              )
-                            : _vm.submitInProgress === true
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success w-100",
-                                  attrs: { disabled: "" },
-                                },
-                                [_vm._m(3)]
-                              )
-                            : _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-danger text-white w-100",
-                                  attrs: { disabled: "" },
-                                },
-                                [_vm._v("Already linked")]
-                              ),
-                        ]
-                      ),
-                    ]),
-                  ]),
-                ]
-              ),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "pb-5", attrs: { id: "commentContainer" } }, [
-          _vm.comments
-            ? _c(
-                "div",
-                _vm._l(_vm.comments, function (comment) {
-                  return _c("div", { key: comment.id }, [
-                    comment.is_client == true
-                      ? _c("div", [
-                          _c("div", { staticClass: "row-fluid mb-3" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "card card-body mb-3 rounded px-2 py-2",
-                                staticStyle: { "background-color": "#5141e0" },
-                              },
-                              [
-                                _c(
-                                  "h6",
-                                  {
-                                    staticClass: "text-right",
-                                    staticStyle: { color: "white !important" },
-                                  },
-                                  [
-                                    _vm._v(
-                                      " " + _vm._s(comment.comment_body) + " "
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  {
-                                    staticClass: "text-right text-muted m-0",
-                                    staticStyle: { color: "white !important" },
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm._f("formatDate")(comment.created_at)
-                                      )
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
-                          ]),
-                        ])
-                      : _c("div", [
-                          _c("div", { staticClass: "row-fluid mb-3" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "card card-body mb-3 rounded px-2 py-2",
-                                staticStyle: { "background-color": "#E9E9E9" },
-                              },
-                              [
-                                _c("h6", { staticClass: "font-weight-bold" }, [
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass:
-                                        "font-weight-normal text-muted text-left",
-                                    },
-                                    [_vm._v(_vm._s(comment.comment_user))]
-                                  ),
-                                ]),
-                                _vm._v(" "),
-                                _c("h6", { staticClass: "text-left" }, [
-                                  _vm._v(_vm._s(comment.comment_body)),
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  { staticClass: "text-left text-dark m-0" },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm._f("formatDate")(comment.created_at)
-                                      )
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
-                          ]),
-                        ]),
-                  ])
-                }),
-                0
-              )
-            : _vm._e(),
-        ]),
-      ]),
-    ]),
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn d-inline float-right p-0",
-        attrs: { "data-toggle": "modal", "data-target": "#addCommentModal" },
-      },
-      [
-        _c(
-          "h6",
-          {
-            staticClass: "text-left px-3 rounded py-1",
-            staticStyle: {
-              border: "2px solid #F6A374",
-              color: "#F6A374",
-              height: "30px",
-            },
-          },
-          [_vm._v("Add comment")]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header border-0" }, [
-      _c("h5", { staticClass: "font-weight-bold text-left" }, [
-        _vm._v("Add Comment"),
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn p-0",
-          attrs: { type: "button", "data-dismiss": "modal" },
-        },
-        [_vm._v("✖")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "description" } }, [
-      _c("p", { staticClass: "font-weight-bold m-0" }, [_vm._v("Comment")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "spinner-border text-white", attrs: { role: "status" } },
-      [
-        _c("span", { staticClass: "sr-only text-white" }, [
-          _vm._v("Loading..."),
-        ]),
-      ]
-    )
+    return _c("div", [_c("p", [_vm._v(" ticket go here")])])
   },
 ]
 render._withStripped = true
@@ -70637,8 +68838,6 @@ var render = function () {
             id: "createTicketModal",
             tabindex: "-1",
             "aria-labelledby": "createTicketModal",
-            "data-backdrop": "static",
-            "data-keyboard": "false",
             "aria-hidden": "true",
           },
         },
@@ -70660,7 +68859,7 @@ var render = function () {
                       staticClass: "rounded-circle mx-2 bg-white",
                       attrs: {
                         src:
-                          "https://avatars.dicebear.com/api/adventurer-neutral/" +
+                          "https://avatars.dicebear.com/api/micah/" +
                           _vm.activeUsername +
                           ".svg",
                         height: "55px",
@@ -70730,25 +68929,6 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group mb-3" }, [
-                      _c("div", { staticClass: "ml-auto my-2" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "badge bg-secondary text-white btn mx-2",
-                            on: {
-                              click: function ($event) {
-                                $event.preventDefault()
-                                return _vm.getTicketSubject()
-                              },
-                            },
-                          },
-                          [_vm._v("subject")]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group mb-3" }, [
                       _vm._m(3),
                       _vm._v(" "),
                       _c("textarea", {
@@ -70782,53 +68962,6 @@ var render = function () {
                           },
                         },
                       }),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group mb-3" }, [
-                      _c("div", { staticClass: "ml-auto my-2" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "badge bg-success text-white btn mx-2",
-                            on: {
-                              click: function ($event) {
-                                $event.preventDefault()
-                                return _vm.getTicketDescription()
-                              },
-                            },
-                          },
-                          [_vm._v("Description")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "badge bg-primary text-white btn",
-                            on: {
-                              click: function ($event) {
-                                $event.preventDefault()
-                                return _vm.getLatestMessage()
-                              },
-                            },
-                          },
-                          [_vm._v("Latest")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "badge bg-secondary text-white btn mx-2",
-                            on: {
-                              click: function ($event) {
-                                $event.preventDefault()
-                                return _vm.getFullConversation()
-                              },
-                            },
-                          },
-                          [_vm._v("Full")]
-                        ),
-                      ]),
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group mb-3" }, [
@@ -70885,127 +69018,20 @@ var render = function () {
                       ),
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group mb-3" }, [
-                      _vm._m(5),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control",
-                          attrs: { id: "attachment_selection" },
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success w-100",
+                        staticStyle: {
+                          background: "#7ADD95",
+                          margin: "0 auto",
+                          display: "block",
+                          padding: "8px, 12px, 8px, 12px",
                         },
-                        [
-                          _c(
-                            "option",
-                            {
-                              attrs: { selected: "", value: "", disabled: "" },
-                            },
-                            [_vm._v("Empty List")]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(
-                            _vm.activeAttachmentsList,
-                            function (attachment) {
-                              return _c(
-                                "option",
-                                {
-                                  key: attachment.contentUrl,
-                                  on: {
-                                    click: function ($event) {
-                                      $event.preventDefault()
-                                      _vm.addAttachmentToList(
-                                        String(attachment.contentUrl),
-                                        String(attachment.filename)
-                                      )
-                                    },
-                                  },
-                                },
-                                [_vm._v(_vm._s(attachment.filename))]
-                              )
-                            }
-                          ),
-                        ],
-                        2
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "input-group mb-3" }, [
-                        _vm.submitInProgress === false
-                          ? _c(
-                              "div",
-                              {
-                                attrs: {
-                                  id: "display_selected_attachment",
-                                  readonly: "",
-                                },
-                              },
-                              _vm._l(
-                                _vm.createTicketForm.attachments,
-                                function (attachment) {
-                                  return _c(
-                                    "a",
-                                    {
-                                      key: attachment.url,
-                                      staticClass: "badge btn bg-primary mx-1",
-                                      on: {
-                                        click: function ($event) {
-                                          $event.preventDefault()
-                                          _vm.removeFromAttachmentsArray(
-                                            String(attachment.url)
-                                          )
-                                        },
-                                      },
-                                    },
-                                    [_vm._v(_vm._s(attachment.name) + "×")]
-                                  )
-                                }
-                              ),
-                              0
-                            )
-                          : _vm._e(),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _vm.submitInProgress === false
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-success w-100",
-                            staticStyle: {
-                              background: "#7ADD95",
-                              margin: "0 auto",
-                              display: "block",
-                              padding: "8px, 12px, 8px, 12px",
-                            },
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Create Ticket")]
-                        )
-                      : _vm.submitInProgress === "success"
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-success w-100",
-                            attrs: { disabled: "" },
-                          },
-                          [_vm._v("✔")]
-                        )
-                      : _vm.submitInProgress === true
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-success w-100",
-                            attrs: { disabled: "" },
-                          },
-                          [_vm._m(6)]
-                        )
-                      : _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger text-white w-100",
-                            attrs: { disabled: "" },
-                          },
-                          [_vm._v("Already linked")]
-                        ),
+                        attrs: { type: "submit" },
+                      },
+                      [_vm._v("Create Ticket")]
+                    ),
                   ]
                 ),
               ]),
@@ -71014,285 +69040,24 @@ var render = function () {
         ]
       ),
       _vm._v(" "),
-      _vm._m(7),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal fade bg-white",
-          attrs: {
-            id: "linkTicketModal",
-            tabindex: "-1",
-            "aria-labelledby": "linkTicketModal",
-            "data-backdrop": "static",
-            "data-keyboard": "false",
-            "aria-hidden": "true",
-          },
-        },
-        [
-          _c("div", { staticClass: "modal-dialog modal-dialog-scrollable" }, [
-            _c("div", { staticClass: "modal-content border-0" }, [
-              _c(
-                "div",
-                {
-                  staticStyle: {
-                    background: "#D3E0FF",
-                    "box-shadow": "0px 8px 16px -2px rgba(0, 0, 0, 0.12)",
-                    "border-radius": "0px 0px 20px 20px",
-                  },
-                },
-                [
-                  _c("div", { staticClass: "media py-3 px-2" }, [
-                    _c("img", {
-                      staticClass: "rounded-circle mx-2 bg-white",
-                      attrs: {
-                        src:
-                          "https://avatars.dicebear.com/api/adventurer-neutral/" +
-                          _vm.activeUsername +
-                          ".svg",
-                        height: "55px",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "media-body" }, [
-                      _c("h4", { staticClass: "font-weight-bold" }, [
-                        _vm._v("Hi, " + _vm._s(_vm.activeUsername)),
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Welcome back!")]),
-                    ]),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
-              _vm._m(8),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    attrs: { method: "POST" },
-                    on: {
-                      submit: function ($event) {
-                        $event.preventDefault()
-                        return _vm.linkTicket.apply(null, arguments)
-                      },
-                    },
-                  },
-                  [
-                    _c("div", { staticClass: "form-group my-2" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.searchTerm,
-                            expression: "searchTerm",
-                          },
-                        ],
-                        staticClass: "form-control my-2",
-                        attrs: { type: "text", placeholder: "search filter" },
-                        domProps: { value: _vm.searchTerm },
-                        on: {
-                          keydown: _vm.filterMyDropList,
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.searchTerm = $event.target.value
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.linkTicketForm.id,
-                              expression: "linkTicketForm.id",
-                            },
-                          ],
-                          staticClass:
-                            "shadow-none form-control border-top-0 rounded-0",
-                          attrs: {
-                            size: "2",
-                            id: "issue_linker",
-                            required: "",
-                          },
-                          on: {
-                            change: function ($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function (o) {
-                                  return o.selected
-                                })
-                                .map(function (o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.linkTicketForm,
-                                "id",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                          },
-                        },
-                        _vm._l(_vm.searchItemCollection, function (workItem) {
-                          return _c(
-                            "option",
-                            {
-                              key: workItem.id,
-                              domProps: { value: workItem.id },
-                            },
-                            [
-                              _vm._v(
-                                "#" +
-                                  _vm._s(workItem.id) +
-                                  " : " +
-                                  _vm._s(workItem.fields["System.Title"])
-                              ),
-                            ]
-                          )
-                        }),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-success w-100",
-                          staticStyle: { padding: "8px, 12px, 8px, 12px" },
-                          attrs: { id: "linkTicketButton", type: "submit" },
-                        },
-                        [_vm._v("Link Issue")]
-                      ),
-                    ]),
-                  ]
-                ),
-              ]),
-            ]),
-          ]),
-        ]
-      ),
+      _vm._m(5),
     ]),
     _vm._v(" "),
-    _vm.whetherTicketsActive == false
-      ? _c("div", { staticClass: "pb-5" }, [
-          _vm.tickets.length > 0
-            ? _c("div", { staticClass: "row-fluid" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "card border-right-0 border-left-0 rounded-0",
-                  },
-                  _vm._l(_vm.tickets, function (ticket) {
-                    return _c("div", { key: ticket.id }, [
-                      ticket.organization_name == _vm.orgName &&
-                      ticket.project_name == _vm.projName
-                        ? _c("div", [
-                            _c("div", { staticClass: "row py-2" }, [
-                              _vm._m(9, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-6 my-auto" }, [
-                                _c("div", { staticClass: "text-left pl-3" }, [
-                                  _c(
-                                    "h6",
-                                    {
-                                      staticClass: "font-weight-bold m-0",
-                                      staticStyle: { "font-size": "10px" },
-                                    },
-                                    [_vm._v("ID #" + _vm._s(ticket.id))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "p",
-                                    {
-                                      staticClass: "m-0",
-                                      staticStyle: { "font-size": "10px" },
-                                    },
-                                    [_vm._v(_vm._s(ticket.title))]
-                                  ),
-                                ]),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "col-4 my-auto p-0 ml-auto" },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "modal-header border-0" },
-                                    [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass:
-                                            "btn text-white font-weight-bold",
-                                          staticStyle: {
-                                            "font-size": "10px",
-                                            background: "#191D21",
-                                          },
-                                          on: {
-                                            click: function ($event) {
-                                              $event.preventDefault()
-                                              return _vm.viewTicketInDepth(
-                                                ticket
-                                              )
-                                            },
-                                          },
-                                        },
-                                        [_vm._v("🔍 View")]
-                                      ),
-                                    ]
-                                  ),
-                                ]
-                              ),
-                            ]),
-                          ])
-                        : _vm._e(),
-                    ])
-                  }),
-                  0
+    _c("div", { staticClass: "row-fluid" }, [
+      _vm.tickets.length > 0
+        ? _c(
+            "div",
+            _vm._l(_vm.tickets, function (ticket) {
+              return _c("div", { key: ticket.id }, [
+                _vm._v(
+                  "\n                " + _vm._s(ticket) + "\n                "
                 ),
               ])
-            : _vm._e(),
-        ])
-      : _c("div", { staticClass: "pb-5" }, [
-          _c(
-            "div",
-            { staticClass: "row-fluid" },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "aria-label": "Close" },
-                  on: {
-                    click: function ($event) {
-                      $event.preventDefault()
-                      return _vm.viewTicketInDepth()
-                    },
-                  },
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×"),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
-              _c("Ticket", {
-                attrs: { domain: _vm.domainObject, ticket: _vm.ticketActive },
-              }),
-            ],
-            1
-          ),
-        ]),
+            }),
+            0
+          )
+        : _vm._e(),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -71375,30 +69140,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "attachment_selection" } }, [
-      _c("p", { staticClass: "font-weight-bold m-0" }, [
-        _vm._v("Link Attachments"),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "spinner-border text-white", attrs: { role: "status" } },
-      [
-        _c("span", { staticClass: "sr-only text-white" }, [
-          _vm._v("Loading..."),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
@@ -71413,8 +69154,7 @@ var staticRenderFns = [
               staticClass:
                 "btn bg-white rounded-circle border border-secondary",
               attrs: {
-                "data-toggle": "modal",
-                "data-target": "#linkTicketModal",
+                onclick: "document.getElementById('linkTicket').submit();",
               },
             },
             [_vm._v("✚")]
@@ -71424,35 +69164,6 @@ var staticRenderFns = [
         _c("div", { staticClass: "card-text mx-auto" }, [_vm._v("Link Issue")]),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header border-0" }, [
-      _c("h5", { staticClass: "font-weight-bold text-left" }, [
-        _vm._v("Link work item"),
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn p-0",
-          attrs: { type: "button", "data-dismiss": "modal" },
-        },
-        [_vm._v("✖")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 my-auto" }, [
-      _c("embed", {
-        attrs: { src: "/assets/images/Shield.svg", alt: "admin" },
-      }),
-    ])
   },
 ]
 render._withStripped = true
@@ -71601,24 +69312,7 @@ var render = function () {
             _vm._v("Comments"),
           ]),
           _vm._v(" "),
-          _vm.activeUserPermissionLevel <= 3
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn d-inline float-right p-0",
-                  attrs: {
-                    "data-toggle": "modal",
-                    "data-target": "#addCommentModal",
-                  },
-                },
-                [
-                  _c("img", {
-                    staticStyle: { height: "30px" },
-                    attrs: { src: "/assets/images/Comment.svg" },
-                  }),
-                ]
-              )
-            : _vm._e(),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "div",
@@ -71652,7 +69346,7 @@ var render = function () {
                             staticClass: "rounded-circle mx-2 bg-white",
                             attrs: {
                               src:
-                                "https://avatars.dicebear.com/api/adventurer-neutral/" +
+                                "https://avatars.dicebear.com/api/micah/" +
                                 _vm.activeUsername +
                                 ".svg",
                               height: "55px",
@@ -71670,7 +69364,7 @@ var render = function () {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(0),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-body" }, [
                       _c(
@@ -71685,7 +69379,7 @@ var render = function () {
                         },
                         [
                           _c("div", { staticClass: "form-group" }, [
-                            _vm._m(1),
+                            _vm._m(2),
                             _vm._v(" "),
                             _c("textarea", {
                               directives: [
@@ -71760,7 +69454,7 @@ var render = function () {
                                   staticClass: "btn btn-success w-100",
                                   attrs: { disabled: "" },
                                 },
-                                [_vm._m(2)]
+                                [_vm._m(3)]
                               )
                             : _vm._e(),
                         ]
@@ -71836,13 +69530,31 @@ var render = function () {
               }),
               0
             )
-          : _c("div", { staticClass: "row-fluid mb-3" }, [_vm._m(3)]),
+          : _c("div", { staticClass: "row-fluid mb-3" }, [_vm._m(4)]),
       ]),
     ],
     2
   )
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn d-inline float-right p-0",
+        attrs: { "data-toggle": "modal", "data-target": "#addCommentModal" },
+      },
+      [
+        _c("img", {
+          staticStyle: { height: "30px" },
+          attrs: { src: "/assets/images/Comment.svg" },
+        }),
+      ]
+    )
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -71917,7 +69629,7 @@ var render = function () {
     _vm.activeRepoData !== null
       ? _c("div", [
           _c("div", { staticClass: "col-12 my-4" }, [
-            _vm.whetherIssueActive == false && _vm.userPermissionLevel <= 3
+            _vm.whetherIssueActive == false
               ? _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-6 p-1" }, [
                     _vm._m(0),
@@ -71964,7 +69676,7 @@ var render = function () {
                                             "rounded-circle mx-2 bg-white",
                                           attrs: {
                                             src:
-                                              "https://avatars.dicebear.com/api/adventurer-neutral/" +
+                                              "https://avatars.dicebear.com/api/micah/" +
                                               _vm.activeUsername +
                                               ".svg",
                                             height: "55px",
@@ -72650,7 +70362,7 @@ var render = function () {
                                             "rounded-circle mx-2 bg-white",
                                           attrs: {
                                             src:
-                                              "https://avatars.dicebear.com/api/adventurer-neutral/" +
+                                              "https://avatars.dicebear.com/api/micah/" +
                                               _vm.activeUsername +
                                               ".svg",
                                             height: "55px",
@@ -72703,34 +70415,6 @@ var render = function () {
                                         "div",
                                         { staticClass: "form-group my-2" },
                                         [
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.searchTerm,
-                                                expression: "searchTerm",
-                                              },
-                                            ],
-                                            staticClass:
-                                              "form-control border-bottom-0 rounded-0 shadow-none",
-                                            attrs: {
-                                              type: "text",
-                                              placeholder: "Search issue",
-                                            },
-                                            domProps: { value: _vm.searchTerm },
-                                            on: {
-                                              keydown: _vm.filterMyDropList,
-                                              input: function ($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.searchTerm =
-                                                  $event.target.value
-                                              },
-                                            },
-                                          }),
-                                          _vm._v(" "),
                                           _c(
                                             "select",
                                             {
@@ -72745,10 +70429,8 @@ var render = function () {
                                                     "submitLinkIssueFormData.issue_link",
                                                 },
                                               ],
-                                              staticClass:
-                                                "shadow-none form-control border-top-0 rounded-0",
+                                              staticClass: "form-control",
                                               attrs: {
-                                                size: "2",
                                                 id: "issue_linker",
                                                 required: "",
                                               },
@@ -72779,29 +70461,47 @@ var render = function () {
                                                 },
                                               },
                                             },
-                                            _vm._l(
-                                              _vm.filteredIssueArray,
-                                              function (issue) {
-                                                return _c(
-                                                  "option",
-                                                  {
-                                                    key: issue.number,
-                                                    domProps: {
-                                                      value: issue.number,
-                                                    },
+                                            [
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    selected: "",
+                                                    disabled: "",
+                                                    value: "",
                                                   },
-                                                  [
-                                                    _vm._v(
-                                                      "#" +
-                                                        _vm._s(issue.number) +
-                                                        " : " +
-                                                        _vm._s(issue.title)
-                                                    ),
-                                                  ]
-                                                )
-                                              }
-                                            ),
-                                            0
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Pick an issue to link"
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(
+                                                _vm.activeRepoIssueCollection,
+                                                function (issue) {
+                                                  return _c(
+                                                    "option",
+                                                    {
+                                                      key: issue.number,
+                                                      domProps: {
+                                                        value: issue.number,
+                                                      },
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "#" +
+                                                          _vm._s(issue.number) +
+                                                          " : " +
+                                                          _vm._s(issue.title)
+                                                      ),
+                                                    ]
+                                                  )
+                                                }
+                                              ),
+                                            ],
+                                            2
                                           ),
                                         ]
                                       ),
@@ -72868,10 +70568,6 @@ var render = function () {
             ? _c("div", [
                 _vm.activeRepoData.issues.length !== 0
                   ? _c("div", { staticClass: "row-fluid" }, [
-                      _vm.userPermissionLevel == 4
-                        ? _c("h6", [_vm._v(" Active Issues ")])
-                        : _vm._e(),
-                      _vm._v(" "),
                       _c(
                         "div",
                         {
@@ -72976,7 +70672,6 @@ var render = function () {
                         token: _vm.activeToken,
                         domain: _vm.activeSubdomain,
                         username: _vm.activeUsername,
-                        "permission-level": _vm.userPermissionLevel,
                       },
                     }),
                   ],
@@ -72987,11 +70682,7 @@ var render = function () {
       : _c(
           "div",
           { staticClass: "card border-right-0 border-left-0 rounded-0 my-2" },
-          [
-            _vm.afterLoadingUpdates == false
-              ? _c("div", { staticClass: "text-center m-4" }, [_vm._m(13)])
-              : _c("div", { staticClass: "row pt-3" }, [_vm._m(14)]),
-          ]
+          [_vm._m(13)]
         ),
   ])
 }
@@ -73201,20 +70892,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "spinner-border text-primary", attrs: { role: "status" } },
-      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-10 mx-auto" }, [
-      _c("div", { staticClass: "text-left" }, [
-        _c("h6", { staticClass: "font-weight-bold" }, [
-          _vm._v("No Active Repository"),
+    return _c("div", { staticClass: "row pt-3" }, [
+      _c("div", { staticClass: "col-10 mx-auto" }, [
+        _c("div", { staticClass: "text-left" }, [
+          _c("h6", { staticClass: "font-weight-bold" }, [
+            _vm._v("No Active Repository"),
+          ]),
         ]),
       ]),
     ])
@@ -73246,7 +70929,7 @@ var render = function () {
     "div",
     { staticClass: "row-fluid mt-4", staticStyle: { "overflow-x": "hidden" } },
     [
-      _vm.userPermissionLevel <= 2
+      _vm.activeUserPermissionLevel <= 2
         ? _c(
             "div",
             { staticClass: "row-fluid" },
@@ -73321,7 +71004,7 @@ var render = function () {
             0
           )
         : _c("div", { staticClass: "row-fluid" }, [
-            _c("h5", { staticClass: "font-weight-bold text-center" }, [
+            _c("h5", { staticClass: "font-weight-bold" }, [
               _vm._v("Make sure that you have the required permission."),
             ]),
           ]),
@@ -73953,7 +71636,7 @@ var render = function () {
           ]),
         ])
       : _c("div", { staticClass: "row-fluid" }, [
-          _c("h5", { staticClass: "font-weight-bold text-center" }, [
+          _c("h5", { staticClass: "font-weight-bold" }, [
             _vm._v("Make sure that you have the required permission."),
           ]),
         ]),
@@ -86218,7 +83901,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","W:\\\\Work\\\\Saaslay\\\\Zendesk Projects\\\\Slayhub"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"W:\\\\Work\\\\Saaslay\\\\Zendesk Projects\\\\Slayhub","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 
