@@ -1,0 +1,1 @@
+# slayhub-static
