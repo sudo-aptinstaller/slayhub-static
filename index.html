@@ -1236,6 +1236,7 @@
             -ms-flex: 0 auto;
             flex: 0 auto
         }
+
         .hide-ix {
             position: relative;
             overflow: hidden
@@ -2017,7 +2018,9 @@
             width: 100%;
             height: auto;
         }
-
+        .img-wrapper{
+            max-width: 130%;
+        }
     </style>
 
 </head>
@@ -2075,24 +2078,26 @@
         </div>
     </nav>
     <div class="page-wrapper">
-        <div class="clean-section home-hero wf-section mt-5">
-            <div class="container row pr-0">
-                <div class="col col-lg-5 col-sm-12">
-                    <div>
-                        <h1 class="h2 home">Listen and build the products your customers love
-                        </h1>
-                        <div class="text-box-2 _530px">
-                            <h5 class="hero-beta-callout">We believe for any growing company aligning your customer success and product development teams does not have to be complex. SlayHub bridges this connection through seemless flow of ideas, requests and queries to understand your customers need and build awesome products that your customers love.  
-                            </h5>
+        <div class="clean-section home-hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-5 col-sm-12">
+                            <h1 class="h2 home">Listen and build the products your customers love
+                            </h1>
+                            <div class="text-box-2 _530px">
+                                <h5 class="hero-beta-callout">We believe for any growing company aligning your customer
+                                    success and product development teams does not have to be complex. SlayHub bridges
+                                    this connection through seemless flow of ideas, requests and queries to understand
+                                    your customers need and build awesome products that your customers love.
+                                </h5>
+                            </div>
+                        <div class="button-wrapper">
+                            <a class="cta w-button" href="/">Get&nbsp;Started for free</a>
                         </div>
                     </div>
-                    <div class="button-wrapper">
-                        <a class="cta w-button" href="/">Get&nbsp;Started for free</a>
+                    <div class="col col-lg-7 p-0 hero-img-wrapper">
+                        <img src="./assets/images/example1.png" class="img-wrapper" alt="Slayhub" loading="lazy" width="" height="110%">
                     </div>
-                </div>
-                <div class="col col-lg-7 hero-img-wrapper p-0">
-                    <img src="./assets/images/example1.png" class="" alt="Slayhub" loading="lazy" width="100%"
-                        height="120%">
                 </div>
             </div>
             <div class="space _32"></div>
@@ -2106,7 +2111,7 @@
                     <div class="h sub-heading">
                         You control the user experience &amp;&nbsp;we handle the backend
                     </div>
-                    <div class="contianer p-3 m-3"></div>
+                    <div class="container p-3 m-3"></div>
                 </div>
                 <div class="h-row r-how">
                     <div class="h-col h-col-4 c-how">
@@ -2154,27 +2159,27 @@
                         </div>
                     </div>
                     <div class="col-md-8 p-0">
-                        <div>
-                            <img src="./assets/images/example1.png" alt="" width="" height="" class="">
-                        </div>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="./assets/images/User Friendly.mp4" allowfullscreen></iframe>
+                          </div>
                     </div>
                 </div>
                 <div class="space _256"></div>
                 <div class="row">
-                    <div class="col-md-4 order-md-2 pl-1">
-                            <div class="text-box-2 _340px ">
-                                <h2 class="h h3">Seamless Integration </h2>
-                                <p>All the updates, comments and tags get synced seamlessly and in realtime. Choose what
-                                    to keep it private and public. </p>
-                                <div class="button-wrapper">
-                                    <a href="/" class="nbutton w-button pt-3">Get&nbsp;Started for free</a>
-                                </div>
+                    <div class="col-md-4 order-md-2">
+                        <div class="text-box-2 _340px ">
+                            <h2 class="h h3">Seamless Integration </h2>
+                            <p>All the updates, comments and tags get synced seamlessly and in realtime. Choose what
+                                to keep it private and public. </p>
+                            <div class="button-wrapper">
+                                <a href="/" class="nbutton w-button pt-3">Get&nbsp;Started for free</a>
                             </div>
-                    </div>
-                    <div class="col-md-8 order-md-1 p-0">
-                        <div>
-                            <img src="./assets/images/example1.png" alt="" width="" height="" class="">
                         </div>
+                    </div>
+                    <div class="col-md-8 order-md-1 pl-0">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="assets\images\Seamless Integration.mp4" allowfullscreen></iframe>
+                          </div>
                     </div>
                 </div>
                 <div class="space _256"></div>
@@ -2193,9 +2198,9 @@
                         </div>
                     </div>
                     <div class="col-md-8 p-0">
-                        <div>
-                            <img src="./assets/images/example1.png" alt="" width="100%" height="" class="">
-                        </div>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="assets\images\Quick Setup.mp4" allowfullscreen></iframe>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -2219,7 +2224,8 @@
                     <div class="overlay-container">
                         <img src="./assets/images/example2.png" alt="" class="overlay-image rounded">
                         <div class="overlay">
-                                <embed src="./assets/images/person-square.svg" alt="person-square" style="height:45px" class="overlay-icon">
+                            <embed src="./assets/images/person-square.svg" alt="person-square" style="height:45px"
+                                class="overlay-icon">
                         </div>
                     </div>
                     <div class="mt-5">
@@ -2233,12 +2239,14 @@
                     <div class="overlay-container">
                         <img src="./assets/images/example2.png" alt="" class="overlay-image rounded">
                         <div class="overlay">
-                                <embed src="./assets/images/gear-fill.svg" alt="gear-fill" style="height:45px" class="overlay-icon">
+                            <embed src="./assets/images/gear-fill.svg" alt="gear-fill" style="height:45px"
+                                class="overlay-icon">
                         </div>
                     </div>
                     <div class="mt-5">
                         <h3 class="mt-5">Communicate </h3>
-                        <p class="paragraph text-muted">Send and sync comments between your customer facing and product teams.
+                        <p class="paragraph text-muted">Send and sync comments between your customer facing and product
+                            teams.
                             Decide what comments to
                             be seen public vs private. Add attachments to understand the issues clear.</p>
                     </div>
@@ -2247,14 +2255,17 @@
                     <div class="overlay-container">
                         <img src="./assets/images/example2.png" alt="" class="overlay-image rounded">
                         <div class="overlay">
-                                <embed src="./assets/images/search.svg" alt="search" style="height:45px" class="overlay-icon">
+                            <embed src="./assets/images/search.svg" alt="search" style="height:45px"
+                                class="overlay-icon">
                         </div>
                     </div>
                     <div class="mt-5">
                         <h3 class="mt-5">Secure data</h3>
-                        <p class="paragraph text-muted"> SlayHub does not store your data, it helps bridge your Zendesk and
+                        <p class="paragraph text-muted"> SlayHub does not store your data, it helps bridge your Zendesk
+                            and
                             FreshDesk platforms to DevOps
-                            or GitHub repositories. All the information is passed through Oauth authentication, removing any
+                            or GitHub repositories. All the information is passed through Oauth authentication, removing
+                            any
                             need for us to access your data.</p>
                     </div>
                 </div>
