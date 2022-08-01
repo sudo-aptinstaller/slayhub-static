@@ -34,32 +34,6 @@
             font-family: PlusJakartaDisplayRegular;
             src: url("./assets/fonts/PlusJakartaDisplay-Regular.otf") format("opentype");
         }
-
-        html {
-            font-family: sans-serif;
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100%;
-            background-color: #fff;
-            font-family: PlusJakartaTextRegular;
-            color: #070e27;
-            font-size: 16px;
-            line-height: 1.4em;
-            font-weight: 400;
-            letter-spacing: .01em;
-        }
-
-        * {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
         /* HERE 479 AND MEDIA STARTS */
         @media (max-width:479px) {
             .hero-text{
@@ -171,7 +145,7 @@
                 padding-left: 12px !important
             }
 
-            .div-footer-grid {
+            .delete {
                 grid-row-gap: 16px;
                 -ms-grid-columns: 1fr;
                 grid-template-columns: 1fr;
@@ -221,7 +195,7 @@
                 text-align: center
             }
 
-            .sitemap-ix-wrapper {
+            .delete {
                 display: none !important;
             }
 
@@ -465,7 +439,7 @@
                 padding-bottom: 0
             }
 
-            .div-footer-grid {
+            .delete {
                 -webkit-flex-wrap: wrap;
                 -ms-flex-wrap: wrap;
                 flex-wrap: wrap
@@ -514,7 +488,7 @@
                 min-width: 0;
             }
 
-            .sitemap-ix-wrapper {
+            .delete {
                 display: none !important;
             }
 
@@ -562,7 +536,7 @@
                 width: 100%
             }
 
-            .div-footer-grid {
+            .delete {
                 justify-items: start;
                 -webkit-box-align: start;
                 -webkit-align-items: start;
@@ -707,6 +681,33 @@
         }
 
         /* HERE ENDS MEDIA */
+
+        html {
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100%;
+            background-color: #fff;
+            font-family: PlusJakartaTextRegular;
+            color: #070e27;
+            font-size: 16px;
+            line-height: 1.4em;
+            font-weight: 400;
+            letter-spacing: .01em;
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
         img {
             border: 0;
             vertical-align: middle;
@@ -788,7 +789,7 @@
             padding-bottom: 100px
         }
 
-        .div-footer-grid {
+        .delete {
             display: -ms-grid;
             display: grid;
             padding-top: 50px;
@@ -857,8 +858,6 @@
             padding-bottom: 5px;
             padding-left: 0
         }
-
-
 
         .h3 {
             font-size: 34px
@@ -1243,49 +1242,7 @@
             flex: 0 auto
         }
 
-        .hide-ix {
-            position: relative;
-            overflow: hidden
-        }
-
-        label {
-            margin-bottom: 5px;
-            font-weight: 700;
-            display: block;
-            padding-top: 5px;
-            color: #070e27;
-            text-align: left
-        }
-
-        .w-input::placeholder,
-        .w-select::placeholder {
-            color: #999;
-            opacity: 1
-        }
-
-        .w-input,
-        .w-select {
-            display: block;
-            width: 100%;
-            height: 38px;
-            padding: 8px 12px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.42857143;
-            color: #333;
-            vertical-align: middle;
-            background-color: #fff;
-            border: 1px solid #ccc
-        }
-
-        input {
-            line-height: normal
-        }
-
         button,
-        input,
-        optgroup,
-        select,
         textarea {
             color: inherit;
             font: inherit;
@@ -1295,37 +1252,14 @@
             margin-bottom: 0px
         }
 
-        .ms-grey-text {
-            color: #64636e
-        }
-
-        .green {
-            -webkit-filter: saturate(55%);
-            filter: saturate(55%);
-            color: #2da165
-        }
-
-        .text-box-2._340px {
-            max-width: 340px
-        }
-
-        .margin-center {
-            margin-right: auto;
-            margin-left: auto
-        }
 
         .text-box-2 {
             max-width: 750px
         }
 
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
+
         footer,
         header,
-        hgroup,
         main,
         menu,
         nav,
@@ -1385,8 +1319,6 @@
             background-color: transparent
         }
 
-
-
         .w-nav-link {
             position: relative;
             display: inline-block;
@@ -1398,8 +1330,6 @@
             margin-left: auto;
             margin-right: auto
         }
-
-
 
         .nbutton.small.nav-button {
             margin-right: 0;
@@ -1672,29 +1602,8 @@
             padding-left: 16px
         }
 
-        .hide {
-            display: none
-        }
-
-        .view-all {
-            margin-bottom: 10px;
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-            color: #4a6a86
-        }
-
         .svg.nav-icon {
             opacity: .7
-        }
-
-        .blue {
-            color: #2962ff
-        }
-
-        .black {
-            color: #070e27
         }
 
         .nav-column._30.cs {
@@ -1716,7 +1625,6 @@
             display: none;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
-            tap-highlight-color: rgba(0, 0, 0, 0);
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -1941,7 +1849,7 @@
             font-weight: 700;
         }
 
-        .sitemap-ix-wrapper {
+        .delete {
             position: relative;
             top: -2vh;
 
@@ -1978,16 +1886,6 @@
             height: 32px;
             border-radius: 6px;
             background-color: transparent;
-        }
-
-        .gate-content-trigger {
-            position: absolute;
-            left: 0;
-            top: 115vh;
-            right: 0;
-            bottom: auto;
-
-            height: 10px;
         }
 
         .overlay {
@@ -2038,12 +1936,12 @@
         <div class="container-fluid">
             <div class="navigation-left">
                 <a class="navbar-brand active" aria-current="page" href="#">
-                    <img src="./assets/images/example1.png" alt="" width="30" height="24"
-                        class="d-inline-block align-text-top">
+                    <img src="./assets/images/slayhub.png" alt="" width="50" height="50"
+                        class="d-inline-block align-text">
                     Slayhub
                 </a>
             </div>
-            <div class="collapse navbar-collapse navigation-center order-12 order-lg-1" id="navbarTogglerDemo02">
+            <div class="collapse navbar-collapse navigation-center order-12 order-lg-1">
                 <ul class="navbar-nav">
                     <li class="nav-item ">
                         <div class="navigation-link">Product
@@ -2140,7 +2038,7 @@
                     <div class="h-col h-col-4 c-how">
                         <div class="how-it-works-bg small">
                             <div class="counter-member">
-                                <div class="member-count odometer count">100</div>
+                                <div class="member-count">100</div>
                                 <div>Members</div>
                             </div>
                         </div>
@@ -2288,7 +2186,7 @@
                 <div class="_12-columns align-center left-mobile">
                     <div class="ncolumn d7 mobile-100-center">
                         <div>
-                            <h4 class="h4">Try Slayhub for free</h4>
+                            <h4 class="h4">Try Slayhub Now</h4>
                             <div class="paragraph cta-p">100% free, unlimited trial — upgrade only when you're ready to
                                 launch. No credit card required.</div>
                         </div>
@@ -2296,7 +2194,7 @@
                     <div class="ncolumn d5">
                         <div class="align-right">
                             <a href="/" class="nbutton ">
-                                <div>Get Started for free</div>
+                                <div>Get Started Now</div>
                                 <div class="nbutton-icon">
                                     <div class="svg _24 w-embed">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="auto" viewBox="0 0 24 24"
@@ -2376,7 +2274,7 @@
                 <a href="/" class="navigation-link footer">Cookie Policy</a>
                 <a href="/" class="navigation-link footer">Security Policy</a>
                 <div class="sentence-footer" style="opacity: 1;">
-                    © Memberstack Inc. 2018 – 2021. All rights reserved.<br>
+                    © Slayhub Inc. 2018 – 2021. All rights reserved.<br>
                 </div>
             </div>
         </div>
