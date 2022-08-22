@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Slayhub</title>
     <!-- Fonts -->
-    <script src="./js/app.js"></script>
+    <!-- <script src="./js/app.js"></script> -->
     <!-- Styles -->
     <link href="./css/app.css" rel="stylesheet">
+    <link href="./css/slayhub.css" rel="stylesheet">
     <style>
         @font-face {
             font-family: PlusJakartaTextBold;
@@ -34,1898 +35,6 @@
             font-family: PlusJakartaDisplayRegular;
             src: url("./assets/fonts/PlusJakartaDisplay-Regular.otf") format("opentype");
         }
-        /* HERE 479 AND MEDIA STARTS */
-        @media (max-width:479px) {
-            .hero-text{
-            margin: 1.5rem !important;
-        }
-            .footer-items {
-                text-align: center
-            }
-
-            .cta {
-                padding: 8px 14px 5px;
-            }
-
-            .column {
-                width: 100%;
-                max-width: none;
-                min-width: 0;
-            }
-
-            .homepage {
-                margin-right: 0;
-                margin-bottom: 20px;
-                font-size: 30px;
-            }
-
-            .column.homepage {
-                min-width: 0;
-            }
-
-            .menu-mob {
-                margin-left: 8px;
-            }
-
-            p {
-                font-size: 15px;
-                line-height: 1.8em
-            }
-
-            .h3 {
-                font-size: 20px
-            }
-
-            .h4 {
-                font-size: 17px
-            }
-
-            .h2 {
-                font-size: 26px;
-            }
-
-            .h2.home {
-                font-size: 30px;
-            }
-
-            ._12-columns {
-                margin-right: -3%;
-                margin-left: -3%
-            }
-
-            .ncolumn.d10,
-            .ncolumn.d4.mobile-d6,
-            .ncolumn.d5,
-            .ncolumn.d6 {
-                width: 100%
-            }
-
-            .ncolumn {
-                margin-bottom: 0;
-                padding-right: 3%;
-                padding-left: 3%
-            }
-
-            .nbutton {
-                width: 100%;
-                font-size: 16px
-            }
-
-            .c-how {
-                padding-right: 52px;
-                padding-left: 52px;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column
-            }
-
-            .h-col {
-                width: 100% !important
-            }
-
-            .how-it-works-bg.small {
-                width: 120px;
-                height: 120px;
-                margin-top: 30px;
-                margin-right: 0;
-                margin-bottom: 10px
-            }
-
-            .dash-new-button {
-                height: 34px;
-                margin-top: 4px;
-                padding-top: 6px;
-                padding-bottom: 5px
-            }
-
-            .how-it-works-shadow {
-                padding-right: 12px !important;
-                padding-left: 12px !important
-            }
-
-            .delete {
-                grid-row-gap: 16px;
-                -ms-grid-columns: 1fr;
-                grid-template-columns: 1fr;
-                text-align: center
-            }
-
-            .footer-bottom-row {
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: reverse;
-                -webkit-flex-direction: column-reverse;
-                -ms-flex-direction: column-reverse;
-                flex-direction: column-reverse
-            }
-
-            .div-footer-group {
-                padding-right: 1px;
-                padding-left: 1px
-            }
-
-            .footer-h5 {
-                margin-top: 30px;
-                margin-bottom: 12px
-            }
-
-            .footer-link {
-                margin-bottom: .9em;
-                line-height: 1.7em
-            }
-
-            .divider.footer {
-                width: 40%;
-                margin-top: 16px;
-                margin-right: auto;
-                margin-left: auto;
-                padding-top: 16px
-            }
-
-            .sentence-footer {
-                padding-right: 49px;
-                padding-left: 49px
-            }
-        }
-
-        /* HERE 767 */
-        @media (max-width:767px) {
-            .footer-items {
-                text-align: center
-            }
-
-            .delete {
-                display: none !important;
-            }
-
-            .link.dark-link.inline-mobile {
-                display: inline;
-            }
-
-            .column.homepage {
-                margin-right: 0;
-            }
-
-            .container.sitemap-container {
-                min-width: 0;
-                padding-right: 5%;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-            }
-
-            .r-how {
-                margin-top: 0;
-                padding-top: 0;
-                padding-bottom: 25px;
-                background-image: none !important
-            }
-
-            .w-container .w-row,
-            .h-row {
-                margin-left: 0;
-                margin-right: 0
-            }
-
-            .navigation-link.login {
-                border-bottom-style: none
-            }
-
-            .navigation-link {
-                border-bottom-color: #e9f2f5
-            }
-
-            .sentence-footer {
-                margin-top: 19px
-            }
-
-            .div-footer-group {
-                margin-left: 0
-            }
-
-            .footer-bottom-row {
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: reverse;
-                -webkit-flex-direction: column-reverse;
-                -ms-flex-direction: column-reverse;
-                flex-direction: column-reverse
-            }
-
-            body {
-                font-size: 14px
-            }
-
-            h1,
-            h2,
-            h4 {
-                margin-top: 0;
-                margin-bottom: 8px
-            }
-
-            h5,
-            h6 {
-                margin-top: 0
-            }
-
-            .h4 {
-                font-size: 20px
-            }
-
-            .h3 {
-                font-size: 23px
-            }
-
-            p {
-                margin-bottom: 20px;
-                font-size: 14px;
-                line-height: 1.8em
-            }
-
-            .h2 {
-                margin-top: 8px;
-                font-size: 29px
-            }
-
-            .h.h2 {
-                font-size: 28px !important;
-            }
-
-            .h2.home {
-                max-width: 420px;
-                font-size: 32px
-            }
-
-            .clean-section {
-                padding-top: 40px
-            }
-
-            .h.sub-heading {
-                font-size: 17px !important;
-                line-height: 1.4em !important
-            }
-
-            .space._128 {
-                width: 64px;
-                height: 64px
-            }
-
-            .space {
-                width: 24px;
-                height: 24px
-            }
-
-            ._12-columns {
-                -webkit-box-pack: center;
-                -webkit-justify-content: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                -webkit-flex-wrap: wrap;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap
-            }
-
-            .ncolumn.blog-list,
-            .ncolumn.d5,
-            .ncolumn.d6,
-            .ncolumn.d8,
-            .ncolumn.showcast-list {
-                width: 100% !important
-            }
-
-            .ncolumn.d7 {
-                width: 100% !important
-            }
-
-            .paragraph {
-                margin-bottom: 12px;
-                font-size: 14px
-            }
-
-            .paragraph.cta-p {
-                margin-top: 16px;
-                margin-bottom: 20px
-            }
-
-            .r-how {
-                margin-top: 0;
-                padding-top: 0;
-                padding-bottom: 25px;
-                background-image: none !important
-            }
-
-            .h-row {
-                margin-left: 0;
-                margin-right: 0
-            }
-
-            .c-how {
-                padding: 5px 40px;
-                padding-right: 40px;
-                padding-left: 40px;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                -webkit-box-pack: center;
-                -webkit-justify-content: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                -webkit-box-align: center;
-                -webkit-align-items: center;
-                -ms-flex-align: center;
-                align-items: center
-            }
-
-            .h-col {
-                width: 100% !important;
-                left: auto;
-                right: auto
-            }
-
-            .how-it-works-bg.small {
-                margin-right: 0
-            }
-
-            .how-it-works-bg {
-                margin-right: 39px;
-                margin-bottom: 10px
-            }
-
-            .how-it-works-shadow {
-                padding-right: 24px;
-                padding-left: 24px;
-                box-shadow: none !important
-            }
-
-            .paragraph.cta-p {
-                margin-top: 16px;
-                margin-bottom: 20px
-            }
-
-            .space._80 {
-                width: 40px;
-                height: 40px
-            }
-
-            .footer-cta {
-                padding-bottom: 0;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                -webkit-box-pack: center;
-                -webkit-justify-content: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                text-align: center
-            }
-
-            .ncolumn.d7.mobile-100-center {
-                width: 100% !important;
-                text-align: center
-            }
-
-            .align-right {
-                margin-right: auto;
-                margin-left: auto
-            }
-
-            .section-footer {
-                padding-bottom: 0
-            }
-
-            .delete {
-                -webkit-flex-wrap: wrap;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap
-            }
-
-            .space._32 {
-                width: 16px;
-                height: 16px;
-            }
-        }
-
-        /* HERE 991 */
-        @media (max-width:991px) {
-            .footer-items {
-                text-align: center
-            }
-
-            .cta {
-                margin-top: 10px;
-            }
-
-            .hero-img-wrapper {
-                display: none !important;
-            }
-
-            .hero-beta-callout {
-                font-size: 14px;
-            }
-
-            .column {
-                min-width: 360px;
-            }
-
-            .homepage {
-                min-width: 0;
-                margin-top: 0;
-                margin-bottom: 20px;
-            }
-
-            .column.homepage {
-                max-width: 600px;
-                min-width: 525px;
-            }
-
-            .container.sitemap-container {
-                min-width: 0;
-            }
-
-            .delete {
-                display: none !important;
-            }
-
-            .navigation-container {
-                position: relative !important
-            }
-
-            .navigation-right {
-                margin-left: auto
-            }
-
-            .w-nav[data-collapse="medium"] .w-nav-button {
-                display: block
-            }
-
-            .menu-mob {
-                margin-left: 8px;
-                padding: 7px;
-                border-radius: 8px;
-                background-color: #e9f2f5;
-                color: #070e27;
-                font-size: 22px
-            }
-
-            .navigation-link {
-                width: 100%;
-                padding-right: 1vw;
-                padding-left: .5vw;
-            }
-
-            .navigation-link.login {
-                width: auto;
-            }
-
-            .nbutton.small.nav-button {
-                display: none;
-                font-size: 13px;
-            }
-
-            .divider.footer {
-                border-top-width: 2px
-            }
-
-            .div-footer-group {
-                width: 100%
-            }
-
-            .delete {
-                justify-items: start;
-                -webkit-box-align: start;
-                -webkit-align-items: start;
-                -ms-flex-align: start;
-                align-items: start;
-                -ms-grid-columns: 1fr 1fr;
-                grid-template-columns: 1fr 1fr;
-                -ms-grid-rows: auto auto auto auto;
-                grid-template-rows: auto auto auto auto
-            }
-
-            .h3 {
-                font-size: 27.200000000000003px
-            }
-
-            .h4 {
-                font-size: 23px
-            }
-
-            .h2 {
-                font-size: 35.2px
-            }
-
-            .h2.home {
-                font-size: 40px !important
-            }
-
-            .button-wrapper {
-                margin-top: 0
-            }
-
-            .clean-section {
-                padding-top: 60px
-            }
-
-            ._12-columns {
-                -webkit-box-orient: horizontal;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: row;
-                -ms-flex-direction: row;
-                flex-direction: row;
-                -webkit-flex-wrap: wrap;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap
-            }
-
-            .ncolumn.d5,
-            .ncolumn.d7 {
-                width: 50%
-            }
-
-            .nbutton {
-                position: relative
-            }
-
-            .div-block-7 {
-                min-height: 80px
-            }
-
-            .r-how {
-                background-position: 50% 42px !important
-            }
-
-            .how-it-works-bg {
-                width: 130px;
-                height: 130px
-            }
-
-            .foorter-container {
-                padding-right: 3%;
-                padding-left: 3%
-            }
-
-            .footer-cta {
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                text-align: left
-            }
-
-            ._12-columns.align-center {
-                -webkit-box-pack: center;
-                -webkit-justify-content: center;
-                -ms-flex-pack: center;
-                justify-content: center
-            }
-
-            .container {
-                padding-right: 3%;
-                padding-left: 3%;
-            }
-        }
-
-        /* HERE 1280 */
-        @media (min-width:1280px) {
-            .swap_text{
-                padding: 0 !important;
-            }
-
-
-            .container {
-                padding-right: 50px;
-                padding-left: 50px;
-            }
-
-            .h2 {
-                font-size: 52px;
-            }
-
-            .h2.home {
-                font-size: 53px;
-            }
-
-            .text-box-2._530px {
-                max-width: 680px;
-            }
-
-            .hero-beta-callout {
-                font-size: 20px;
-            }
-
-            .h3 {
-                font-size: 43px
-            }
-
-            .h4 {
-                font-size: 30px
-            }
-
-            .space._128 {
-                width: 192px;
-                height: 192px
-            }
-
-            .footer-container {
-                padding-right: 50px;
-                padding-left: 50px
-            }
-
-        }
-
-        /* HERE ENDS MEDIA */
-
-        html {
-            font-family: sans-serif;
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100%;
-            background-color: #fff;
-            font-family: PlusJakartaTextRegular;
-            color: #070e27;
-            font-size: 16px;
-            line-height: 1.4em;
-            font-weight: 400;
-            letter-spacing: .01em;
-        }
-
-        * {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-
-        img {
-            border: 0;
-            vertical-align: middle;
-            display: inline-block;
-            max-width: 100%
-        }
-
-        .page-wrapper {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            background-color: #fff
-        }
-
-        h1 {
-            position: relative;
-            margin-top: 0;
-            margin-bottom: 16px;
-            font-family: PlusJakartaDisplayBold;
-            line-height: 1.2em;
-            font-weight: 700
-        }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 16px;
-            font-family: PlusJakartaDisplayBold;
-            line-height: 1.35em;
-            font-weight: 700
-        }
-
-        h3,
-        h4 {
-            margin-top: 0;
-            margin-bottom: 16px;
-            font-family: PlusjakartaDisplayBold;
-            line-height: 1.4em;
-            font-weight: 700
-        }
-
-        h4 {
-            font-size: 18px
-        }
-
-        h5 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-family: PlusJakartaDisplayRegular;
-            line-height: 1.5em;
-            font-weight: 700
-        }
-
-        p {
-            margin-top: 0;
-            margin-bottom: 16px;
-            font-size: 16px;
-            line-height: 1.7em
-        }
-
-        a {
-            background-color: transparent;
-            -webkit-transition: color .2s;
-            transition: color .2s;
-            color: #2962ff;
-            text-decoration: none
-        }
-
-        .h.h3 {
-            font-size: 32px;
-            line-height: 1.4em
-        }
-
-        .footer-h5 {
-            margin-bottom: 12px;
-            font-size: 18px
-        }
-
-        .section-footer {
-            padding-bottom: 100px
-        }
-
-        .delete {
-            display: -ms-grid;
-            display: grid;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            grid-auto-columns: 1fr;
-            grid-column-gap: 30px;
-            grid-row-gap: 16px;
-            -ms-grid-columns: 1fr 1fr 1fr;
-            grid-template-columns: 1fr 1fr 1fr;
-            -ms-grid-rows: auto;
-            grid-template-rows: auto;
-            border-top: 1px solid rgba(38, 61, 73, .1)
-        }
-
-        .footer-link {
-            position: relative;
-            display: block;
-            margin-bottom: 8px;
-            -webkit-transition: padding .1s ease-out, color .3s;
-            transition: padding .1s ease-out, color .3s;
-            color: #2b334d;
-            font-size: 15px;
-            line-height: 1.7em;
-            font-weight: 400
-        }
-
-        .space._16 {
-            width: 16px;
-            height: 16px;
-            background-color: transparent
-        }
-
-        .nav-notification.footer {
-            display: inline-block
-        }
-
-        .footer-bottom-row {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            min-height: 50px;
-            padding-top: 35px;
-            padding-bottom: 15px;
-            -webkit-box-pack: justify;
-            -webkit-justify-content: space-between;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -webkit-box-align: end;
-            -webkit-align-items: flex-end;
-            -ms-flex-align: end;
-            align-items: flex-end;
-            border-top: 1px solid rgba(38, 61, 73, .1);
-            opacity: .8;
-            text-align: left
-        }
-
-        .footer-legal-row {
-            font-size: 13px
-        }
-
-        .navigation-link.footer {
-            display: inline-block;
-            margin-bottom: 5px;
-            padding-right: 15px;
-            padding-bottom: 5px;
-            padding-left: 0
-        }
-
-        .h3 {
-            font-size: 34px
-        }
-
-        .h2 {
-            margin-bottom: 8px;
-            font-size: 44px;
-            letter-spacing: 0
-        }
-
-        .h2.home {
-            font-size: 53px
-        }
-
-        .paragraph {
-            margin-bottom: 16px;
-            line-height: 1.7em
-        }
-
-        .clean-section {
-            padding-top: 100px;
-        }
-
-        .r-how {
-            margin-top: 30px;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-flex: 1;
-            -webkit-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
-            background-image: url("https://assets-global.website-files.com/5bbfaf3252489b4c484ba9b9/5c840eef7c584bb75ee6a8fa_dotPath.svg");
-            background-position: 50% 9px;
-            background-size: 61%;
-            background-repeat: no-repeat
-        }
-
-        .c-how {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            padding: 20px 2%;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-pack: start;
-            -webkit-justify-content: flex-start;
-            -ms-flex-pack: start;
-            justify-content: flex-start;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            text-align: center
-        }
-
-        .h-row::after {
-            clear: both
-        }
-
-        .h-row::after,
-        .h-row::before {
-            content: " ";
-            display: table;
-            grid-column-start: 1;
-            grid-row-start: 1;
-            grid-column-end: 2;
-            grid-row-end: 2
-        }
-
-        .h-col {
-            position: relative;
-            float: left;
-            width: 100%;
-            min-height: 1px;
-            padding-left: 10px;
-            padding-right: 10px
-        }
-
-        .h-col-4 {
-            width: 33.33333333%
-        }
-
-        .how-it-works-bg.small {
-            width: 120px;
-            height: 120px;
-            margin-top: 15px
-        }
-
-        .how-it-works-bg {
-            position: relative;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 150px;
-            height: 150px;
-            margin-bottom: 25px;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            grid-auto-columns: 1fr;
-            grid-column-gap: 16px;
-            grid-row-gap: 16px;
-            -ms-grid-columns: 1fr 1fr;
-            grid-template-columns: 1fr 1fr;
-            -ms-grid-rows: auto auto;
-            grid-template-rows: auto auto;
-            border-radius: 50%;
-            background-color: #cbd7e6;
-            -webkit-perspective: 1000px;
-            perspective: 1000px;
-            text-align: left
-        }
-
-        .how-it-works-shadow {
-            border-radius: 3px;
-            box-shadow: 0 20px 50px -5px rgba(71, 117, 141, .5)
-        }
-
-        .counter-member {
-            padding: 13px 12px 6px;
-            border: 1px solid rgba(45, 62, 80, .12);
-            border-radius: 3px;
-            background-color: #fff;
-            box-shadow: 0 2px 8px 0 rgba(45, 62, 80, .12);
-            color: #2b334d;
-            font-size: 10px;
-            line-height: 1.5em;
-            font-weight: 600;
-            text-align: center
-        }
-
-        .member-count {
-            display: inline-block;
-            color: #2962ff;
-            font-size: 15px;
-            line-height: 1em;
-            font-weight: 800
-        }
-
-        .dash-new-button {
-            position: relative;
-            width: 151px;
-            height: 44px;
-            padding: 12px 10px 11px;
-            float: right;
-            border-radius: 4px;
-            background-color: #2962ff;
-            box-shadow: 0 20px 15px -5px rgba(45, 62, 80, .2);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: default
-        }
-
-        .plus-icon-2 {
-            position: relative;
-            top: -1px;
-            display: inline-block;
-            margin-right: 8px;
-            font-family: sans-serif;
-            font-size: 12px;
-            font-weight: 400
-        }
-
-        .inline-block {
-            display: inline-block
-        }
-
-        .w-clearfix::after {
-            clear: both
-        }
-
-        .w-clearfix::after,
-        .w-clearfix::before {
-            content: " ";
-            display: table;
-            grid-column-start: 1;
-            grid-row-start: 1;
-            grid-column-end: 2;
-            grid-row-end: 2
-        }
-
-        .button-wrapper {
-            display: inline-block;
-            margin-top: 16px;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-align: start;
-            -webkit-align-items: flex-start;
-            -ms-flex-align: start;
-            align-items: flex-start
-        }
-
-        .nbutton {
-            position: relative;
-            top: 0;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            height: 56px;
-            padding: 1em 1.5em;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-            grid-auto-columns: 1fr;
-            -ms-grid-columns: 1fr 1fr;
-            grid-template-columns: 1fr 1fr;
-            -ms-grid-rows: auto auto;
-            grid-template-rows: auto auto;
-            border-radius: 8px;
-            background-color: #2962ff;
-            box-shadow: 1px 1px 5px 0 hsla(0, 0%, 100%, .5), 0 10px 20px -5px rgba(45, 62, 80, .3);
-            -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1), border-radius .2s cubic-bezier(.645, .045, .355, 1), box-shadow .2s cubic-bezier(.645, .045, .355, 1), background-color .2s cubic-bezier(.645, .045, .355, 1), -webkit-transform .2s cubic-bezier(.645, .045, .355, 1);
-            transition: transform .2s cubic-bezier(.645, .045, .355, 1), border-color .2s cubic-bezier(.645, .045, .355, 1), border-radius .2s cubic-bezier(.645, .045, .355, 1), box-shadow .2s cubic-bezier(.645, .045, .355, 1), background-color .2s cubic-bezier(.645, .045, .355, 1), -webkit-transform .2s cubic-bezier(.645, .045, .355, 1);
-            font-family: PlusJakartaDisplayRegular;
-            color: #fff;
-            font-size: 15px;
-            line-height: 1.5;
-            font-weight: 700;
-            text-align: center;
-            letter-spacing: .03em
-        }
-
-
-        .cta {
-            position: relative;
-            margin-right: 6px;
-            margin-bottom: 4px;
-            padding: 8px 22px;
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-            border-radius: 5px;
-            background-color: #2962ff;
-            box-shadow: 0 9px 10px -5px rgba(45, 62, 80, .24);
-            -webkit-transition: background-color .2s, box-shadow .2s, color .2s;
-            transition: background-color .2s, box-shadow .2s, color .2s;
-            font-family: PlusjakartaDisplayRegular;
-            color: #fff;
-            font-size: 15px;
-            line-height: 2.3em;
-            font-weight: 700;
-            text-align: left;
-        }
-
-        .w-button {
-            display: inline-block;
-            padding: 9px 15px;
-            /* background-color: #3898ec; */
-            color: #fff;
-            border: 0;
-            line-height: inherit;
-            text-decoration: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .h.sub-heading {
-            font-size: 24px
-        }
-
-        ._12-columns {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            margin-right: -12px;
-            margin-left: -12px;
-            -webkit-box-orient: horizontal;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-            flex-direction: row;
-            -webkit-box-pack: justify;
-            -webkit-justify-content: space-between;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            -webkit-box-align: start;
-            -webkit-align-items: flex-start;
-            -ms-flex-align: start;
-            align-items: flex-start;
-            -webkit-align-content: stretch;
-            -ms-flex-line-pack: stretch;
-            align-content: stretch
-        }
-
-        .space._256 {
-            width: 256px;
-            height: 256px
-        }
-
-        .space {
-            width: 48px;
-            height: 48px;
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto
-        }
-
-
-
-        .space._128 {
-            position: relative;
-            width: 128px;
-            height: 128px;
-            background-color: transparent
-        }
-
-        .ncolumn.d6 {
-            width: 49%
-        }
-
-        .ncolumn {
-            position: relative;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            min-height: 32px;
-            padding-right: 12px;
-            padding-left: 12px;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-flex-wrap: nowrap;
-            -ms-flex-wrap: nowrap;
-            flex-wrap: nowrap;
-            -webkit-box-align: stretch;
-            -webkit-align-items: stretch;
-            -ms-flex-align: stretch;
-            align-items: stretch;
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 auto;
-            -ms-flex: 0 auto;
-            flex: 0 auto
-        }
-
-        button,
-        textarea {
-            color: inherit;
-            font: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            margin: 0;
-            margin-bottom: 0px
-        }
-
-
-        .text-box-2 {
-            max-width: 750px
-        }
-
-
-        footer,
-        header,
-        main,
-        menu,
-        nav,
-        section,
-        summary {
-            display: block
-        }
-
-        .navigation-left {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 23%;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto
-        }
-
-        .navigation-right {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 25%;
-            padding-left: 10px;
-            -webkit-box-pack: end;
-            -webkit-justify-content: flex-end;
-            -ms-flex-pack: end;
-            justify-content: flex-end;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center
-        }
-
-        .navigation-center {
-            position: static;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 54%;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            background-color: transparent
-        }
-
-        .w-nav-link {
-            position: relative;
-            display: inline-block;
-            vertical-align: top;
-            text-decoration: none;
-            color: #222;
-            padding: 20px;
-            text-align: left;
-            margin-left: auto;
-            margin-right: auto
-        }
-
-        .nbutton.small.nav-button {
-            margin-right: 0;
-            margin-left: 0
-        }
-
-        .nbutton.small {
-            height: 40px;
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-size: 14px
-        }
-
-        .navigation-container {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 100%;
-            height: 68px;
-            margin-right: auto;
-            margin-left: auto;
-            padding-top: 4px;
-            padding-right: 2vw;
-            padding-left: 2vw;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            font-size: 14px
-        }
-
-        .navigation-fixed {
-            position: fixed;
-            left: 0;
-            top: 0;
-            right: 0;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 100%;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-pack: end;
-            -webkit-justify-content: flex-end;
-            -ms-flex-pack: end;
-            justify-content: flex-end;
-            -webkit-box-align: stretch;
-            -webkit-align-items: stretch;
-            -ms-flex-align: stretch;
-            align-items: stretch;
-            background-color: #fff
-        }
-
-        .nav-menu-wrap {
-            position: static;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            color: #283338
-        }
-
-        .menu-blocker {
-            position: absolute;
-            left: 25%;
-            top: auto;
-            right: 25%;
-            bottom: -20%;
-            height: 90px;
-            -webkit-transition: height .3s cubic-bezier(.678, -.098, .825, .1);
-            transition: height .3s cubic-bezier(.678, -.098, .825, .1)
-        }
-
-
-        .navigation-link.mobile {
-            cursor: pointer
-        }
-
-        .navigation-link {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            margin-right: 0;
-            margin-left: 0;
-            padding: 15px 1.5vw;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            border-bottom: 1px solid hsla(0, 0%, 100%, .5);
-            -webkit-transition: color .2s, border-color .2s;
-            transition: color .2s, border-color .2s;
-            font-family: PlusjakartaDisplayRegular;
-            color: #070e27;
-            font-size: 15px;
-            font-weight: 700;
-            text-decoration: none
-        }
-
-        .w-nav-link {
-            position: relative;
-            display: inline-block;
-            vertical-align: top;
-            text-decoration: none;
-            color: #222;
-            padding: 20px;
-            text-align: left;
-            margin-left: auto;
-            margin-right: auto
-        }
-
-        .nav-drop-icon {
-            position: relative;
-            width: 13px;
-            margin-right: -13px;
-            margin-left: .35vw;
-            opacity: .5
-        }
-
-        .nav-link-extender {
-            position: absolute;
-            left: -2vw;
-            top: 100%;
-            right: -2vw;
-            display: none;
-            height: 20px
-        }
-
-
-        .nav-column-wrap {
-            width: 50%
-        }
-
-        .nav-h4 {
-            margin-top: 0;
-            margin-bottom: 4px;
-            font-family: Plusjakartadisplay, sans-serif;
-            font-size: 16px;
-            letter-spacing: .03em
-        }
-
-        .nav-column.grey {
-            width: 100%;
-            padding: 8px 8px 12px;
-            border-radius: 16px;
-            background-color: #f5f8fa
-        }
-
-        .nav-column {
-            width: 25%;
-            padding-bottom: 8px;
-            padding-left: 8px;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            font-family: Plusjakartatext, sans-serif;
-            color: #2b334d;
-            font-size: 13px
-        }
-
-        .nav-icon-link {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            padding: 8px 8px 4px;
-            -webkit-box-pack: start;
-            -webkit-justify-content: flex-start;
-            -ms-flex-pack: start;
-            justify-content: flex-start;
-            -webkit-box-align: start;
-            -webkit-align-items: flex-start;
-            -ms-flex-align: start;
-            align-items: flex-start;
-            border-radius: 16px;
-            -webkit-transition: padding .2s, color .2s;
-            transition: padding .2s, color .2s;
-            color: #2b334d;
-            font-size: 14px;
-            line-height: 1.3em
-        }
-
-        .w-inline-block {
-            max-width: 100%;
-            display: inline-block
-        }
-
-        .svg.background._40 {
-            width: 40px;
-            height: 40px;
-            margin-left: -1px;
-            padding-right: 7px;
-            padding-left: 7px;
-            border-radius: 10px
-        }
-
-        .svg.background {
-            position: relative;
-            top: 0;
-            width: 52px;
-            height: 52px;
-            padding-top: 1px;
-            padding-right: 11px;
-            padding-left: 11px;
-            border: 1px solid #e9f2f5;
-            border-radius: 16px;
-            background-color: #fff;
-            background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f8fa), color-stop(50%, #fff));
-            background-image: linear-gradient(0deg, #f5f8fa, #fff 50%);
-            box-shadow: 0 8px 12px 0 rgba(45, 62, 80, .12);
-            -webkit-transition: border-color .2s, top .2s, color .2s, box-shadow .2s;
-            transition: border-color .2s, top .2s, color .2s, box-shadow .2s;
-            color: #2962ff
-        }
-
-        .svg {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 16px;
-            height: 16px;
-            padding-top: 0;
-            padding-bottom: 0;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center
-        }
-
-        .w-embed::after {
-            clear: both
-        }
-
-        .w-embed::after,
-        .w-embed::before {
-            content: " ";
-            display: table;
-            grid-column-start: 1;
-            grid-row-start: 1;
-            grid-column-end: 2;
-            grid-row-end: 2
-        }
-
-        .nav-column._50 {
-            width: 50%;
-            padding-left: 16px
-        }
-
-        .svg.nav-icon {
-            opacity: .7
-        }
-
-        .nav-column._30.cs {
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto
-        }
-
-        .nav-column._30 {
-            width: 30%
-        }
-
-        .w-nav-button {
-            position: relative;
-            float: right;
-            padding: 18px;
-            font-size: 24px;
-            display: none;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none
-        }
-
-        .navbar-symbol {
-            position: static;
-            background-color: transparent
-        }
-
-        .w-nav {
-            position: relative;
-            background: #ddd;
-            background-color: rgb(221, 221, 221);
-        }
-
-        .w-nav::after {
-            clear: both
-        }
-
-        .w-nav::after,
-        .w-nav::before {
-            content: " ";
-            display: table;
-            grid-column-start: 1;
-            grid-row-start: 1;
-            grid-column-end: 2;
-            grid-row-end: 2
-        }
-
-        .nav-notification.visible {
-            top: -5px;
-            margin-right: 0
-        }
-
-        .nav-notification {
-            position: relative;
-            left: 2px;
-            top: -6px;
-            width: 14px;
-            height: 14px;
-            margin-right: -6px;
-            border-radius: 10px;
-            background-color: #2962ff;
-            font-family: Plusjakartadisplay, sans-serif;
-            color: #fff;
-            font-size: 8.25px;
-            line-height: 1.7;
-            font-weight: 700;
-            text-align: center
-        }
-
-        .footer-cta {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: justify;
-            -webkit-justify-content: space-between;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center
-        }
-
-        ._12-columns.align-center {
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center
-        }
-
-        .ncolumn.d7 {
-            width: 58.333333333333336%
-        }
-
-        .ncolumn.d5 {
-            width: 41.66%
-        }
-
-        .h4 {
-            margin-bottom: 8px;
-            font-size: 28px;
-            letter-spacing: .02em
-        }
-
-        .align-right {
-            margin-left: auto
-        }
-
-        .nbutton-icon {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 34px;
-            height: 34px;
-            margin-right: -.75em;
-            margin-left: 15px;
-            padding: 5px;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-flex: 0;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: inset 0 1px 3px 0 hsla(0, 0%, 100%, .25), inset 0 10px 4px 0 rgba(45, 62, 80, .3);
-            -webkit-transition: box-shadow .2s cubic-bezier(.455, .03, .515, .955), border-radius .2s cubic-bezier(.645, .045, .355, 1);
-            transition: box-shadow .2s cubic-bezier(.455, .03, .515, .955), border-radius .2s cubic-bezier(.645, .045, .355, 1);
-            color: #2962ff
-        }
-
-        .svg._24 {
-            width: 24px;
-            height: 24px
-        }
-
-        svg:not(:root) {
-            overflow: hidden
-        }
-
-        .space._80 {
-            width: 80px;
-            height: 80px;
-            background-color: transparent
-        }
-
-        .footer-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin-right: auto;
-            margin-left: auto;
-            padding-right: 4%;
-            padding-left: 4%
-        }
-
-        .clean-section.home-hero {
-            position: relative;
-            overflow: hidden;
-            padding-top: 100px;
-        }
-
-        .container.sitemap-container {
-            position: relative;
-
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 94%;
-            min-width: 1020px;
-            padding-right: 0;
-            -webkit-box-pack: justify;
-            -webkit-justify-content: space-between;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-        .container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin-right: auto;
-            margin-left: auto;
-            padding-right: 4%;
-            padding-left: 4%;
-        }
-
-        .homepage {
-            min-width: 524px;
-            margin-right: -100px;
-        }
-
-        .column {
-            position: relative;
-
-            min-width: 360px;
-            padding-top: 10px;
-            padding-bottom: 0;
-        }
-
-        .text-box-2._530px {
-            max-width: 530px;
-        }
-
-        .hero-beta-callout {
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-family: PlusjakartaTextRegular;
-            font-size: 16px;
-            line-height: 2em;
-            font-weight: 400;
-        }
-
-        .link.dark-link {
-            position: relative;
-            display: inline-block;
-            color: #070e27;
-        }
-
-        .link {
-            -webkit-transition: opacity .2s;
-            transition: opacity .2s;
-            font-family: PlusjakartaDisplayRegular;
-            color: #2962ff;
-            font-weight: 700;
-        }
-
-        .delete {
-            position: relative;
-            top: -2vh;
-
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            max-height: 500px;
-            min-width: 500px;
-            margin-right: 0;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-transform: scale(.85);
-            -ms-transform: scale(.85);
-            transform: scale(.85);
-            -webkit-transition: -webkit-transform .2s;
-            transition: transform .2s;
-            transition: transform .2s, -webkit-transform .2s;
-        }
-
-        .space._32 {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            background-color: transparent;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 50;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50;
-            width: 10;
-            opacity: 1;
-
-        }
-
-        .overlay-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-        }
-
-
-        .overlay-icon {
-            color: red;
-            font-size: 100px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .overlay-image {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-        .img-wrapper{
-            max-width: 130%;
-        }
-        
     </style>
 
 </head>
@@ -1937,11 +46,11 @@
             <div class="navigation-left">
                 <a class="navbar-brand active" aria-current="page" href="#">
                     <img src="./assets/images/slayhub.png" alt="" width="50" height="50"
-                        class="d-inline-block align-text">
+                        class="d-inline-block align-text text-bold">
                     Slayhub
                 </a>
             </div>
-            <div class="collapse navbar-collapse navigation-center order-12 order-lg-1">
+            <!-- <div class="collapse navbar-collapse navigation-center order-12 order-lg-1">
                 <ul class="navbar-nav">
                     <li class="nav-item ">
                         <div class="navigation-link">Product
@@ -1970,15 +79,15 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <div class="navigation-right order-1">
                 <button type="button"
                     class="btn btn-outline-light navigation-link login w-nav-link text-dark ">Login</button>
                 <a href="/" class="nbutton small nav-button w-nav-link text-white">Get Started</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                     aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> -->
             </div>
         </div>
     </nav>
@@ -1987,21 +96,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-lg-5 col-sm-12 p-0 hero-text">
-                            <h1 class="h2 home">Listen and build the products your customers love
-                            </h1>
-                            <div class="text-box-2 _530px">
-                                <h5 class="hero-beta-callout">We believe for any growing company aligning your customer
-                                    success and product development teams does not have to be complex. SlayHub bridges
-                                    this connection through seemless flow of ideas, requests and queries to understand
-                                    your customers need and build awesome products that your customers love.
-                                </h5>
-                            </div>
+                        <h1 class="h2 home">Listen and build the products your customers love
+                        </h1>
+                        <div class="text-box-2 _530px">
+                            <h5 class="hero-beta-callout">We believe for any growing company aligning your customer
+                                success and product development teams does not have to be complex. SlayHub bridges
+                                this connection through seemless flow of ideas, requests and queries to understand
+                                your customers need and build awesome products that your customers love.
+                            </h5>
+                        </div>
                         <div class="button-wrapper">
-                            <a class="cta w-button" href="/">Get&nbsp;Started for free</a>
+                            <a class="cta w-button" href="/">Get&nbsp;Integrated Now</a>
                         </div>
                     </div>
                     <div class="col col-lg-7 p-0 hero-img-wrapper">
-                        <img src="./assets/images/example1.png" class="img-wrapper" alt="Slayhub" loading="lazy" width="" height="110%">
+                        <img src="./assets/images/example1.png" class="img-wrapper" alt="Slayhub" loading="lazy"
+                            width="" height="110%">
                     </div>
                 </div>
             </div>
@@ -2014,35 +124,33 @@
                         <h2 class="h h2">How it Works</h2>
                     </div>
                     <div class="h sub-heading">
-                        You control the user experience &amp;&nbsp;we handle the backend
+                        Have all your integrations in one place.
                     </div>
                     <div class="container p-3 m-3"></div>
                 </div>
                 <div class="h-row r-how">
                     <div class="h-col h-col-4 c-how">
                         <div class="how-it-works-bg small w-clearfix">
-                            <div class="dash-new-button">
-                                <div class="plus-icon-2">+</div>
-                                <div class="inline-block">Your&nbsp;Website</div>
-                            </div>
+                            <img src="./assets/images/slayhub.png" alt="" class="how-it-works-shadow" width=""
+                                height="">
                         </div>
-                        <p class="paragraph">1. Install a JavaScript code snippet to your website.</p>
+                        <p class="paragraph">1. Sign-In with from your Zendesk or Freshdesk to
+                            your AzureDevops or GitHub.</p>
                     </div>
                     <div class="h-col h-col-4 c-how">
                         <div class="how-it-works-bg small">
                             <img src="./assets/images/Howitworks.svg" alt="" class="how-it-works-shadow" width="120"
                                 height="120">
                         </div>
-                        <p class="paragraph">2. Set membership plans, pricing and permissions for your website.</p>
+                        <p class="paragraph">2. Manage tickets through a simple &amp; well-defined controls throughout
+                            entire platforms.</p>
                     </div>
                     <div class="h-col h-col-4 c-how">
                         <div class="how-it-works-bg small">
-                            <div class="counter-member">
-                                <div class="member-count">100</div>
-                                <div>Members</div>
-                            </div>
+                            <img src="./assets/images/slayhub.png" alt="" class="how-it-works-shadow" width=""
+                                height="">
                         </div>
-                        <p class="paragraph">3. Manage members through a simple dashboard.</p>
+                        <p class="paragraph">3. Set membership plans, pricing and permissions for your Slayhub.</p>
                     </div>
                 </div>
             </div>
@@ -2058,15 +166,16 @@
                             </p>
                             <div class="button-wrapper m-3">
                                 <a href="/" class="nbutton w-button pt-3 ">
-                                    Get&nbsp;Started for free
+                                    Get&nbsp;Started Now
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-8 swap_text">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="./assets/images/User Friendly.mp4" allowfullscreen></iframe>
-                          </div>
+                            <iframe class="embed-responsive-item" src="./assets/images/User Friendly.mp4"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="space _256"></div>
@@ -2076,17 +185,18 @@
                             <h2 class="h h3">Seamless Integration </h2>
                             <p>All the updates, comments and tags get synced seamlessly and in realtime. Choose what
                                 to keep it private and public. </p>
-                                <div class="button-wrapper m-3">
-                                    <a href="/" class="nbutton w-button pt-3 ">
-                                        Get&nbsp;Started for free
-                                    </a>
-                                </div>
+                            <div class="button-wrapper m-3">
+                                <a href="/" class="nbutton w-button pt-3 ">
+                                    Get&nbsp;Started Now
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-8 order-md-1 swap_text">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="assets\images\Seamless Integration.mp4" allowfullscreen></iframe>
-                          </div>
+                            <iframe class="embed-responsive-item" src="assets\images\Seamless Integration.mp4"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="space _256"></div>
@@ -2106,8 +216,9 @@
                     </div>
                     <div class="col-md-8 swap_text">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="assets\images\Quick Setup.mp4" allowfullscreen></iframe>
-                          </div>
+                            <iframe class="embed-responsive-item" src="assets\images\Quick Setup.mp4"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2187,8 +298,8 @@
                     <div class="ncolumn d7 mobile-100-center">
                         <div>
                             <h4 class="h4">Try Slayhub Now</h4>
-                            <div class="paragraph cta-p">100% free, unlimited trial — upgrade only when you're ready to
-                                launch. No credit card required.</div>
+                            <div class="paragraph cta-p">Integrate with Github and
+                                AzureDevops instantly with your choice!.</div>
                         </div>
                     </div>
                     <div class="ncolumn d5">
@@ -2197,14 +308,33 @@
                                 <div>Get Started Now</div>
                                 <div class="nbutton-icon">
                                     <div class="svg _24 w-embed">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="auto" viewBox="0 0 24 24"
-                                            width="1000px" fill="currentColor">
-                                            <g>
-                                                <g>
-                                                    <path
-                                                        d="M9.19,6.35c-2.04,2.29-3.44,5.58-3.57,5.89l-2.26-0.97c-0.65-0.28-0.81-1.13-0.31-1.63l3.01-3.01 c0.47-0.47,1.15-0.68,1.81-0.55L9.19,6.35L9.19,6.35z M10.68,16.51c0.3,0.3,0.74,0.38,1.12,0.2c1.16-0.54,3.65-1.81,5.26-3.42 c4.59-4.59,4.63-8.33,4.36-9.93c-0.07-0.4-0.39-0.72-0.79-0.79c-1.6-0.27-5.34-0.23-9.93,4.36c-1.61,1.61-2.87,4.1-3.42,5.26 c-0.18,0.38-0.09,0.83,0.2,1.12L10.68,16.51z M17.65,14.81c-2.29,2.04-5.58,3.44-5.89,3.57l0.97,2.26 c0.28,0.65,1.13,0.81,1.63,0.31l3.01-3.01c0.47-0.47,0.68-1.15,0.55-1.81L17.65,14.81L17.65,14.81z M8.94,17.41 c0.2,1.06-0.15,2.04-0.82,2.71c-0.77,0.77-3.16,1.34-4.71,1.64c-0.69,0.13-1.3-0.48-1.17-1.17c0.3-1.55,0.86-3.94,1.64-4.71 c0.67-0.67,1.65-1.02,2.71-0.82C7.76,15.28,8.72,16.24,8.94,17.41z M13,9c0-1.1,0.9-2,2-2s2,0.9,2,2s-0.9,2-2,2S13,10.1,13,9z">
-                                                    </path>
-                                                </g>
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="830.000000pt"
+                                            height="740.000000pt" viewBox="0 0 830.000000 740.000000"
+                                            preserveAspectRatio="xMidYMid meet" class="fillcolor">
+
+                                            <g transform="translate(0.000000,740.000000) scale(0.100000,-0.100000)"
+                                                fill="#000000" stroke="none">
+                                                <path d="M3660 6676 c-224 -29 -448 -82 -640 -153 -243 -90 -570 -276 -775
+                                                        -443 -487 -395 -826 -947 -960 -1566 -77 -351 -78 -787 -4 -1133 91 -424 283
+                                                        -833 546 -1161 418 -522 1036 -886 1683 -994 326 -54 702 -49 1014 15 529 107
+                                                        1006 363 1390 744 380 376 640 850 755 1370 44 201 55 319 55 585 0 266 -11
+                                                        384 -55 585 -154 697 -571 1308 -1162 1703 -337 226 -707 369 -1132 437 -138
+                                                        23 -572 29 -715 11z m1436 -1148 l34 -38 0 -451 c0 -404 -2 -454 -17 -479 -40
+                                                        -69 -138 -79 -197 -21 l-31 31 -3 375 -3 375 -370 0 -371 0 -33 33 c-61 61
+                                                        -53 154 17 197 32 20 46 20 486 18 l454 -3 34 -37z m-1131 -234 c56 -26 86
+                                                        -94 65 -149 -6 -16 -155 -176 -330 -356 l-320 -327 0 -316 0 -316 318 0 317 0
+                                                        100 101 c55 55 112 107 127 115 93 49 202 -30 183 -133 -6 -31 -31 -63 -143
+                                                        -177 -76 -76 -151 -145 -169 -152 -26 -11 -117 -14 -455 -14 -466 0 -466 0
+                                                        -512 63 -20 28 -21 42 -24 450 -2 232 0 437 3 456 5 27 71 99 353 387 191 195
+                                                        361 361 377 369 39 19 69 19 110 -1z m809 -858 c18 -7 42 -26 54 -41 22 -27
+                                                        22 -31 22 -477 0 -371 -2 -454 -14 -476 -8 -15 -170 -182 -360 -372 l-346
+                                                        -345 -56 0 c-51 0 -58 3 -90 37 -27 30 -34 46 -34 78 0 23 6 53 14 68 8 15
+                                                        154 166 325 337 l311 310 0 317 0 318 -324 0 -324 0 -109 -114 c-60 -63 -122
+                                                        -122 -138 -130 -89 -47 -195 27 -182 126 4 33 26 60 151 192 81 85 161 161
+                                                        179 170 28 13 90 16 460 16 341 0 434 -3 461 -14z m-1724 -909 c13 -7 35 -28
+                                                        47 -46 23 -34 23 -36 23 -396 l0 -362 338 5 c372 5 404 1 446 -48 54 -64 38
+                                                        -153 -35 -192 -32 -17 -61 -18 -482 -16 l-449 3 -34 37 -34 38 0 450 c0 492 0
+                                                        493 58 524 33 19 89 20 122 3z" />
                                             </g>
                                         </svg>
                                     </div>
@@ -2221,7 +351,7 @@
 
     <div id="footer" class="section-footer wf-section">
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm footer-items">
                     <h5 class="footer-h5"> Product</h5>
                     <a href="/features" class="footer-link">Overview</a>
@@ -2266,19 +396,20 @@
                 <a href="/" target="_blank" class="footer-link">Wishlist</a>
                 <a href="/blog" class="footer-link">Blog</a>
             </div>
-        </div>
-        <div class="footer-bottom-row">
-            <div class="footer-legal-row">
-                <a href="/" class="navigation-link footer">Privacy Policy</a>
-                <a href="/" class="navigation-link footer">Terms of Service</a>
-                <a href="/" class="navigation-link footer">Cookie Policy</a>
-                <a href="/" class="navigation-link footer">Security Policy</a>
-                <div class="sentence-footer" style="opacity: 1;">
-                    © Slayhub Inc. 2018 – 2021. All rights reserved.<br>
+        </div> -->
+            <div class="footer-bottom-row">
+                <div class="footer-legal-row">
+                    <a href="/" class="navigation-link footer">Privacy Policy</a>
+                    <a href="/" class="navigation-link footer">Terms of Service</a>
+                    <a href="/" class="navigation-link footer">Cookie Policy</a>
+                    <a href="/" class="navigation-link footer">Security Policy</a>
+                    <a href="/" class="navigation-link footer">Contact Us</a>
+                    <div class="sentence-footer" style="opacity: 1;">
+                        © Saaslay Inc. 2020 – 2021. All rights reserved.<br>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
