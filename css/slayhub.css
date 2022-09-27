@@ -1087,7 +1087,7 @@ a {
 
 .w-button {
     display: inline-block;
-    padding: 9px 15px;
+    /* padding: 9px 15px; */
     /* background-color: #3898ec; */
     color: #fff;
     border: 0;
@@ -1743,7 +1743,7 @@ svg:not(:root) {
 .container {
     position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin-right: auto;
     margin-left: auto;
     padding-right: 4%;
@@ -1832,5 +1832,5 @@ svg:not(:root) {
     height: auto;
 }
 .img-wrapper{
-    max-width: 130%;
+    max-width: 100%;
 }
