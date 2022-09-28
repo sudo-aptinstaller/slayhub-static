@@ -606,9 +606,7 @@
 
 /* HERE 1280 */
 @media (min-width:1280px) {
-    .swap_text{
-        padding: 0 !important;
-    }
+ 
 
 
     .container {
@@ -1833,10 +1831,29 @@ svg:not(:root) {
     height: 285px;
     margin-left: 50px;
 }
+
 .img-wrapper{
     max-width: 100%;
 }
 
+.swap_text{
+    position: relative;
+
+}
+
+.child {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .child2 {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    z-index:1;;
+  }
+  
 .user-friendly {
     content: url('assets\images\Website 1\Illustration\User_friendly_Illustration.png');
 
