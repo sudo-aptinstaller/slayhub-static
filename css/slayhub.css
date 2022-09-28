@@ -1819,17 +1819,13 @@ svg:not(:root) {
 }
 
 .overlay-container {
-    position: relative;
     width: 100%;
-    max-width: 400px;
 }
 
 
 .overlay-image {
-    display: block;
     width: 300px;
     height: 285px;
-    margin-left: 50px;
 }
 
 .img-wrapper{
