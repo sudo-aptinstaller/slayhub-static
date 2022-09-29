@@ -25,6 +25,18 @@
 }
 /* HERE 479 AND MEDIA STARTS */
 @media (max-width:479px) {
+    .charac {
+        right: -50px !important;
+      }
+    
+      .charac2 {
+        left: -5% !important;
+      }
+    
+    .charac3{
+        left: 15% !important;
+      }
+
     .img-wrapper {
         max-width: 100%;
         top: 0;
@@ -181,6 +193,18 @@
 
 /* HERE 767 */
 @media (max-width:767px) {
+    .charac {
+        right: -100px !important;
+      }
+    
+      .charac2 {
+        left: 30% !important;
+      }
+    
+    .charac3{
+        left: 25% !important;
+      }
+
     .img-wrapper {
         max-width: 100%;
         top: 0;
@@ -196,11 +220,6 @@
     }
 
     .overlay-container {
-        width: 100% !important
-
-    }
-
-    .overlay-image {
         width: 100% !important
 
     }
@@ -447,6 +466,18 @@
 
 /* HERE 991 */
 @media (max-width:991px) {
+    .charac {
+        right: -100px !important;
+      }
+    
+      .charac2 {
+        left: 30% !important;
+      }
+    
+    .charac3{
+        left: 25% !important;
+      }
+
 
     .img-wrapper {
         max-width: 100%;
@@ -1828,23 +1859,24 @@ svg:not(:root) {
     top: 0;
     left: 0;
   }
-  .charac{
-    z-index:1;
-    position:absolute; 
-    right:0;
-  }  
-  .charac2{
-    z-index:1;
-    position:absolute; 
-    right:0;
+  .charac {
+    z-index: 1;
+    position: absolute;
+    right: -50px;
   }
-  .charac2{
-      z-index:1;
-      position:absolute;
-      opacity:0.9;
-      left:10%;
+
+  .charac2 {
+    z-index: 1;
+    position: absolute;
+    left: -5%;
   }
-  
+
+  .charac3{
+    z-index: 1;
+    position: absolute;
+    left: 15%;
+  }
+
 .user-friendly {
     content: url('assets\images\Website 1\Illustration\User_friendly_Illustration.png');
 
