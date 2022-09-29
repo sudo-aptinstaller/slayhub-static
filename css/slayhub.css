@@ -1862,7 +1862,8 @@ svg:not(:root) {
   .charac {
     z-index: 1;
     position: absolute;
-    right: -50px;
+    /* right: -50px;-- need update jero for media too  */
+    left: 35%;
   }
 
   .charac2 {
