@@ -25,16 +25,23 @@
 }
 /* HERE 479 AND MEDIA STARTS */
 @media (max-width:479px) {
+    .vid {
+        margin-top: 30px;
+        width: 70%;
+    }
     .charac {
-        right: -50px !important;
+        left: 33% !important;
+        top: -9%;
       }
     
       .charac2 {
-        left: -5% !important;
+        left: 35% !important;
+        top: -11%;
       }
     
     .charac3{
-        left: 15% !important;
+        left: 35% !important;
+        top: -5%;
       }
 
     .img-wrapper {
@@ -193,8 +200,11 @@
 
 /* HERE 767 */
 @media (max-width:767px) {
+    .vid {
+        margin-top: 30px;
+    }
     .charac {
-        right: -100px !important;
+        left: -100px !important;
       }
     
       .charac2 {
@@ -466,8 +476,11 @@
 
 /* HERE 991 */
 @media (max-width:991px) {
+    .vid {
+        margin-top: 30px;
+    }
     .charac {
-        right: -100px !important;
+        left: 35% !important;
       }
     
       .charac2 {
@@ -1862,7 +1875,6 @@ svg:not(:root) {
   .charac {
     z-index: 1;
     position: absolute;
-    /* right: -50px;-- need update jero for media too  */
     left: 35%;
   }
 
