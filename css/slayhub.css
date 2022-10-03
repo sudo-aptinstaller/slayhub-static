@@ -204,15 +204,15 @@
         margin-top: 30px;
     }
     .charac {
-        left: 30% !important;
+        left: 30% ;
       }
     
       .charac2 {
-        left: 30% !important;
+        left: 30%;
       }
     
     .charac3{
-        left: 25% !important;
+        left: 25%;
       }
 
     .img-wrapper {
@@ -480,7 +480,7 @@
         margin-top: 30px;
     }
     .charac {
-        left: 35% !important;
+        left: 35% ;
       }
     
       .charac2 {
@@ -488,7 +488,7 @@
       }
     
     .charac3{
-        left: 25% !important;
+        left: 25% ;
       }
 
 
