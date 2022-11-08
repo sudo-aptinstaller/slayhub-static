@@ -25,23 +25,28 @@
 }
 /* HERE 479 AND MEDIA STARTS */
 @media (max-width:479px) {
+    .clean-section.home-hero {
+        padding-top: 30px !important;
+    }
     .vid {
         margin-top: 30px;
-        width: 70%;
     }
     .charac {
-        left: 33% !important;
-        top: -9%;
+        width: 40% !important;
+        left: 68% !important;
+        bottom: 0px;
       }
     
       .charac2 {
-        left: 35% !important;
-        top: -11%;
+        width: 40% !important;
+    left: 68% !important;
+        bottom: 0px;
       }
     
     .charac3{
-        left: 35% !important;
-        top: -15%;
+        width: 40% !important;
+        bottom: 0px;
+        left: 68% !important;
       }
 
     .img-wrapper {
@@ -200,19 +205,28 @@
 
 /* HERE 767 */
 @media (max-width:767px) {
+    .clean-section.home-hero {
+        padding-top: 30px !important;
+    }
     .vid {
         margin-top: 30px;
     }
     .charac {
-        left: 30% ;
+        width: 40% !important;
+        left: 68% !important;
+        bottom: 0px;
       }
     
       .charac2 {
-        left: 30%;
+        width: 40% !important;
+        left: 68% !important;
+        bottom: 0px;
       }
     
     .charac3{
-        left: 25%;
+        width: 40% !important;
+        left: 68% !important;
+        bottom: 0px;
       }
 
     .img-wrapper {
@@ -327,9 +341,6 @@
         font-size: 32px
     }
 
-    .clean-section {
-        padding-top: 40px
-    }
 
     .h.sub-heading {
         font-size: 17px !important;
@@ -484,7 +495,8 @@
       }
     
       .charac2 {
-        left: 30% !important;
+        right: -10% !important;
+        left: unset !important;
       }
     
     .charac3{
@@ -594,10 +606,6 @@
 
     .button-wrapper {
         margin-top: 0
-    }
-
-    .clean-section {
-        padding-top: 60px
     }
 
     ._12-columns {
@@ -889,9 +897,6 @@ a {
     line-height: 1.7em
 }
 
-.clean-section {
-    padding-top: 100px;
-}
 
 .r-how {
     margin-top: 30px;
@@ -1780,7 +1785,7 @@ svg:not(:root) {
 .clean-section.home-hero {
     position: relative;
     overflow: hidden;
-    padding-top: 100px;
+    padding-top: 110px;
 }
 
 .container-connector {
@@ -1874,17 +1879,20 @@ svg:not(:root) {
   }
   .charac {
     z-index: 1;
+    width: 80%;
     position: absolute;
     left: 35%;
   }
 
   .charac2 {
+    width: 80%;
     z-index: 1;
     position: absolute;
     left: -5%;
   }
 
   .charac3{
+    width: 80%;
     z-index: 1;
     position: absolute;
     left: 25%;
