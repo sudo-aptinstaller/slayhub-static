@@ -1,28 +1,3 @@
-
-@font-face {
-    font-family: PlusJakartaTextBold;
-    src: url("./assets/fonts/PlusJakartaText-Bold.otf") format("opentype");
-}
-
-@font-face {
-    font-family: PlusJakartaTextRegular;
-    src: url("./assets/fonts/PlusJakartaText-Regular.otf") format("opentype");
-}
-
-@font-face {
-    font-family: PlusJakartaDisplayBold;
-    src: url("./assets/fonts/PlusJakartaDisplay-Bold.otf") format("opentype");
-}
-
-@font-face {
-    font-family: PlusJakartaDisplayMedium;
-    src: url("./assets/fonts/PlusJakartaDisplay-Medium.otf") format("opentype");
-}
-
-@font-face {
-    font-family: PlusJakartaDisplayRegular;
-    src: url("./assets/fonts/PlusJakartaDisplay-Regular.otf") format("opentype");
-}
 /* HERE 479 AND MEDIA STARTS */
 @media (max-width:479px) {
     .clean-section.home-hero {
