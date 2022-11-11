@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Slayhub</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="row-fluid container-fluid my-4">
+            <div class="row">
+                <div class="col-2">
+                  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-authorization-tab" data-toggle="pill" href="#v-pills-authorization" role="tab" aria-controls="v-pills-authorization" aria-selected="true">Authorization</a>
+                    <a class="nav-link" id="v-pills-repository-tab" data-toggle="pill" href="#v-pills-repository" role="tab" aria-controls="v-pills-repository" aria-selected="false">Repository</a>
+                    <a class="nav-link" id="v-pills-issues-tab" data-toggle="pill" href="#v-pills-issues" role="tab" aria-controls="v-pills-issues" aria-selected="false">Issues</a>
+                    <a class="nav-link" id="v-pills-webhooks-tab" data-toggle="pill" href="#v-pills-webhooks" role="tab" aria-controls="v-pills-webhooks" aria-selected="false">Webhooks</a>
+                    <a href="index.html" class="btn btn-secondary my-4">Go Back</a>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade active show" id="v-pills-authorization" role="tabpanel" aria-labelledby="v-pills-authorization-tab">
+                            <p>The GitHub OAuth user token is used by SlayHub to perform all of the needed actions within GitHub on your behalf. </p>
+                            <p>It uses the OAuth token to perform actions that are listed below </p>
+                            <ul>
+                                <li>Create issues</li>
+                                <li>List repository issues</li>
+                                <li>Add and list comments of an issue</li>
+                                <li>List repositories both public and private</li>
+                                <li>Repository information like labels, assignees and status</li>
+                                <li>Webhooks Configuration</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-repository" role="tabpanel" aria-labelledby="v-pills-repository-tab">
+                            <p>Using the OAuth, it'll retrive the list of all the organization or individual repositories based on the settings.</p>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-issues" role="tabpanel" aria-labelledby="v-pills-issues-tab">
+                            <p>Using the OAuth, it'll be able to add and list issues of the repository associated with the active ticket and will be able to check status, labels & comments of the issue.</p>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-webhooks" role="tabpanel" aria-labelledby="v-pills-webhooks-tab">
+                            <p>Webhooks are event driven APIs used to do realtime updations in SlayHub, the permissions requested are the most minimal ones that is required to perform all the functions available in SlayHub.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    </body>
+</html>
