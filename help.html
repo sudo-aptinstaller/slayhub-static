@@ -81,11 +81,11 @@
                                     </span> -->
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#how_does_it_work" class="nav-link">How does it work</a>
+                                    <a href="#how_does_it_work" class="nav-link">How does it work?</a>
                                 </li>
                                
                                 <li class="nav-item">
-                                    <a href="#Authentication" class="nav-link">Authentication</a>
+                                    <a href="#Authentication" class="nav-link">How to setup Slayhub?</a>
                                     <!-- <ul class="list-unstyled dropdown_nav">
                                         <li class="nav-item"><a href="#change_site_title_and_favicon" class="nav-link">Change Site Title and Favicon</a></li>
                                         <li class="nav-item"><a href="#change_logo" class="nav-link">Change Logo</a></li>
@@ -97,7 +97,7 @@
                                     </span> -->
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#repository" class="nav-link">Repository</a>
+                                    <a href="#repository" class="nav-link">Link a repository</a>
                                     <!-- <ul class="list-unstyled dropdown_nav">
                                         <li class="nav-item"><a href="#creating_a_project" class="nav-link">Creating a project</a></li>
                                         <li class="nav-item"><a href="#portfolio_single_page_setting" class="nav-link">Portfolio Single Page Setting</a></li>
@@ -182,81 +182,78 @@
                                     <li>Add and list comments of an issue</li>
                                     <li>List repositories both public and private</li>
                                     <li>Repository information like labels, assignees and status</li>
-                                    <li>Webhooks Configuration</li>
+                                    <li>Webhooks configuration for real-time communication.</li>
                                 </ol>
                             </div>
 
                             <h3 class="c_head load-order-2">Repository</h3>
                             <div class="code_item">
-                                <p>Using the OAuth, it'll retrive the list of all the organization or individual repositories based on the settings.</p>
+                                <p>Using OAuth, it'll retrive the list of all the organization or individual repositories based on the authorisation configurations.</p>
                             </div>
 
                             <h3 class="c_head load-order-2">Issues</h3>
                             <div class="code_item">
-                                <p>Using the OAuth, it'll be able to add and list issues of the repository associated with the active ticket and will be able to check status, labels & comments of the issue.</p>
+                                <p>Using OAuth, it'll be able to add and list issues of the repository associated with the active ticket and will be able to check status, labels & comments of the issue.</p>
                             </div>
 
                             <h3 class="c_head load-order-2">Webhooks</h3>
                             <div class="code_item">
-                                <p>Webhooks are event driven APIs used to do realtime updations in SlayHub, the permissions requested are the most minimal ones that is required to perform all the functions available in SlayHub.</p>
+                                <p>Webhooks are event driven APIs used to do realtime updations in SlayHub, The application subscribes only to the necessary events that are required by it to deliver you all its functionalities.</p>
                             </div>
 
-                        </article>
-
-                        <article class="documentation_body doc-section" id="how_to_use">
-                            <div class="shortcode_title" id="how_to_use_title">
-                                <h2>How to use?</h2>
-                            </div>
-                            <div class="alert alert-primary" role="alert">
-                                Every<strong> ticket</strong> requires a linked <strong> repository </strong> to work.
-                            </div>
-                        </article>
-                    
+                        </article>                    
                       
                         <article class="documentation_body doc-section" id="Authentication">
+                            
                             <div class="shortcode_title">
-                                <h2 class="load-order-2" id="authentication_title">Authentication</h2>
-                                <p>SlayHub supports both Github and Azure DevOps repositories.</p>
-                                <p>SlayHub uses OAuth Tokens to perform actions on your repositories on your behalf.</p>
-                                <p>Without providing appropriate permissions, the application won't be able to perform any of its functions. It would thus keep requesting for permissions until the user grants what is required.</p>
+                                <h2 class="load-order-2" id="authentication_title">How to setup Slayhub?</h2>
+                                <p>Slayhub has two service modes, Azure and Github.</p>
+                                <p>This allows users to integrate the application with one or both at the same time through OAuth Token generated in the authorization process while setting up the application.</p>
+                                <p>Hence without providing appropriate permissions, the application won't be able to perform any of its functions. It would thus keep requesting for permissions until the user grants what is required.</p>
                                 <figure>
                                 <img class="img-thumbnail" src="./assets/images/help/git/slayhub-oauth-landing.png" alt="Create a portfolio">
                                 </figure>
                                 <p>Once Slayhub is done loading you get to pick your Version Control.</p>
+
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image.png" alt="go to Appearance -> Import Demo Data">
                                   </figure>
                                   <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/Azure/azure-authorise.png" alt="go to Appearance -> Import Demo Data">
                                   </figure>
-                                <p>Once you clicked continue, a tab would open up with a confirmation page. Please read through the provided data carefully and if you consent click on the Authorize Button.</p>
+                                <p>Once you select the desired service, a pop-up tab takes you to the authorization screen. Please read through the required permissions carefully and if you consent click on the Authorize Button.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (1).png" alt="go to Appearance -> Import Demo Data">
+                                    <figcaption class="text-left">If you chose Github as your version control,You should be redirected to the github page for authentication. If you have an active account it would request access, otherwise, it would request you to login. If you want Slayhub to fetch Organization Repositories then click on the 'Request or Grant' button based who the owns the organization. Once you have added every organization that you wanted click on Authorize Slayhub to continue.</figcaption>
                                 </figure>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/Azure/azure-oauth-terms.png" alt="go to Appearance -> Import Demo Data">
-                                    <figcaption></figcaption>
+                                    <figcaption class="text-left"><p>If you chose Azure as your version control, you should be redirected to the azure page for authorization. If you have an active account it would request access, otherwise, it would request you to login. Click on accept to continue.</p>
+                                        <p>Note : Due to some limitations in Azure's Token permissions, you cannot access private repositories, unless you manually configure it to be accessible through the application.</p></figcaption>
                                 </figure>
-                                <p>You should be redirected to the github page for authentication. If you have an active account it would request access, otherwise, it would request you to login. If you want Slayhub to fetch Organization Repositories then click on the 'Request or Grant' button based who the owns the organization which is highlighted in <span class="text-danger">red</span>. Once you have added every organization that you wanted click on Authorize Slayhub to continue.</p>
+                                <figure class="row g-2 img-thumbnail ml-lg-1">
+                                    <img class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12" src="./assets/images/help/git/MicrosoftTeams-image (2).png" alt="go to Appearance -> Import Demo Data">
+                                    <img class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12" src="./assets/images/help/oauth-failed.png" alt="go to Appearance -> Import Demo Data">
+                                </figure>
+                                <p class="">Irrespective of the service you chose, On completing authorization, you'll be redirected back to the post-authorization screen, if you've successfully completed the authorization process you'll see the success screen from which you can continue using the application else you'll see the failed integration screen in this case you have to redo the integration process.</p>
+                                <p>If the authorization was successful you can click on the proceed button, this will close the popup window, after that you can go to the application and click on the service you just completed the authorization for.</p>
                                 <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (2).png" alt="go to Appearance -> Import Demo Data">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/slayhub-oauth-landing.png" alt="Create a portfolio">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (3).png" alt="go to Appearance -> Import Demo Data">
                                 </figure>
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-oauth-success.png" alt="go to Appearance -> Import Demo Data">
-                                    <figcaption></figcaption>
+                                <p>If the setup process completed successfully, then you should see the issues tab open and the application is ready to use.</p>
+                                <div class="alert alert-primary" role="alert">
+                                    Every <strong>Zendesk ticket</strong> requires a linked <strong> repository </strong> to work.
+                                </div>
+                                <!-- <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/both-service-connected.png" alt="go to Appearance -> Import Demo Data">
+                                    <figcaption class="text-center">Change your service seamlessly</figcaption>
                                 </figure>
-                                <p>SlayHub supports both Github and Azure DevOps repositories.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/git-servie-connected.png" alt="go to Appearance -> Import Demo Data">
                                     <img class="img-thumbnail" src="./assets/images/help/Azure/azure-service.png" alt="go to Appearance -> Import Demo Data">
                                 </figure>
-
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (3).png" alt="go to Appearance -> Import Demo Data">
-                                    <img class="img-thumbnail" src="./assets/images/help/git/both-service-connected.png" alt="go to Appearance -> Import Demo Data">
-                                    <figcaption class="text-center">Change your service seamlessly</figcaption>
-                                </figure>
-                                <p>You can change the service through the <b>change Service</b> button</p>
+                                <p>You can change the service through the <b>change Service</b> button</p> -->
                             </div>
 
                             <!-- <div class="shortcode_title" id="change_logo">
@@ -283,53 +280,42 @@
                         <!-- repository -->
                         <article class="documentation_body doc-section" id="repository">
                             <div class="shortcode_title">
-                                <h2 class="load-order-2" id="default_repository_title">Default repository</h2>
-                                <p>The default state where a repository not linked to the ticket.</p>
-                                
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Setting default repository.png" alt="Create a portfolio">
-                                </figure>
-                                
-                                <p>Click on the highlighted button to navigate to the repository tab.</p>
-
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/A newly created ticket with default repository active.png" alt="Create a portfolio">
-                                </figure>
-
-                                <p>Click on the switch to active any of the repository to link that repository to the active ticket.</p>
-
-                                
-
-                            </div>
-
-
-
-
-                            <div class="shortcode_title" id="link_repository_title">
-                                <h2 class="load-order-2">How to link a repository</h2>
+                                <h2 class="load-order-2" id="default_repository_title">Link a repository</h2>
+                                <!-- <p>The default state where a repository not linked to the ticket.</p> -->
                                 <p>With Slayhub you can change the linked repository seamlessly.</p>
-                                
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/repository-tab.png" alt="Portfolio Single Page Setting 1">
-                                </figure>
-                                <p>Navigate to the repository tab and click on the required repository switch.</p>
-                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/MicrosoftTeams-image (2).png" alt="Portfolio Single Page Setting 1">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/swat-cats-repo.png" alt="Portfolio Single Page Setting 1">
                                     <img class="img-thumbnail" src="./assets/images/help/git/Changed active repository to a different one.png" alt="Portfolio Single Page Setting 1">
                                 </figure>
-                                <p>Wait till the repository is active and you are good to go.</p>
+                                <p>Select the repository button to switch to the repository tab, once you are the in the repository tab you can search for the repository using the search bar at the top, once you found the repository that you want, click on the switch next to the repository name. <br>
+                                This switch usually takes a few seconds after it loads all the necessary data, you should see the switch active on the selected repository and the active repository name can be seen on the bottom-right corner of the application. <br>    
+                                That's it! you have successfully linked a repository to the Zendesk ticket.</p>
+                                <p>With Slayhub you can switch between repository with ease, as long as you have the required permissions. (Refer to the permissions section in settings).</p>
                             </div>
-
+                            <!-- <div class="shortcode_title" id="link_repository_title">
+                                <h2 class="load-order-2">How to link a repository</h2>
+                                <p>With Slayhub you can change the linked repository seamlessly.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/settings-screen.png" alt="Create a portfolio">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Setting default repository.png" alt="Create a portfolio">
+                                </figure>
+                                <p>Navigate to the repository tab and click on the required repository switch.</p>
+                                <p>Wait till the repository is active and you are good to go.</p>
+                            </div> -->
                         </article>
 
                         <!-- issues -->
                         <article class="documentation_body doc-section" id="issues">
+                            
                             <div class="alert alert-warning" role="alert">
                                 <strong>Warning : </strong> Actions and Stats would only be available after you have linked a repository to the ticket.
                             </div>
                             <div class="shortcode_title" id="create_issue">
                                 <h2 class="load-order-2">Create Issue</h2>
                                 <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Post-Repository activation issue tab.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/duck-tales-splash.png" alt="Portfolio Single Page Setting 1">
                                 </figure>
                                 <p>If not in the issues tab, navigate there and click on the Create Issue button.</p>
                                 <figure>
@@ -337,45 +323,43 @@
                                 </figure>
                                 <p>You should see a form titled 'Add New Issue', if so then start filling the form with the required data and click on Create Issue when done.</p>
                                 <p class="m-0">
-                                    <span class="badge badge-info my-4">Mandatory fields : 
-                                        Everything except <strong class="text-dark">Description</strong> are mandatory fields
+                                    <span class="badge badge-info">Mandatory fields : 
+                                        Everything except <strong class="text-dark">Description</strong> are mandatory fields.
                                     </span>
                                     
                                 </p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Issue creation form.png" alt="Add your link here">
-                                </figure>
-                                <p>It would take a second to submit, the status of the process can be seen on the submit button. Once its done submitting the form will be emptied out and you can close the form.</p>
-                                <div>Submitting : <div class="spinner-border text-success" role="status"></div></div>
-                                <div>Success : ✔</div>
-                                <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/After issue creation.png" alt="Add your link here">
+                                </figure>
+                                <p>It would take a second to submit, the status of the process can be seen on the submit button. Once its done submitting the form will close and you'll be taken to the issues tab again, where you can see the created issue listed over there.</p>
+                                <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Exploring issue.png" alt="Add your link here">
                                     <!-- <img class="img-thumbnail" src="./assets/images/help/git/Issue explore on github.png" alt="Add your link here"> -->
                                     <!-- <img class="img-thumbnail" src="./assets/images/help/git/Closing the issue from github.png" alt="Add your link here"> -->
                                 </figure>
-                                <p>On closing the form you should be back in the issues tab and notice the raised issue listed there. You can click on the view button to reveal more in-depth data on the raised issue.</p>
+                                <p>A submitted issue can be further explored by clicking the view button next to the issue subject.<br>
+                                    An explored issue shows the status, labels, assignees and everything associated to the issue.</p>
                             </div>
 
                             <div class="shortcode_title" id="link_issue">
                                 <h2 class="load-order-2">Link Issue</h2>
                                 <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/search for link issue.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/After issue creation.png" alt="Add your link here">
                                 </figure>
-                                <p>Navigate to the issues tab and click on the 'Link Issue' button.</p>
+                                <p>To link an issue that already exist on your version control to your current Zendesk ticket, you must first navigate to the 'Issues' tab, and click on 'Link Issue' button to open the link issue form.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/list of existing issues on github - link issue.png" alt="Change Header Setting">
-                                    <!-- <img class="img-thumbnail" src="./assets/images/help/link issues/MicrosoftTeams-image.png" alt="Change Header Setting"> -->
+                                    <img class="img-thumbnail" src="./assets/images/help/git/selected-link-issue.png" alt="Add your link here">
                                 </figure>
-                                <p>You should get a menu with a dropdown, where you can select the required issue and click on Link Issue.</p>
+                                <p>Once you have the link issue form open, you can search for the issue that you are looking for. Once you found the issue to be linked click on the issue (should see a highlight in blue on the selected issue), click on the submit button.<br>
+                                The linking process should start once you clicked submit, the application starts to request the data from your version control and it also sync all the comment with the linking <a href="#client_tag">(#client)</a> tag.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Successfully linked an issue.png" alt="Change Header Setting">
-                                </figure>
-                                <p>Like the issue creation it also has the process status displayed on the button. If you try to link an already linked issue you would get an 'Already Linked' status back.</p>
-                                <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/linked issue exploration.png" alt="Change Header Setting">
                                 </figure>
-                                <p>On successful completion you the form would reset and you can close the window and would find your linked issue listed in the issue tab.</p>
+                                <p>If the linking process was successful you should see a successfully linked message and the link form would close and take you back to the issues tab where you should see the linked issue listed.</p>
+                                <p>The linked issue can be explored just like a created issue, and if the issue had comments with the linking <a href="#client_tag">(#client)</a> tag, you should see it listed under the comments section when you view the linked issue.</p>
                             </div>
 
                             <div class="shortcode_title">
@@ -384,47 +368,32 @@
                                     <strong>Warning : </strong> you should have a linked or raised issue to comment on first !
                                   </div>
                                   <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Can comment on issue.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Exploring issue.png" alt="Add your link here">
                                   </figure>
-                                <p>In order to add a comment, Firsrt navigate to the issue tab and click on the view button.</p>
+                                <p>To comment on a linked or created issue, you must first navigate to the issues tab, click on the view button next to the issue subject that you want to comment on, scroll to the comments section and click on the purple chat bubble button on the right side of the comments heading.<br>
+                                Clicking on the chat bubble should open the comment form.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Comment form.png" alt="Add your link here">
                                 </figure>
-                              <p>Once you are in the view section of the desired issue, you can click on the comments button which is highlighted in red.</p>
+                              <p>On clicking submit Slayhub would add a 'Submitted By : user' to the end of your typed message. (Don't be alarmed, this is done so that the users from the version control end can identify who the comment was from) </p>
                               <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/comment submitted.png" alt="Add your link here">
-                                </figure>
-                                <p>You should see the 'Add Comment' form opened, enter your comment and click on the 'Submit Comment' button. You can close the window once you are done.</p>
-
-
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/comment submitted.png" alt="Add your link here">
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Every comment type.png" alt="Add your link here">
-                                </figure>
-                              <p>You should still be in the 'View Issue' window and you'd find all the comments highlighted and as agent in the comments section.</p>
-                              <li class="list-group-item list-group-item-info m-2">
-                                <p>What is two way linking ? </p>
-                                <p>Two-way linking is the process where the data would be synced on both ends while the respective issue would be added or linked.</p>
-                                <p>In forced mode the data would be wiped from SlayHub, but with two-way linking SlayHub would sync it from github, the next time if the same repository and issue is linked to the ticket.</p>
-                            </li>
-                            <h5>But, wait how would the devs reply ? Don't worry we got you covered.</h5>
-                                <figure>
+                                  <img class="img-thumbnail" src="./assets/images/help/git/comment submitted.png" alt="Add your link here">
                                     <img class="img-thumbnail" src="./assets/images/help/git/Comment from zendesk.png" alt="Add your link here">
                                 </figure>
-                                <p>Here is the result of your actions reflected on github.</p>
+                                <p>If it submitted successfully you should see your message listed under comments in Slayhub Purple, along with your commenting user's name and the timestamp of the comment.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Comment from github - on github.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Every comment type.png" alt="Add your link here">
                                 </figure>
-                                <p>Now its the developer's turn to reply, they can reply to this conversation using the <span class="badge badge-info">#client</span> or <span class="badge badge-info">#Client</span> tag.</p>
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Comment from github - on slayhub.png" alt="Add your link here">
-                                </figure>
-                                <p>These comments would be delivered to Slayhub in realtime!</p>
+                                <h5>But, wait how would the devs reply ? Don't worry we got you covered.</h5>
+                                <p><b>We don't want our support agents to be confused by the list of tech mumbo jumbo conversations that the developer's have on their version controls.<br>
+                                So instead of synchronizing every single comment on issue, Slayhub lets the developers add a <span id="client_tag" class="badge bg-info text-white">#client</span> or <span class="badge bg-info text-white">#Client</span> tag to their comments if its intended for the support staff.<br>
+                                If Slayhub sees a comment that's sent over through the Webhook that contains the <span class="badge bg-info text-white">#client</span> or <span class="badge bg-info text-white">#Client</span> tag it adds the comment to the specific issue else it would just ignore the comment as a whole.</b></p>
+                              <p>Slayhub keeps track of who commented and when, also it identifies whether the comment is from Slayhub or if it was added by the developers onto the version control.<br>
+                                It basically has two user types agents and developers.<br>
+                                Agent messages would be shown in Slayhub Purple with the agent tag along side their names and Developers messages would be shown in Slayhub Grey with the developer tag along side the username of the developer who commented on the issue.</p>
                             </div>
-
-                            
-
-                            <!-- <div class="shortcode_title" id="blog_archive">
+                            <div class="shortcode_title" id="blog_archive">
                                 <h2 class="load-order-2" id="blog_archive_title">Blog Archive</h2>
                                 <p>To change archive Layout and setting you can change by following this screenshot here.</p>
                                 <figure>
@@ -432,43 +401,6 @@
                                     <figcaption class="text-center">Change Blog Archive Setting</figcaption>
                                 </figure>
                             </div>
-
-                            <div class="shortcode_title" id="blog_single">
-                                <h2 class="load-order-2" id="blog_single_title">Blog Single</h2>
-                                <p>To change blog single Layout and setting you can change by following this screenshot here.</p>
-                                <figure>
-                                    <img class="img-thumbnail" src="img/imroz/theme-options/blog_single.png" alt="Change Blog Single Setting">
-                                    <figcaption class="text-center">Change Blog Single Setting</figcaption>
-                                </figure>
-                            </div>
-
-                            <div class="shortcode_title" id="typography">
-                                <h2 class="load-order-2" id="typography_title">Typography</h2>
-                                <p>To change Typography and setting you can change by following this screenshot here.</p>
-                                <figure>
-                                    <img class="img-thumbnail" src="img/imroz/theme-options/typography.png" alt="Change Typography Setting">
-                                    <figcaption class="text-center">Change Typography Setting</figcaption>
-                                </figure>
-                            </div>
-
-                            <div class="shortcode_title" id="404_page">
-                                <h2 class="load-order-2" id="404_page_title">404 Page</h2>
-                                <p>To change 404 and setting you can change by following this screenshot here.</p>
-                                <figure>
-                                    <img class="img-thumbnail" src="img/imroz/theme-options/404_page.png" alt="Change 404 Page Setting">
-                                    <figcaption class="text-center">Change 404 Page Setting</figcaption>
-                                </figure>
-                            </div>
-
-                            <div class="shortcode_title" id="back_to_top_arrow">
-                                <h2 class="load-order-2" id="back_to_top_arrow_title">Back to Top Arrow</h2>
-                                <p>To change Back to Top Arrow and setting you can change by following this screenshot here.</p>
-                                <figure>
-                                    <img class="img-thumbnail" src="img/imroz/theme-options/back_to_top_arrow.png" alt="Change Back to Top Arrow Setting">
-                                    <figcaption class="text-center">Change Back to Top Arrow Setting</figcaption>
-                                </figure>
-                            </div> -->
-
                         </article>
 
                         <!-- settings -->
