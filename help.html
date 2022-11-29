@@ -1,38 +1,578 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Slayhub</title>
-        <link rel="icon" href="./assets/images/slayhub.ico" type="image/x-icon" sizes="228x228">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-            <div class="container-fluid">
-                    <a class="navbar-brand active" aria-current="page" href="#">
-                        <img src="./assets/images/site/slayhub-logo.webp" alt="" width="110" height="" class="">
-                    </a>
-                <div class="navigation-right">
-                    <a class="btn btn-outline-light navigation-link login w-nav-link text-dark m-0" href="./index.html">Home</a>
-                </div>
-            </div>
-        </nav>
-<div>
-    <div class="container-fluid my-5 pt-5">
-        <div class="row">
-            <div class="list-group col-2">
-                <a href="./how-to-use.html" class="list-group-item list-group-item-action">How to use ?</a>
-                <a href="./how-does-it-work.html" class="list-group-item list-group-item-action">How does it work ?</a>
-            </div>
-            <div class="list-group col-10">
-                <h5 class="display-4 text-center">Welcome to the SlayHub Documentation.</h5>
-                <h6 class="display-5 text-center">Use the navigation to the left to go to docs.</h6>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./assets/images/slayhub.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-select.min.css">
+    <!-- icon css-->
+    <link rel="stylesheet" href="assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/video/video-js.css">
+    <link rel="stylesheet" href="assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <title>Slayhub</title>
+</head>
+
+<body class="doc full-width-doc onepage-doc" data-spy="scroll" data-target=".navbar" data-offset="0">
+<div class="body_wrapper sticky_menu">
+    <nav class="navbar navbar-expand-lg menu_one menu_logo_change">
+        <div class="container-fluid pl-60 pr-60">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./assets/images/site/slayhub-logo.webp"  alt="logo">
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav menu ml-auto">
+                    <li class="nav-item">
+                        <a href="./index.html" class="nav-link btn btn-outline-light text-dark">Home</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
+    <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+        <div class="overlay_bg"></div>
+        <div class="container-fluid pl-60 pr-60">
+            <div class="row doc-container">
+                <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none mr-lg-2">
+                    <!-- Start Asid area  -->
+                    <aside class="doc_left_sidebarlist">
+                        <h3 class="nav_title">Slayhub-Doc NAVIGATION</h3>
+                        <div class="scroll">
+                            <ul class="list-unstyled nav-sidebar doc-nav">
+                                <li class="nav-item">
+                                    <a href="#getting_started" class="nav-link">Getting Started</a>
+                                    <!-- <ul class="list-unstyled dropdown_nav">
+                                        <li class="nav-item"><a href="#requirements" class="nav-link">Requirements</a></li>
+                                        <li class="nav-item"><a href="#whats_included" class="nav-link">What's Included</a></li>
+                                    </ul>
+                                    <span class="icon">
+                                        <i class="icon_plus"></i>
+                                        <i class="icon_minus-06"></i>
+                                    </span> -->
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#how_does_it_work" class="nav-link">How does it work</a>
+                                </li>
+                               
+                                <li class="nav-item">
+                                    <a href="#Authentication" class="nav-link">Authentication</a>
+                                    <!-- <ul class="list-unstyled dropdown_nav">
+                                        <li class="nav-item"><a href="#change_site_title_and_favicon" class="nav-link">Change Site Title and Favicon</a></li>
+                                        <li class="nav-item"><a href="#change_logo" class="nav-link">Change Logo</a></li>
+                                        <li class="nav-item"><a href="#customize_menu" class="nav-link">Customize Menu</a></li>
+                                    </ul>
+                                    <span class="icon">
+                                        <i class="icon_plus"></i>
+                                        <i class="icon_minus-06"></i>
+                                    </span> -->
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#repository" class="nav-link">Repository</a>
+                                    <!-- <ul class="list-unstyled dropdown_nav">
+                                        <li class="nav-item"><a href="#creating_a_project" class="nav-link">Creating a project</a></li>
+                                        <li class="nav-item"><a href="#portfolio_single_page_setting" class="nav-link">Portfolio Single Page Setting</a></li>
+                                    </ul>
+                                    <span class="icon">
+                                        <i class="icon_plus"></i>
+                                        <i class="icon_minus-06"></i>
+                                    </span> -->
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#issues" class="nav-link">Issues</a>
+                                    <ul class="list-unstyled dropdown_nav">
+                                        <li class="nav-item"><a href="#create_issue" class="nav-link">Create Issue</a></li>
+                                        <li class="nav-item"><a href="#link_issue" class="nav-link">Link Issue</a></li>
+                                        <li class="nav-item"><a href="#add_comment" class="nav-link">Add comment</a></li>
+                                        <!-- <li class="nav-item"><a href="#page_banner" class="nav-link">Page Banner</a></li>
+                                        <li class="nav-item"><a href="#blog_archive" class="nav-link">Blog Archive</a></li>
+                                        <li class="nav-item"><a href="#blog_single" class="nav-link">Blog Single</a></li>
+                                        <li class="nav-item"><a href="#typography" class="nav-link">Typography</a></li>
+                                        <li class="nav-item"><a href="#404_page" class="nav-link">404 Page</a></li>
+                                        <li class="nav-item"><a href="#back_to_top_arrow" class="nav-link">Back to Top Arrow</a></li> -->
+                                    </ul>
+                                    <span class="icon">
+                                        <i class="icon_plus"></i>
+                                        <i class="icon_minus-06"></i>
+                                    </span>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#settings" class="nav-link">Settings</a>
+                                    <ul class="list-unstyled dropdown_nav">
+                                        <li class="nav-item"><a href="#permissions" class="nav-link">Permissions</a></li>
+                                        <li class="nav-item"><a href="#text_formatting_labels" class="nav-link">Text Formatting & Labels</a></li>
+                                    </ul>
+                                    <span class="icon">
+                                        <i class="icon_plus"></i>
+                                        <i class="icon_minus-06"></i>
+                                    </span>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a href="#change-log" class="nav-link">Change Log</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </aside>
+                    <!-- End Asid area  -->
+                </div>
+                <div class="col-lg-8 col-md-8 ml-lg-5">
+                    <div class="documentation_info" id="post">
+                        <article class="documentation_body doc-section pt-0" id="getting_started">
+                            <div class="shortcode_title">
+                                <h1>Getting Started</h1>
+                                <p><span>Welcome to Slayhub!</span> We would like to thank you for choosing our product - Slayhub.</p>
+                                <p>It’s built with laravel-vue. It’s fully responsive and looks well. It is a modern design and high-speed performance app. To use Slayhub for Zendesk integration with Azure &#10072;&#10072; Github.</p>
+                            </div>
+                            <!-- <div class="shortcode_title" id="whats_included">
+                                <h2>What's Included</h2>
+                                <p>After purchasing imroz template on templateforest.net with your Envato account, go to your Download page. You can choose to download imroz template only (Installable react template) or the entire imroz template package which contains the following files:
+                                </p>
+                                <img class="img-thumbnail" src="img/imroz/included/1.png" alt="whats-included">
+                            </div>
+                            <h3 class="c_head load-order-2" id="template-package">The contents of the template package downloaded from templateForest:</h3>
+                            <div class="steps-panel">
+                                <ul class="ordered-list">
+                                    <li><strong>imroz.zip</strong> - An Installable react template zip file.  this file you need to upload to react.</li>
+                                    <li><strong>Licensing</strong> -  This folder contains the terms and conditions of the license.</li>
+                                    <li><strong>Documentation</strong> -  This folder contains what you are reading now :)</li>
+                                </ul>
+                            </div> -->
+                        </article>
+
+                        <article class="documentation_body doc-section" id="how_does_it_work">
+                            <div class="shortcode_title">
+                                <h2>How does it work?</h2>
+                            </div>
+                            <h3 class="c_head load-order-2">Authorization</h3>
+                            <p>The GitHub OAuth user token is used by SlayHub to perform all of the needed actions within GitHub on your behalf.</p>
+                            <p>It uses the OAuth token to perform actions that are listed below.</p>
+                            <div class="steps-panel">
+                                <ol class="ordered-list">
+                                    <li>List repository issues</li>
+                                    <li>Create issues</li>
+                                    <li>Add and list comments of an issue</li>
+                                    <li>List repositories both public and private</li>
+                                    <li>Repository information like labels, assignees and status</li>
+                                    <li>Webhooks Configuration</li>
+                                </ol>
+                            </div>
+
+                            <h3 class="c_head load-order-2">Repository</h3>
+                            <div class="code_item">
+                                <p>Using the OAuth, it'll retrive the list of all the organization or individual repositories based on the settings.</p>
+                            </div>
+
+                            <h3 class="c_head load-order-2">Issues</h3>
+                            <div class="code_item">
+                                <p>Using the OAuth, it'll be able to add and list issues of the repository associated with the active ticket and will be able to check status, labels & comments of the issue.</p>
+                            </div>
+
+                            <h3 class="c_head load-order-2">Webhooks</h3>
+                            <div class="code_item">
+                                <p>Webhooks are event driven APIs used to do realtime updations in SlayHub, the permissions requested are the most minimal ones that is required to perform all the functions available in SlayHub.</p>
+                            </div>
+
+                        </article>
+
+                        <article class="documentation_body doc-section" id="how_to_use">
+                            <div class="shortcode_title" id="how_to_use_title">
+                                <h2>How to use?</h2>
+                            </div>
+                            <div class="alert alert-primary" role="alert">
+                                Every<strong> ticket</strong> requires a linked <strong> repository </strong> to work.
+                            </div>
+                        </article>
+                    
+                      
+                        <article class="documentation_body doc-section" id="Authentication">
+                            <div class="shortcode_title">
+                                <h2 class="load-order-2" id="authentication_title">Authentication</h2>
+                                <p>SlayHub supports both Github and Azure DevOps repositories.</p>
+                                <p>SlayHub uses OAuth Tokens to perform actions on your repositories on your behalf.</p>
+                                <p>Without providing appropriate permissions, the application won't be able to perform any of its functions. It would thus keep requesting for permissions until the user grants what is required.</p>
+                                <figure>
+                                <img class="img-thumbnail" src="./assets/images/help/git/slayhub-oauth-landing.png" alt="Create a portfolio">
+                                </figure>
+                                <p>Once Slayhub is done loading you get to pick your Version Control.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image.png" alt="go to Appearance -> Import Demo Data">
+                                  </figure>
+                                  <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-authorise.png" alt="go to Appearance -> Import Demo Data">
+                                  </figure>
+                                <p>Once you clicked continue, a tab would open up with a confirmation page. Please read through the provided data carefully and if you consent click on the Authorize Button.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (1).png" alt="go to Appearance -> Import Demo Data">
+                                </figure>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-oauth-terms.png" alt="go to Appearance -> Import Demo Data">
+                                    <figcaption></figcaption>
+                                </figure>
+                                <p>You should be redirected to the github page for authentication. If you have an active account it would request access, otherwise, it would request you to login. If you want Slayhub to fetch Organization Repositories then click on the 'Request or Grant' button based who the owns the organization which is highlighted in <span class="text-danger">red</span>. Once you have added every organization that you wanted click on Authorize Slayhub to continue.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (2).png" alt="go to Appearance -> Import Demo Data">
+                                </figure>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-oauth-success.png" alt="go to Appearance -> Import Demo Data">
+                                    <figcaption></figcaption>
+                                </figure>
+                                <p>SlayHub supports both Github and Azure DevOps repositories.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/git-servie-connected.png" alt="go to Appearance -> Import Demo Data">
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-service.png" alt="go to Appearance -> Import Demo Data">
+                                </figure>
+
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (3).png" alt="go to Appearance -> Import Demo Data">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/both-service-connected.png" alt="go to Appearance -> Import Demo Data">
+                                    <figcaption class="text-center">Change your service seamlessly</figcaption>
+                                </figure>
+                                <p>You can change the service through the <b>change Service</b> button</p>
+                            </div>
+
+                            <!-- <div class="shortcode_title" id="change_logo">
+                                <h2 class="load-order-2">Repositiory</h2>
+                                <p>To change your Site logo by following screenshot</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="img/imroz/basic-setting/logo.png" alt="Go to Dashboard > imroz template Options > General > upload your logo from here.">
+                                    <figcaption class="text-center">By folllowing this screenshot you can change your Logo</figcaption>
+                                </figure>
+                            </div> -->
+
+
+                            <!-- <div class="shortcode_title" id="customize_menu">
+                                <h2 class="load-order-2">Customize Menu</h2>
+                                <p>By following the screenshot you can change the navigation menu</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="img/imroz/basic-setting/menu-1.png" alt="Customize the menu.">
+                                    <figcaption class="text-center">Customize the menu</figcaption>
+                                </figure>
+                            </div> -->
+
+                        </article>
+
+                        <!-- repository -->
+                        <article class="documentation_body doc-section" id="repository">
+                            <div class="shortcode_title">
+                                <h2 class="load-order-2" id="default_repository_title">Default repository</h2>
+                                <p>The default state where a repository not linked to the ticket.</p>
+                                
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Setting default repository.png" alt="Create a portfolio">
+                                </figure>
+                                
+                                <p>Click on the highlighted button to navigate to the repository tab.</p>
+
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/A newly created ticket with default repository active.png" alt="Create a portfolio">
+                                </figure>
+
+                                <p>Click on the switch to active any of the repository to link that repository to the active ticket.</p>
+
+                                
+
+                            </div>
+
+
+
+
+                            <div class="shortcode_title" id="link_repository_title">
+                                <h2 class="load-order-2">How to link a repository</h2>
+                                <p>With Slayhub you can change the linked repository seamlessly.</p>
+                                
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/repository-tab.png" alt="Portfolio Single Page Setting 1">
+                                </figure>
+                                <p>Navigate to the repository tab and click on the required repository switch.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Changed active repository to a different one.png" alt="Portfolio Single Page Setting 1">
+                                </figure>
+                                <p>Wait till the repository is active and you are good to go.</p>
+                            </div>
+
+                        </article>
+
+                        <!-- issues -->
+                        <article class="documentation_body doc-section" id="issues">
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Warning : </strong> Actions and Stats would only be available after you have linked a repository to the ticket.
+                            </div>
+                            <div class="shortcode_title" id="create_issue">
+                                <h2 class="load-order-2">Create Issue</h2>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Post-Repository activation issue tab.png" alt="Add your link here">
+                                </figure>
+                                <p>If not in the issues tab, navigate there and click on the Create Issue button.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Create issue form.png" alt="Add your link here">
+                                </figure>
+                                <p>You should see a form titled 'Add New Issue', if so then start filling the form with the required data and click on Create Issue when done.</p>
+                                <p class="m-0">
+                                    <span class="badge badge-info my-4">Mandatory fields : 
+                                        Everything except <strong class="text-dark">Description</strong> are mandatory fields
+                                    </span>
+                                    
+                                </p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Issue creation form.png" alt="Add your link here">
+                                </figure>
+                                <p>It would take a second to submit, the status of the process can be seen on the submit button. Once its done submitting the form will be emptied out and you can close the form.</p>
+                                <div>Submitting : <div class="spinner-border text-success" role="status"></div></div>
+                                <div>Success : ✔</div>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/After issue creation.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Exploring issue.png" alt="Add your link here">
+                                    <!-- <img class="img-thumbnail" src="./assets/images/help/git/Issue explore on github.png" alt="Add your link here"> -->
+                                    <!-- <img class="img-thumbnail" src="./assets/images/help/git/Closing the issue from github.png" alt="Add your link here"> -->
+                                </figure>
+                                <p>On closing the form you should be back in the issues tab and notice the raised issue listed there. You can click on the view button to reveal more in-depth data on the raised issue.</p>
+                            </div>
+
+                            <div class="shortcode_title" id="link_issue">
+                                <h2 class="load-order-2">Link Issue</h2>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/search for link issue.png" alt="Add your link here">
+                                </figure>
+                                <p>Navigate to the issues tab and click on the 'Link Issue' button.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/list of existing issues on github - link issue.png" alt="Change Header Setting">
+                                    <!-- <img class="img-thumbnail" src="./assets/images/help/link issues/MicrosoftTeams-image.png" alt="Change Header Setting"> -->
+                                </figure>
+                                <p>You should get a menu with a dropdown, where you can select the required issue and click on Link Issue.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Successfully linked an issue.png" alt="Change Header Setting">
+                                </figure>
+                                <p>Like the issue creation it also has the process status displayed on the button. If you try to link an already linked issue you would get an 'Already Linked' status back.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/linked issue exploration.png" alt="Change Header Setting">
+                                </figure>
+                                <p>On successful completion you the form would reset and you can close the window and would find your linked issue listed in the issue tab.</p>
+                            </div>
+
+                            <div class="shortcode_title">
+                                <h2 class="load-order-2" id="add_comment">Add comment</h2>
+                                <div class="alert alert-warning">
+                                    <strong>Warning : </strong> you should have a linked or raised issue to comment on first !
+                                  </div>
+                                  <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Can comment on issue.png" alt="Add your link here">
+                                  </figure>
+                                <p>In order to add a comment, Firsrt navigate to the issue tab and click on the view button.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Comment form.png" alt="Add your link here">
+                                </figure>
+                              <p>Once you are in the view section of the desired issue, you can click on the comments button which is highlighted in red.</p>
+                              <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/comment submitted.png" alt="Add your link here">
+                                </figure>
+                                <p>You should see the 'Add Comment' form opened, enter your comment and click on the 'Submit Comment' button. You can close the window once you are done.</p>
+
+
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/comment submitted.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Every comment type.png" alt="Add your link here">
+                                </figure>
+                              <p>You should still be in the 'View Issue' window and you'd find all the comments highlighted and as agent in the comments section.</p>
+                              <li class="list-group-item list-group-item-info m-2">
+                                <p>What is two way linking ? </p>
+                                <p>Two-way linking is the process where the data would be synced on both ends while the respective issue would be added or linked.</p>
+                                <p>In forced mode the data would be wiped from SlayHub, but with two-way linking SlayHub would sync it from github, the next time if the same repository and issue is linked to the ticket.</p>
+                            </li>
+                            <h5>But, wait how would the devs reply ? Don't worry we got you covered.</h5>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Comment from zendesk.png" alt="Add your link here">
+                                </figure>
+                                <p>Here is the result of your actions reflected on github.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Comment from github - on github.png" alt="Add your link here">
+                                </figure>
+                                <p>Now its the developer's turn to reply, they can reply to this conversation using the <span class="badge badge-info">#client</span> or <span class="badge badge-info">#Client</span> tag.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Comment from github - on slayhub.png" alt="Add your link here">
+                                </figure>
+                                <p>These comments would be delivered to Slayhub in realtime!</p>
+                            </div>
+
+                            
+
+                            <!-- <div class="shortcode_title" id="blog_archive">
+                                <h2 class="load-order-2" id="blog_archive_title">Blog Archive</h2>
+                                <p>To change archive Layout and setting you can change by following this screenshot here.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="img/imroz/theme-options/blog_archive.png" alt="Change Blog Archive Setting">
+                                    <figcaption class="text-center">Change Blog Archive Setting</figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="shortcode_title" id="blog_single">
+                                <h2 class="load-order-2" id="blog_single_title">Blog Single</h2>
+                                <p>To change blog single Layout and setting you can change by following this screenshot here.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="img/imroz/theme-options/blog_single.png" alt="Change Blog Single Setting">
+                                    <figcaption class="text-center">Change Blog Single Setting</figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="shortcode_title" id="typography">
+                                <h2 class="load-order-2" id="typography_title">Typography</h2>
+                                <p>To change Typography and setting you can change by following this screenshot here.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="img/imroz/theme-options/typography.png" alt="Change Typography Setting">
+                                    <figcaption class="text-center">Change Typography Setting</figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="shortcode_title" id="404_page">
+                                <h2 class="load-order-2" id="404_page_title">404 Page</h2>
+                                <p>To change 404 and setting you can change by following this screenshot here.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="img/imroz/theme-options/404_page.png" alt="Change 404 Page Setting">
+                                    <figcaption class="text-center">Change 404 Page Setting</figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="shortcode_title" id="back_to_top_arrow">
+                                <h2 class="load-order-2" id="back_to_top_arrow_title">Back to Top Arrow</h2>
+                                <p>To change Back to Top Arrow and setting you can change by following this screenshot here.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="img/imroz/theme-options/back_to_top_arrow.png" alt="Change Back to Top Arrow Setting">
+                                    <figcaption class="text-center">Change Back to Top Arrow Setting</figcaption>
+                                </figure>
+                            </div> -->
+
+                        </article>
+
+                        <!-- settings -->
+                        <article class="documentation_body doc-section" id="settings">
+                            <div class="shortcode_title">
+                                <h2 class="load-order-2">Settings</h2>
+                                <p>You can tweak the settings and find a combination that suit your needs.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/settings-screen.png" alt="Add your link here">
+                                </figure>
+                                <p>Navigate to the settings tab by clicking on the Settings Tab button.</p>
+                            </div>
+                            <div class="shortcode_title" id="permissions">
+                                <h2 class="load-order-2">Permissions</h2>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Permissions.png" alt="Add your link here">
+                                </figure>
+                                <p>This can be tweaked to restrict and give access to all the default zendesk roles. It has prewritten collection of permission levels.</p>
+                                <p><b>Administrator</b> : Full Control </p>
+                               
+                                <p><b>Standard</b>: Full Control - Settings Access (Can't change permissions)</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/restricted.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/no settings access.png" alt="Add your link here">
+                                </figure>
+                                <p><b>Restricted</b> : Standard - Repository Tab Access but no settings access</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/View only permission.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/view only so comment button.png" alt="Add your link here">
+                                </figure>
+                                <p><b>View Only</b> : No Actions Available, Its a read only permission level.</p>
+                            </div>
+                            <div class="shortcode_title" id="text_formatting_labels">
+                                <h2 class="load-order-2">Text Formatting & Labels</h2>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/zendesk ticket linkslayhub tag toallissues.png" alt="Change Blog Archive Setting">
+                                </figure>
+                                <p>Zendesk Hyperlink to issue : Adds a hyperlink along with the description that points to the ticket on zendesk.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Enabled quick fill.png" alt="Add your link here">
+                                </figure>
+                                <p>Quick Fill Buttons : Adds the 'Quick Fill' buttons 'Create Issue' form.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/conversation - quick fill what is explanation.png" alt="Add your link here">
+                                </figure>
+                                <p><span class="badge bg-secondary text-white btn mx-2">subject</span> : Pushes the 'Ticket subject' data into the 'Issue Subject' while adding a new issue.</p>
+                                
+                                <p><p><span class="badge bg-success text-white btn mx-2">description</span> : Pushes the 'Ticket Description' into the 'Issue Description' field in the form.</p></p>
+                               
+                                <p><p><span class="badge bg-primary text-white btn mx-2">latest</span> : Pushes the last message in the Zendesk's Ticket Conversation into the 'Issue Description' field.</p></p>
+                                <p><span class="badge bg-primary text-white btn mx-2">full</span> : Pushes the entire conversation in the Zendesk's Ticket into the 'Issue Description' field as a 'Conversation Thread'.</p>
+                                <p><span class="badge bg-primary text-white btn mx-2">clear quick fill</span> : Clears the all the quick fill in the field.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Slayhub tag and zendesk link on github.png" alt="Change Blog Archive Setting">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Slayhub tag issue in slayhub.png" alt="Change Blog Archive Setting">
+                                </figure>
+                                <p class="">Slayhub Tag To Raised Issue : Adds the <span class="badge text-white text-capitalize font-weight-light" style="background-color: rgb(68, 68, 68);">slayhub</span> Label onto the 'Raised Issue' on GitHub which would facilitate easy sorting.</p>
+                            </div>
+                            <div class="shortcode_title" id="attachment">
+                                <h2 class="load-order-2" id="attachment_title">How Attachment works</h2>
+                                <p></p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/how attachments work.png" alt="Change Page Banner Setting">
+                                </figure>
+                            </div>
+                        </article>
+
+
+                        <article class="documentation_body doc-section" id="change-log">
+                            <div class="border_bottom"></div>
+                            <div class="row feedback_link">
+                                <div class="col-lg-6">
+                                    <h6><i class="icon_mail_alt"></i>Still stuck? <a href="mailto:support@slayhub.io">How can we help?</a></h6>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    </body>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="assets/bootstrap/js/popper.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="js/parallaxie.js"></script>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/anchor.js"></script>
+<script src="assets/wow/wow.min.js"></script>
+<script src="assets/prism/prism.js"></script>
+<script src="assets/niceselectpicker/jquery.nice-select.min.js"></script>
+<script src="assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+<script src="assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+<script src="assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+<script src="assets/video/video.min.js"></script>
+<script src="assets/video/wistia.js"></script>
+<!-- <script src="js/onpage-menu.js"></script> -->
+<script src="js/main.js"></script>
+</body>
+
 </html>
