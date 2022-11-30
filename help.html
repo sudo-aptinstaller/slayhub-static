@@ -129,7 +129,8 @@
                                     <a href="#settings" class="nav-link">Settings</a>
                                     <ul class="list-unstyled dropdown_nav">
                                         <li class="nav-item"><a href="#permissions" class="nav-link">Permissions</a></li>
-                                        <li class="nav-item"><a href="#text_formatting_labels" class="nav-link">Text Formatting & Labels</a></li>
+                                        <li class="nav-item"><a href="#text_formatting_labels" class="nav-link">Options</a></li>
+                                        <li class="nav-item"><a href="#default_repository" class="nav-link">Default repository</a></li>
                                     </ul>
                                     <span class="icon">
                                         <i class="icon_plus"></i>
@@ -199,6 +200,7 @@
                             <h3 class="c_head load-order-2">Webhooks</h3>
                             <div class="code_item">
                                 <p>Webhooks are event driven APIs used to do realtime updations in SlayHub, The application subscribes only to the necessary events that are required by it to deliver you all its functionalities.</p>
+                                <a href="#webhook_in_action">Click here to see the Webhook in action!</a>
                             </div>
 
                         </article>                    
@@ -311,6 +313,8 @@
                             
                             <div class="alert alert-warning" role="alert">
                                 <strong>Warning : </strong> Actions and Stats would only be available after you have linked a repository to the ticket.
+                            </div><div class="alert alert-info" role="alert">
+                                <strong>Info : </strong> Issues are called Work Items in Azure. 
                             </div>
                             <div class="shortcode_title" id="create_issue">
                                 <h2 class="load-order-2">Create Issue</h2>
@@ -322,32 +326,38 @@
                                     <img class="img-thumbnail" src="./assets/images/help/git/Create issue form.png" alt="Add your link here">
                                 </figure>
                                 <p>You should see a form titled 'Add New Issue', if so then start filling the form with the required data and click on Create Issue when done.</p>
-                                <p class="m-0">
+                                <p class="">
                                     <span class="badge badge-info">Mandatory fields : 
                                         Everything except <strong class="text-dark">Description</strong> are mandatory fields.
                                     </span>
-                                    
                                 </p>
+                                <p class="alert alert-warning"><b>Attachments</b> : you can only add files as attachments that exist in the current Zendesk Ticket's conversation thread.
+                                If you don't have any attachable files present in the ticket conversation you won't have the option to add attachments in the 'Create Issue' form.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Issue creation form.png" alt="Add your link here">
                                     <img class="img-thumbnail" src="./assets/images/help/git/After issue creation.png" alt="Add your link here">
+                                    <img class="h-25 w-50" src="./assets/images/help/git/Github smol blur name.png" alt="Add your link here">
                                 </figure>
+                                <p><a href="#attachment_title">Can't find the 'Add Attachments' option?</a></p>
                                 <p>It would take a second to submit, the status of the process can be seen on the submit button. Once its done submitting the form will close and you'll be taken to the issues tab again, where you can see the created issue listed over there.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Exploring issue.png" alt="Add your link here">
-                                    <!-- <img class="img-thumbnail" src="./assets/images/help/git/Issue explore on github.png" alt="Add your link here"> -->
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Issue explore on github.png" alt="Add your link here">
                                     <!-- <img class="img-thumbnail" src="./assets/images/help/git/Closing the issue from github.png" alt="Add your link here"> -->
                                 </figure>
                                 <p>A submitted issue can be further explored by clicking the view button next to the issue subject.<br>
                                     An explored issue shows the status, labels, assignees and everything associated to the issue.</p>
+                                    
                             </div>
+                            
 
                             <div class="shortcode_title" id="link_issue">
                                 <h2 class="load-order-2">Link Issue</h2>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/After issue creation.png" alt="Add your link here">
+                                    <img class="img-thumbnail w-50" src="./assets/images/help/git/Existing issues on github.png" alt="Add your link here">
                                 </figure>
-                                <p>To link an issue that already exist on your version control to your current Zendesk ticket, you must first navigate to the 'Issues' tab, and click on 'Link Issue' button to open the link issue form.</p>
+                                <p>To link an issue that already exist on your version control, to your current Zendesk ticket, you must first navigate to the 'Issues' tab, and click on 'Link Issue' button to open the link issue form.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/list of existing issues on github - link issue.png" alt="Change Header Setting">
                                     <img class="img-thumbnail" src="./assets/images/help/git/selected-link-issue.png" alt="Add your link here">
@@ -393,12 +403,16 @@
                                 It basically has two user types agents and developers.<br>
                                 Agent messages would be shown in Slayhub Purple with the agent tag along side their names and Developers messages would be shown in Slayhub Grey with the developer tag along side the username of the developer who commented on the issue.</p>
                             </div>
-                            <div class="shortcode_title" id="blog_archive">
-                                <h2 class="load-order-2" id="blog_archive_title">Blog Archive</h2>
-                                <p>To change archive Layout and setting you can change by following this screenshot here.</p>
+                            <div class="shortcode_title" id="in_azure">
+                                <h2 class="load-order-2" id="in_azure_title">In Azure</h2>
+                                <p>While creating an issue in Azure Service, due to some limitations, we can't add multiple labels or assign the issue to multiple developers at the same time.</p>
                                 <figure>
-                                    <img class="img-thumbnail" src="img/imroz/theme-options/blog_archive.png" alt="Change Blog Archive Setting">
-                                    <figcaption class="text-center">Change Blog Archive Setting</figcaption>
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-issue-cform.png" alt="Change Blog Archive Setting">
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-issue-cform1.png" alt="Change Blog Archive Setting">
+                                </figure>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/view-azure-issue.png" alt="Change Blog Archive Setting">
+                                    <img class="img-thumbnail" src="./assets/images/help/Azure/azure-view-comment.png" alt="Change Blog Archive Setting">
                                 </figure>
                             </div>
                         </article>
@@ -407,7 +421,7 @@
                         <article class="documentation_body doc-section" id="settings">
                             <div class="shortcode_title">
                                 <h2 class="load-order-2">Settings</h2>
-                                <p>You can tweak the settings and find a combination that suit your needs.</p>
+                                <p>Settings applies to all the tickets, that exist and the ones created in future across the service.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/settings-screen.png" alt="Add your link here">
                                 </figure>
@@ -415,55 +429,114 @@
                             </div>
                             <div class="shortcode_title" id="permissions">
                                 <h2 class="load-order-2">Permissions</h2>
+                                <p>Permissions can be used to give or restrict access to your agents, permissions mainly have four options to choose from.</p>
                                 <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Permissions.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Permission.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Agents can access settings and repositoyr.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/MicrosoftTeams-image (46).png" alt="Add your link here">
                                 </figure>
-                                <p>This can be tweaked to restrict and give access to all the default zendesk roles. It has prewritten collection of permission levels.</p>
-                                <p><b>Administrator</b> : Full Control </p>
-                               
-                                <p><b>Standard</b>: Full Control - Settings Access (Can't change permissions)</p>
+                                <p><b>Administrator</b> : This lets your agents have full control over the application. </p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/settings-screen.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/no settings access.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/agents-with -standard -permission-no-repository-access.png" alt="Add your link here">
+                                </figure>
+                                <p><b>Standard</b>: Everything except Repository and Settings are available to your agents.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/restricted.png" alt="Add your link here">
-                                    <img class="img-thumbnail" src="./assets/images/help/git/no settings access.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Restricted agent.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Every comment type.png" alt="Add your link here">
                                 </figure>
-                                <p><b>Restricted</b> : Standard - Repository Tab Access but no settings access</p>
+                                <p><b>Restricted</b> : The agents can only comment on issues that exist in Slayhub.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/View only permission.png" alt="Add your link here">
                                     <img class="img-thumbnail" src="./assets/images/help/git/view only so comment button.png" alt="Add your link here">
                                 </figure>
-                                <p><b>View Only</b> : No Actions Available, Its a read only permission level.</p>
+                                <p><b>View Only</b> : Agents can only view your issues.</p>
                             </div>
                             <div class="shortcode_title" id="text_formatting_labels">
-                                <h2 class="load-order-2">Text Formatting & Labels</h2>
+                                <h2 class="load-order-2">Options</h2>
+                                <p>Options are used to customize the data that Slayhub sends to your version control.<br>
+                                It helps you with some utility that makes working with Zendesk and your version control easier.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/zendesk ticket linkslayhub tag toallissues.png" alt="Change Blog Archive Setting">
                                 </figure>
-                                <p>Zendesk Hyperlink to issue : Adds a hyperlink along with the description that points to the ticket on zendesk.</p>
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Enabled quick fill.png" alt="Add your link here">
-                                </figure>
-                                <p>Quick Fill Buttons : Adds the 'Quick Fill' buttons 'Create Issue' form.</p>
-                                <figure>
-                                    <img class="img-thumbnail" src="./assets/images/help/git/conversation - quick fill what is explanation.png" alt="Add your link here">
-                                </figure>
-                                <p><span class="badge bg-secondary text-white btn mx-2">subject</span> : Pushes the 'Ticket subject' data into the 'Issue Subject' while adding a new issue.</p>
-                                
-                                <p><p><span class="badge bg-success text-white btn mx-2">description</span> : Pushes the 'Ticket Description' into the 'Issue Description' field in the form.</p></p>
-                               
-                                <p><p><span class="badge bg-primary text-white btn mx-2">latest</span> : Pushes the last message in the Zendesk's Ticket Conversation into the 'Issue Description' field.</p></p>
-                                <p><span class="badge bg-primary text-white btn mx-2">full</span> : Pushes the entire conversation in the Zendesk's Ticket into the 'Issue Description' field as a 'Conversation Thread'.</p>
-                                <p><span class="badge bg-primary text-white btn mx-2">clear quick fill</span> : Clears the all the quick fill in the field.</p>
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/Slayhub tag and zendesk link on github.png" alt="Change Blog Archive Setting">
-                                    <img class="img-thumbnail" src="./assets/images/help/git/Slayhub tag issue in slayhub.png" alt="Change Blog Archive Setting">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/zendesk-tag-issue.png" alt="Change Blog Archive Setting">
                                 </figure>
-                                <p class="">Slayhub Tag To Raised Issue : Adds the <span class="badge text-white text-capitalize font-weight-light" style="background-color: rgb(68, 68, 68);">slayhub</span> Label onto the 'Raised Issue' on GitHub which would facilitate easy sorting.</p>
+                                <p>Attach Zendesk ticket link to the issue : Adds a hyperlink along with the description that points to the ticket on zendesk.</p>
+                                <p>Add <i>slayhub</i> tag to all the issues : This option adds the slayhub tag/label to the raised issue it works out of the box for Github.</p>
+                               <p class="alert alert-warning"><b>For Azure :</b> You need to manually create the tag in the repository that you would like to use the tag for else the issue would be created without a Slayhub tag.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Enabled quick fill.png" alt="Add your link here">
+                                    <img class="img-thumbnail" src="./assets/images/help/git/conversation - quick fill what is explanation.png" alt="Add your link here">
+                                </figure>
+                                <p>Enable shortcuts to collect details from Zendesk : Adds the 'Quick Fill' buttons in 'Create Issue' form.</p>
+                                <p><span class="badge bg-secondary text-white btn mx-2">Ticket subject</span> : Pushes the 'Ticket subject' data into the 'Issue Subject' while adding a new issue.</p>
+                                <p><b>For description quick fills, the content get replaced with ticket information. you can add additional text through the additional text field that shows up once you have a quick fill active.</b></p>
+                                <p><p><span class="badge bg-success text-white btn mx-2">Ticket description</span> : Pushes the 'Ticket Description' into the 'Issue Description' field in the form.</p></p>
+                               
+                                <p><p><span class="badge bg-primary text-white btn mx-2">Ticket last message</span> : Pushes the last message in the Zendesk's Ticket Conversation into the 'Issue Description' field.</p></p>
+                                <p><span class="badge bg-secondary text-white btn mx-2">Ticket full thread</span> : Pushes the entire conversation in the Zendesk's Ticket into the 'Issue Description' field as a 'Conversation Thread'.</p>
+                                <p><span class="badge bg-info text-dark btn mx-2">Clear quick fill</span> : Clears all the active quick fill.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Agents can access settings and repositoyr.png" alt="Add your link here">
+                                </figure>
+                                <p>Zoom the app view : Increase the app window height.</p>
+                            </div>
+                            
+                            <div class="shortcode_title" id="default_repository">
+                                <h2 class="load-order-2" id="default_repository_title">How Default repository works?</h2>
+                                <p>Default repository option is used to set a repository that would be activated before-hand for all the Tickets on Zendesk, which includes the tickets that would be created in the future.</p>
+                                <p>However, if a ticket has an active repository, the default repository directive is ignored.</p>
+                                <p>Users can still change the <a href="#default_repository_title">linked repository</a> associated with a ticket by navigating to the repository tab and changing the repository manually.</p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Agents can access settings and repositoyr.png" alt="Add your link here">
+                                    <figcaption class="text-left">In the above image we are setting 'mickey-mouse' as the default repository.</figcaption>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/A newly created ticket with default repository active.png" alt="Change Page Banner Setting">
+                                    <figcaption>Here Zendesk-ticket #2 is a newly created ticket, as you can see the 'mickey-mouse' repository was pre-activated because we have set the default repository as 'mickey-mouse'.</figcaption>
+                                </figure>
                             </div>
                             <div class="shortcode_title" id="attachment">
-                                <h2 class="load-order-2" id="attachment_title">How Attachment works</h2>
-                                <p></p>
+                                <h2 class="load-order-2" id="attachment_title">How Attachment works?</h2>
+                                
                                 <figure>
                                     <img class="img-thumbnail" src="./assets/images/help/git/how attachments work.png" alt="Change Page Banner Setting">
+                                </figure>
+                                <p>Slayhub only lets you attach files that exist on Zendesk, so if you can't find the 'Add Attachments' in the 'Create Issue' form its because there are no attachements in the conversation thread of the active ticket.<br>
+                                    If an attachment exist, as shown in the above image, you get the option to add it as an attachment that would generate a token-based link that would let the developers at the version control's end to view the attachments without logging into Zendesk.<br>
+                                    <b>Tip </b> : You can add links in description of your issue! (or under additional points incase you are using quick fill).</p>
+                            </div>
+                            <div class="shortcode_title" id="webhook_in_action">
+                                <h2 class="load-order-2" id="awebhook_in_action_title">Real-time communication and Webhook</h2>
+                                <p>Slayhub utilizes your version control's Webhook to handle events, does a relevancy check and pushes the updates to Slayhub in real-time!</p>
+                                
+                                <h5>The events that are considered relevant by Slayhub are :</h5>
+                                <p>- <b>Changes in the subject and description of the issue / work item. </b></p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/title-change-github.png" alt="Change Page Banner Setting">
+                                </figure>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/desc-change.png" alt="Change Page Banner Setting">
+                                    <figcaption class="text-left">The above images shows the developer updating the subject and description of the issue that you raised through Slayhub.</figcaption>
+                                </figure>
+
+                                <p>- <b>Changes in the labels and assignee data.</b></p>
+                                    <figure>
+                                        <img class="img-thumbnail" src="./assets/images/help/git/Label changing on github.png" alt="Change Page Banner Setting">
+                                    </figure>
+                                <p>- <b>Comments with linking (#client) tag.</b></p>
+                                <figure>
+                                    <img class="img-thumbnail" src="./assets/images/help/git/Comment from github - on github.png" alt="Change Page Banner Setting">
+                                </figure>
+                                <p>- <b>Changes in the status of the issue / work item.</b></p>
+                                <figure>
+                                    <img class="w-25 img-thumbnail" src="./assets/images/help/git/Closing the issue from github.png" alt="Change Page Banner Setting">
+                                </figure>
+                                <h5>Here's all the above performed action updated in real-time on Slayhub.</h5>
+                                <figure>
+                                    <img class=" img-thumbnail" src="./assets/images/help/git/real-time-issue.png" alt="Change Page Banner Setting">
                                 </figure>
                             </div>
                         </article>
