@@ -3635,7 +3635,7 @@ button:focus {
 }
 
 .documentation_body {
-  padding-top: 60px;
+  padding-top: 30px;
 }
 .documentation_body footer .border_bottom {
   margin-top: 100px;
@@ -9660,7 +9660,7 @@ ul.navbar-nav.menu.ml-auto {
 }
 
 .documentation_body {
-  padding-top: 60px;
+  padding-top: 30px;
   padding-bottom: 35px;
 }
 
