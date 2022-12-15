@@ -1897,3 +1897,7 @@ svg:not(:root) {
     opacity: 0;
     transform: scale(1.2);
   }
+  .s-text-block {
+    font-size: 14px;
+    text-align: left;
+  }
